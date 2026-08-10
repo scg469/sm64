@@ -67,7 +67,6 @@ void slow_star_rotation(void) {
 void bhv_spawned_star_loop(void) {
     if (o->oAction == 0) {
         if (o->oTimer == 0) {
-            cutscene_object(CUTSCENE_STAR_SPAWN, o);
             set_time_stop_flags(TIME_STOP_ENABLED | TIME_STOP_MARIO_AND_DOORS);
             o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
             o->oAngleVelYaw = 0x800;
@@ -89,11 +88,7 @@ void bhv_spawned_star_loop(void) {
             o->oVelY = 20.0f;
             o->oGravity = -1.0f;
             if (o->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) {
-#ifdef VERSION_JP
                 play_power_star_jingle(FALSE);
-#else
-                play_power_star_jingle(TRUE);
-#endif
             } else {
                 play_power_star_jingle(TRUE);
             }

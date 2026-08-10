@@ -104,12 +104,6 @@
             "release_rate": 208,
             "envelope": "envelope5",
             "sound": "0C"
-        },
-        "inst13": {
-            "ifdef": ["VERSION_US", "VERSION_EU", "VERSION_SH", "VERSION_CN"],
-            "release_rate": 208,
-            "envelope": "envelope5",
-            "sound": "0D_chain_chomp_bark"
         }
     },
     "instrument_list": [
@@ -126,7 +120,6 @@
         "inst9",
         "inst10",
         "inst11",
-        "inst12",
-        "inst13"
+        "inst12"
     ]
 }

@@ -12013,6 +12013,11 @@ static const Vtx vertex_billboard_num[] = {
     {{{   -32,     32,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
+// 0x02014838 - 0x02014878
+ALIGNED8 static const Texture texture_ia8_up_arrow[] = {
+#include "textures/segment2/segment2.14838.ia8.inc.c"
+};
+
 // 0x0200EFF0 - 0x0200F038
 const Gfx dl_billboard_num_begin[] = {
     gsDPPipeSync(),
@@ -12035,6 +12040,44 @@ const Gfx dl_billboard_num_end[] = {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),
+};
+
+// 0x02014470 - 0x020144B0
+static const Mtx matrix_identity = {
+#ifndef GBI_FLOATS
+    {{0x00010000, 0x00000000,
+      0x00000001, 0x00000000},
+     {0x00000000, 0x00010000,
+      0x00000000, 0x00000001},
+     {0x00000000, 0x00000000,
+      0x00000000, 0x00000000},
+     {0x00000000, 0x00000000,
+      0x00000000, 0x00000000}}
+#else
+    {{1.0f, 0.0f, 0.0f, 0.0f},
+    {0.0f, 1.0f, 0.0f, 0.0f},
+    {0.0f, 0.0f, 1.0f, 0.0f},
+    {0.0f, 0.0f, 0.0f, 1.0f}}
+#endif
+};
+
+// 0x020144B0 - 0x020144F0
+static const Mtx matrix_fullscreen = {
+#ifndef GBI_FLOATS
+    {{0x00000000, 0x00000000,
+      0x00000000, 0x00000000},
+     {0x00000000, 0xffff0000,
+      0xffffffff, 0xffff0001},
+     {((65536 * 2 / SCREEN_WIDTH) << 16) | 0, 0x00000000,
+      (0 << 16) | (65536 * 2 / SCREEN_HEIGHT), 0x00000000},
+     {0x00000000, 0x00000000,
+      0x00000000, 0x00000000}}
+#else
+    {{2.0f / SCREEN_WIDTH, 0.0f, 0.0f, 0.0f},
+    {0.0f, 2.0f / SCREEN_HEIGHT, 0.0f, 0.0f},
+    {0.0f, 0.0f, -1.0f, 0.0f},
+    {-1.0f, -1.0f, -1.0f, 1.0f}}
+#endif
 };
 
 // 0x0200F078 - 0x0200F0A8
@@ -12187,46 +12230,6 @@ UNUSED static const Lights1 segment2_lights_unused = gdSPDefLights1(
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
-// 0x02014470 - 0x020144B0
-static const Mtx matrix_identity = {
-#ifndef GBI_FLOATS
-    {{0x00010000, 0x00000000,
-      0x00000001, 0x00000000},
-     {0x00000000, 0x00010000,
-      0x00000000, 0x00000001},
-     {0x00000000, 0x00000000,
-      0x00000000, 0x00000000},
-     {0x00000000, 0x00000000,
-      0x00000000, 0x00000000}}
-#else
-    {{1.0f, 0.0f, 0.0f, 0.0f},
-    {0.0f, 1.0f, 0.0f, 0.0f},
-    {0.0f, 0.0f, 1.0f, 0.0f},
-    {0.0f, 0.0f, 0.0f, 1.0f}}
-#endif
-};
-
-
-// 0x020144B0 - 0x020144F0
-static const Mtx matrix_fullscreen = {
-#ifndef GBI_FLOATS
-    {{0x00000000, 0x00000000,
-      0x00000000, 0x00000000},
-     {0x00000000, 0xffff0000,
-      0xffffffff, 0xffff0001},
-     {((65536 * 2 / SCREEN_WIDTH) << 16) | 0, 0x00000000,
-      (0 << 16) | (65536 * 2 / SCREEN_HEIGHT), 0x00000000},
-     {0x00000000, 0x00000000,
-      0x00000000, 0x00000000}}
-#else
-    {{2.0f / SCREEN_WIDTH, 0.0f, 0.0f, 0.0f},
-    {0.0f, 2.0f / SCREEN_HEIGHT, 0.0f, 0.0f},
-    {0.0f, 0.0f, -1.0f, 0.0f},
-    {-1.0f, -1.0f, -1.0f, 1.0f}}
-#endif
-};
-
-
 // 0x020144F0 - 0x02014508
 const Gfx dl_draw_quad_verts_0123[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
@@ -12374,10 +12377,6 @@ const Gfx dl_waterbox_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014838 - 0x02014878
-ALIGNED8 static const Texture texture_ia8_up_arrow[] = {
-#include "textures/segment2/segment2.14838.ia8.inc.c"
-};
 
 // 0x02014878 - 0x020148B0
 const Gfx dl_ia8_up_arrow_begin[] = {

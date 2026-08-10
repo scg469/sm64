@@ -108,10 +108,7 @@ void yoshi_walk_and_jump_off_roof_loop(void) {
     object_step();
     cur_obj_init_animation(1);
 
-    if (o->oTimer == 0) {
-        cutscene_object(CUTSCENE_STAR_SPAWN, o);
-    }
-
+    
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
 
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200)) {

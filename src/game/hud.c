@@ -86,39 +86,47 @@ void render_hud_small_tex_lut(s32 x, s32 y, u8 *texture) {
  * Renders power meter health segment texture using a table list.
  */
 void render_power_meter_health_segment(s16 numHealthWedges) {
-    u8 *(*healthLUT)[] = segmented_to_virtual(&power_meter_health_segments_lut);
+    u8 *(*healthLUT)[];
+
+    healthLUT = segmented_to_virtual(power_meter_health_segments_lut);
 
     gDPPipeSync(gDisplayListHead++);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,
-                       (*healthLUT)[numHealthWedges - 1]);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES));
-    gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
+    g_Tani_LoadTextureImage2(gDisplayListHead++, (*healthLUT)[numHealthWedges * 2], G_IM_FMT_RGBA,
+                             G_IM_SIZ_16b, 32, 64, 0, 7) gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
     gSP1Triangle(gDisplayListHead++, 0, 2, 3, 0);
+    g_Tani_LoadTextureImage2(gDisplayListHead++, (*healthLUT)[(numHealthWedges * 2) + 1], G_IM_FMT_RGBA,
+                             G_IM_SIZ_16b, 32, 64, 0, 7) gSP1Triangle(gDisplayListHead++, 4, 5, 6, 0);
+    gSP1Triangle(gDisplayListHead++, 4, 6, 7, 0);
 }
+
 
 /**
  * Renders power meter display lists.
  * That includes the "POWER" base and the colored health segment textures.
  */
 void render_dl_power_meter(s16 numHealthWedges) {
-    Mtx *mtx = alloc_display_list(sizeof(Mtx));
+    Mtx *translateMtx;
+    Mtx *scaleMtx;
 
-    if (mtx == NULL) {
+    translateMtx = alloc_display_list(sizeof(Mtx));
+    scaleMtx = alloc_display_list(sizeof(Mtx));
+
+    if (translateMtx == NULL || scaleMtx == NULL) {
         return;
     }
 
-    guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
+    guTranslate(translateMtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
+    guScale(scaleMtx, 1.0f, 1.0f, 1.0f);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx++),
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(translateMtx++),
               G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
+
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(scaleMtx++),
+              G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
+
     gSPDisplayList(gDisplayListHead++, &dl_power_meter_base);
 
-    if (numHealthWedges != 0) {
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_begin);
-        render_power_meter_health_segment(numHealthWedges);
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_end);
-    }
+    render_power_meter_health_segment(numHealthWedges);
 
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
@@ -249,27 +257,27 @@ void render_hud_power_meter(void) {
 }
 
 #ifdef VERSION_JP
-#define HUD_TOP_Y 210
-#else
 #define HUD_TOP_Y 209
+#else
+#define HUD_TOP_Y 210
 #endif
 
 /**
  * Renders the amount of lives Mario has.
  */
 void render_hud_mario_lives(void) {
-    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(22), HUD_TOP_Y, ","); // 'Mario Head' glyph
-    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(38), HUD_TOP_Y, "*"); // 'X' glyph
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(54), HUD_TOP_Y, "%d", gHudDisplay.lives);
+    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(30), HUD_TOP_Y, ","); // 'Mario Head' glyph
+    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(45), HUD_TOP_Y, "*"); // 'X' glyph
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(62), HUD_TOP_Y, "%02d", gHudDisplay.lives);
 }
 
 /**
  * Renders the amount of coins collected.
  */
 void render_hud_coins(void) {
-    print_text(168, HUD_TOP_Y, "+"); // 'Coin' glyph
-    print_text(184, HUD_TOP_Y, "*"); // 'X' glyph
-    print_text_fmt_int(198, HUD_TOP_Y, "%d", gHudDisplay.coins);
+    print_text(168, HUD_TOP_Y - 16, "+"); // 'Coin' glyph
+    print_text(184, HUD_TOP_Y - 16, "*"); // 'X' glyph
+    print_text_fmt_int(198, HUD_TOP_Y - 16, "%02d", gHudDisplay.coins);
 }
 
 #ifdef VERSION_JP
@@ -283,24 +291,10 @@ void render_hud_coins(void) {
  * Disables "X" glyph when Mario has 100 stars or more.
  */
 void render_hud_stars(void) {
-    s8 showX = 0;
-
-    if (gHudFlash == 1 && gGlobalTimer & 8) {
-        return;
-    }
-
-    if (gHudDisplay.stars < 100) {
-        showX = 1;
-    }
-
-    print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X), HUD_TOP_Y, "-"); // 'Star' glyph
-    if (showX == 1) {
-        print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X) + 16, HUD_TOP_Y, "*"); // 'X' glyph
-    }
-    print_text_fmt_int((showX * 14) + GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X - 16),
-                       HUD_TOP_Y, "%d", gHudDisplay.stars);
+      print_text(168, HUD_TOP_Y, "-"); // 'Star' glyph
+    print_text(184, HUD_TOP_Y, "*"); // 'X' glyph
+    print_text_fmt_int(198, HUD_TOP_Y, "%02d", gHudDisplay.stars);
 }
-
 /**
  * Unused function that renders the amount of keys collected.
  * Leftover function from the beta version of the game.
@@ -434,14 +428,14 @@ void render_hud(void) {
 #endif
 
         if (gCurrentArea != NULL && gCurrentArea->camera->mode == CAMERA_MODE_INSIDE_CANNON) {
-            render_hud_cannon_reticle();
+            //render_hud_cannon_reticle();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES) {
             render_hud_mario_lives();
         }
 
-        if (hudDisplayFlags & HUD_DISPLAY_FLAG_COIN_COUNT) {
+        if (hudDisplayFlags) {
             render_hud_coins();
         }
 
@@ -455,7 +449,6 @@ void render_hud(void) {
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_CAMERA_AND_POWER) {
             render_hud_power_meter();
-            render_hud_camera_status();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {

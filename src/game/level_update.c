@@ -1000,7 +1000,7 @@ s32 play_mode_normal(void) {
 #if ENABLE_RUMBLE
             cancel_rumble();
 #endif
-            gCameraMovementFlags |= CAM_MOVE_PAUSE_SCREEN;
+            //gCameraMovementFlags |= CAM_MOVE_PAUSE_SCREEN;
             set_play_mode(PLAY_MODE_PAUSED);
         }
     }
@@ -1010,21 +1010,54 @@ s32 play_mode_normal(void) {
 
 s32 play_mode_paused(void) {
     if (gMenuOptSelectIndex == MENU_OPT_NONE) {
-        set_menu_mode(MENU_MODE_RENDER_PAUSE_SCREEN);
+        if (gCurrCourseNum >= COURSE_MIN) {
+            set_menu_mode(MENU_MODE_RENDER_PAUSE_SCREEN);
+        } else {
+            set_menu_mode(MENU_MODE_UNUSED_0); /* stage select */
+        }
     } else if (gMenuOptSelectIndex == MENU_OPT_DEFAULT) {
         raise_background_noise(1);
-        gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
         set_play_mode(PLAY_MODE_NORMAL);
     } else { // MENU_OPT_EXIT_COURSE
-        if (gDebugLevelSelect) {
-            fade_into_special_warp(-9, 1);
+        if (gCurrCourseNum >= COURSE_MIN) {
+            if (gDebugLevelSelect) {
+                fade_into_special_warp(-9, 1);
+            } else {
+                initiate_warp(LEVEL_CASTLE, 1, 0x1F, 0);
+                fade_into_special_warp(0, 0);
+                gSavedCourseNum = COURSE_NONE;
+            }
         } else {
-            initiate_warp(LEVEL_CASTLE, 1, 0x1F, 0);
-            fade_into_special_warp(0, 0);
-            gSavedCourseNum = COURSE_NONE;
+            switch (gMenuOptSelectIndex) {
+                case 2:
+                    initiate_warp(LEVEL_WF, 1, 0x0A, 0);
+                    fade_into_special_warp(0, 1);
+                    break;
+                case 3:
+                    initiate_warp(LEVEL_LLL, 1, 0x0A, 0);
+                    fade_into_special_warp(0, 1);
+                    break;
+                case 4:
+                    initiate_warp(LEVEL_CCM, 1, 0x0A, 0);
+                    fade_into_special_warp(0, 1);
+                    break;
+                case 5:
+                    initiate_warp(LEVEL_DDD, 1, 0x0A, 0);
+                    fade_into_special_warp(0, 1);
+                    break;
+                case 6:
+                    initiate_warp(LEVEL_BOWSER_1, 1, 0x0A, 0);
+                    fade_into_special_warp(0, 1);
+                    break;
+                case 7:
+                    if (gDebugLevelSelect) {
+                        fade_into_special_warp(-9, 1);
+                    } else {
+                        fade_into_special_warp(-2, 0);
+                    }
+                    break;
+            }
         }
-
-        gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
     }
 
     return 0;

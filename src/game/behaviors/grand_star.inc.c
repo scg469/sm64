@@ -46,7 +46,6 @@ void bhv_grand_star_loop(void) {
         if (o->oTimer == 0) {
             cur_obj_play_sound_2(SOUND_GENERAL_GRAND_STAR);
 
-            cutscene_object(CUTSCENE_STAR_SPAWN, o);
             o->oGrandStarUnk108 = arc_to_goal_pos(sp28, &o->oPosX, 80.0f, -2.0f);
         }
 

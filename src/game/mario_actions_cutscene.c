@@ -126,27 +126,27 @@ void print_displaying_credits_entry(void) {
 #endif
 
         dl_rgba16_begin_cutscene_msg_fade();
-        print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY, titleStr);
+        //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY, titleStr);
 
 #ifndef VERSION_JP
         switch (numLines) {
             case 4:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 24, *currStrPtr++);
+                //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 24, *currStrPtr++);
                 numLines = 2;
                 lineHeight = 24;
                 break;
             case 5:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
+                //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
                 numLines = 3;
                 break;
 #ifdef VERSION_EU
             case 6:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
+                //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
                 numLines = 3;
                 break;
             case 7:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
+                //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
+                //print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
                 numLines = 3;
                 break;
 #endif
@@ -154,7 +154,7 @@ void print_displaying_credits_entry(void) {
 #endif
 
         while (numLines-- > 0) {
-            print_credits_str_ascii(CREDIT_TEXT_X_RIGHT - get_credits_str_width(*currStrPtr), strY, *currStrPtr);
+            //print_credits_str_ascii(CREDIT_TEXT_X_RIGHT - get_credits_str_width(*currStrPtr), strY, *currStrPtr);
 
 #ifdef VERSION_JP
             strY += 16;
@@ -1157,9 +1157,9 @@ s32 act_death_exit(struct MarioState *m) {
     if (15 < m->actionTimer++
         && launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, -32.0f)) {
 #ifdef VERSION_JP
-        play_sound(SOUND_MARIO_OOOF, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH, m->marioObj->header.gfx.cameraToObject);
 #else
-        play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH2, m->marioObj->header.gfx.cameraToObject);
 #endif
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 80);
@@ -1176,9 +1176,9 @@ s32 act_death_exit(struct MarioState *m) {
 s32 act_unused_death_exit(struct MarioState *m) {
     if (launch_mario_until_land(m, ACT_FREEFALL_LAND_STOP, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
 #ifdef VERSION_JP
-        play_sound(SOUND_MARIO_OOOF, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH, m->marioObj->header.gfx.cameraToObject);
 #else
-        play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH2, m->marioObj->header.gfx.cameraToObject);
 #endif
         m->numLives--;
         // restore 7.75 units of health
@@ -1192,9 +1192,9 @@ s32 act_unused_death_exit(struct MarioState *m) {
 s32 act_falling_death_exit(struct MarioState *m) {
     if (launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
 #ifdef VERSION_JP
-        play_sound(SOUND_MARIO_OOOF, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH, m->marioObj->header.gfx.cameraToObject);
 #else
-        play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_DOH2, m->marioObj->header.gfx.cameraToObject);
 #endif
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 80);

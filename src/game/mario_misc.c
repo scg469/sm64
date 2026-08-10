@@ -130,15 +130,15 @@ static void toad_message_talking(void) {
         switch (gCurrentObject->oToadMessageDialogID) {
             case TOAD_STAR_1_DIALOG:
                 gCurrentObject->oToadMessageDialogID = TOAD_STAR_1_DIALOG_AFTER;
-                bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_1);
+                //bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_1);
                 break;
             case TOAD_STAR_2_DIALOG:
                 gCurrentObject->oToadMessageDialogID = TOAD_STAR_2_DIALOG_AFTER;
-                bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_2);
+                //bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_2);
                 break;
             case TOAD_STAR_3_DIALOG:
                 gCurrentObject->oToadMessageDialogID = TOAD_STAR_3_DIALOG_AFTER;
-                bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_3);
+                //bhv_spawn_star_no_level_exit(STAR_INDEX_ACT_3);
                 break;
         }
     }

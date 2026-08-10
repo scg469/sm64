@@ -205,7 +205,7 @@
 #define CUTSCENE_DOOR_WARP            139
 #define CUTSCENE_DOOR_PULL_MODE       140
 #define CUTSCENE_DOOR_PUSH_MODE       141
-#define CUTSCENE_INTRO_PEACH          142
+#define CUTSCENE_INTRO                142
 #define CUTSCENE_DANCE_ROTATE         143
 #define CUTSCENE_ENTER_BOWSER_ARENA   144
 #define CUTSCENE_0F_UNUSED            145 // Never activated, stub cutscene functions

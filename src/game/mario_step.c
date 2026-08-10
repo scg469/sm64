@@ -89,12 +89,7 @@ BAD_RETURN(s32) init_bully_collision_data(struct BullyCollisionData *data, f32 p
 void mario_bonk_reflection(struct MarioState *m, u32 negateSpeed) {
     if (m->wall != NULL) {
         s16 wallAngle = atan2s(m->wall->normal.z, m->wall->normal.x);
-        m->faceAngle[1] = wallAngle - (s16)(m->faceAngle[1] - wallAngle);
-
-        play_sound((m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_BONK : SOUND_ACTION_BONK,
-                   m->marioObj->header.gfx.cameraToObject);
-    } else {
-        play_sound(SOUND_ACTION_HIT, m->marioObj->header.gfx.cameraToObject);
+        m->faceAngle[1] = wallAngle - (s16) (m->faceAngle[1] - wallAngle);
     }
 
     if (negateSpeed) {
@@ -103,6 +98,7 @@ void mario_bonk_reflection(struct MarioState *m, u32 negateSpeed) {
         m->faceAngle[1] += 0x8000;
     }
 }
+
 
 u32 mario_update_quicksand(struct MarioState *m, f32 sinkingSpeed) {
     if (m->action & ACT_FLAG_RIDING_SHELL) {

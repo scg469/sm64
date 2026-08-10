@@ -2794,7 +2794,6 @@ const BehaviorScript bhvWhitePuff2[] = {
     BILLBOARD(),
     SET_INT(oAnimState, -1),
     BEGIN_REPEAT(7),
-        CALL_NATIVE(bhv_white_puff_2_loop),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
@@ -2806,7 +2805,6 @@ const BehaviorScript bhvWhitePuffSmoke2[] = {
     BILLBOARD(),
     SET_INT(oAnimState, -1),
     BEGIN_REPEAT(7),
-        CALL_NATIVE(bhv_white_puff_2_loop),
         CALL_NATIVE(cur_obj_move_using_fvel_and_gravity),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
@@ -4194,6 +4192,7 @@ const BehaviorScript bhvBowserBombSmoke[] = {
 
 const BehaviorScript bhvCelebrationStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    BILLBOARD(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     CALL_NATIVE(bhv_celebration_star_init),
     BEGIN_LOOP(),
@@ -4603,20 +4602,24 @@ const BehaviorScript bhvVanishCap[] = {
 
 const BehaviorScript bhvStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    BILLBOARD(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     CALL_NATIVE(bhv_init_room),
     CALL_NATIVE(bhv_collect_star_init),
     BEGIN_LOOP(),
+    ANIMATE_TEXTURE(oAnimState, 2),
         CALL_NATIVE(bhv_collect_star_loop),
     END_LOOP(),
 };
 
 const BehaviorScript bhvStarSpawnCoordinates[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    BILLBOARD(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     CALL_NATIVE(bhv_collect_star_init),
-    CALL_NATIVE(bhv_star_spawn_init),
+    //CALL_NATIVE(bhv_star_spawn_init),
     BEGIN_LOOP(),
+    ANIMATE_TEXTURE(oAnimState, 2),
         CALL_NATIVE(bhv_star_spawn_loop),
     END_LOOP(),
 };
@@ -6065,7 +6068,6 @@ const BehaviorScript bhvBeginningLakitu[] = {
     ANIMATE(0),
     SET_FLOAT(oOpacity, 0),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_intro_lakitu_loop),
     END_LOOP(),
 };
 
@@ -6075,7 +6077,6 @@ const BehaviorScript bhvBeginningPeach[] = {
     LOAD_ANIMATIONS(oAnimations, peach_seg5_anims_0501C41C),
     ANIMATE(0),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_intro_peach_loop),
     END_LOOP(),
 };
 
@@ -6085,7 +6086,6 @@ const BehaviorScript bhvEndBirds1[] = {
     LOAD_ANIMATIONS(oAnimations, birds_seg5_anims_050009E8),
     ANIMATE(0),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_end_birds_1_loop),
     END_LOOP(),
 };
 
@@ -6095,7 +6095,6 @@ const BehaviorScript bhvEndBirds2[] = {
     LOAD_ANIMATIONS(oAnimations, birds_seg5_anims_050009E8),
     ANIMATE(0),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_end_birds_2_loop),
     END_LOOP(),
 };
 
@@ -6103,7 +6102,6 @@ const BehaviorScript bhvIntroScene[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_intro_scene_loop),
     END_LOOP(),
 };
 

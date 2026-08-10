@@ -748,7 +748,7 @@ u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *
 
     if (COURSE_IS_MAIN_COURSE(gCurrCourseNum)
         && m->numCoins - o->oDamageOrCoinValue < 100 && m->numCoins >= 100) {
-        bhv_spawn_star_no_level_exit(STAR_INDEX_100_COINS);
+        //bhv_spawn_star_no_level_exit(STAR_INDEX_100_COINS);
     }
 
 #if ENABLE_RUMBLE
@@ -802,7 +802,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
             starGrabAction = ACT_FALL_AFTER_STAR_GRAB;
         }
 
-        spawn_object(o, MODEL_NONE, bhvStarKeyCollectionPuffSpawner);
+        spawn_object(o, MODEL_STAR_DUST, bhvStarKeyCollectionPuffSpawner);
 
         o->oInteractStatus = INT_STATUS_INTERACTED;
         m->interactObj = o;
@@ -1495,7 +1495,7 @@ u32 check_object_grab_mario(struct MarioState *m, UNUSED u32 interactType, struc
             m->usedObj = o;
 
             update_mario_sound_and_camera(m);
-            play_sound(SOUND_MARIO_OOOF, m->marioObj->header.gfx.cameraToObject);
+            play_sound(SOUND_MARIO_DOH, m->marioObj->header.gfx.cameraToObject);
 #if ENABLE_RUMBLE
             queue_rumble_data(5, 80);
 #endif

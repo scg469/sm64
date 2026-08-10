@@ -88,12 +88,12 @@
         "inst5": {
             "release_rate": 10,
             "envelope": "envelope5",
-            "sound": "26_crystal_rhodes_C4"
+            "sound": "26_tine_piano"
         },
         "inst6": {
             "release_rate": 10,
             "envelope": "envelope6",
-            "sound": "26_crystal_rhodes_C4"
+            "sound": "26_tine_piano"
         }
     },
     "instrument_list": [

@@ -291,7 +291,7 @@ void play_sound_and_spawn_particles(struct MarioState *m, u32 soundBits, u32 wav
     }
 
     if ((m->flags & MARIO_METAL_CAP) || soundBits == SOUND_ACTION_UNSTUCK_FROM_GROUND
-        || soundBits == SOUND_MARIO_PUNCH_HOO) {
+        || soundBits == SOUND_MARIO_PUNCH_WAH) {
         play_sound(soundBits, m->marioObj->header.gfx.cameraToObject);
     } else {
         play_sound(m->terrainSoundAddend + soundBits, m->marioObj->header.gfx.cameraToObject);
@@ -393,7 +393,7 @@ s32 mario_get_floor_class(struct MarioState *m) {
     if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE) {
         floorClass = SURFACE_CLASS_VERY_SLIPPERY;
     } else {
-        floorClass = SURFACE_CLASS_DEFAULT;
+        floorClass = SURFACE_CLASS_SLIPPERY;
     }
 
     if (m->floor != NULL) {
@@ -789,12 +789,11 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
 
         case ACT_BACKFLIP:
             m->marioObj->header.gfx.animInfo.animID = -1;
-            m->forwardVel = -16.0f;
-            set_mario_y_vel_based_on_fspeed(m, 62.0f, 0.0f);
+            set_mario_y_vel_based_on_fspeed(m, 42.0f, 0.0f);
             break;
 
         case ACT_TRIPLE_JUMP:
-            set_mario_y_vel_based_on_fspeed(m, 69.0f, 0.0f);
+            set_mario_y_vel_based_on_fspeed(m, 62.0f, 0.0f);
             m->forwardVel *= 0.8f;
             break;
 
@@ -835,7 +834,7 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
             break;
 
         case ACT_SIDE_FLIP:
-            set_mario_y_vel_based_on_fspeed(m, 62.0f, 0.0f);
+            set_mario_y_vel_based_on_fspeed(m, 42.0f, 0.0f);
             m->forwardVel = 8.0f;
             m->faceAngle[1] = m->intendedYaw;
             break;
@@ -861,15 +860,9 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
             break;
 
         case ACT_LONG_JUMP:
-            m->marioObj->header.gfx.animInfo.animID = -1;
-            set_mario_y_vel_based_on_fspeed(m, 30.0f, 0.0f);
-            m->marioObj->oMarioLongJumpIsSlow = m->forwardVel > 16.0f ? FALSE : TRUE;
-
-            //! (BLJ's) This properly handles long jumps from getting forward speed with
-            //  too much velocity, but misses backwards longs allowing high negative speeds.
-            if ((m->forwardVel *= 1.5f) > 48.0f) {
-                m->forwardVel = 48.0f;
-            }
+        m->marioObj->header.gfx.animInfo.animID = -1;
+            set_mario_y_vel_based_on_fspeed(m, 42.0f, 0.0f);
+            
             break;
 
         case ACT_SLIDE_KICK:
@@ -896,7 +889,7 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
 static u32 set_mario_action_moving(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
     s16 floorClass = mario_get_floor_class(m);
     f32 forwardVel = m->forwardVel;
-    f32 mag = min(m->intendedMag, 8.0f);
+    f32 mag = min(m->intendedMag, 2.0f);
 
     switch (action) {
         case ACT_WALKING:
@@ -1285,6 +1278,9 @@ void update_mario_button_inputs(struct MarioState *m) {
     } else if (m->framesSinceB < 0xFF) {
         m->framesSinceB++;
     }
+    if (m->controller->buttonPressed & D_JPAD) {
+        set_mario_action(m, ACT_DEBUG_FREE_MOVE, 0);
+    }
 }
 
 /**
@@ -1297,7 +1293,7 @@ void update_mario_joystick_inputs(struct MarioState *m) {
     if (m->squishTimer == 0) {
         m->intendedMag = mag / 2.0f;
     } else {
-        m->intendedMag = mag / 8.0f;
+        m->intendedMag = mag / 2.0f;
     }
 
     if (m->intendedMag > 0.0f) {
@@ -1473,6 +1469,8 @@ void update_mario_health(struct MarioState *m) {
                     } else if (!gDebugLevelSelect) {
                         m->health -= (terrainIsSnow ? 3 : 1);
                     }
+
+                   
                 }
             }
         }
@@ -1493,6 +1491,7 @@ void update_mario_health(struct MarioState *m) {
             m->health = 0xFF;
         }
 
+         m->health ++;
         // Play a noise to alert the player when Mario is close to drowning.
         if (((m->action & ACT_GROUP_MASK) == ACT_GROUP_SUBMERGED) && (m->health < 0x300)) {
             play_sound(SOUND_MOVING_ALMOST_DROWNING, gGlobalSoundSource);
@@ -1883,7 +1882,7 @@ void init_mario_from_save_file(void) {
         save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
     gMarioState->numKeys = 0;
 
-    gMarioState->numLives = 4;
+    gMarioState->numLives = 2;
     gMarioState->health = 0x880;
 
     gMarioState->prevNumStarsForDialog = gMarioState->numStars;

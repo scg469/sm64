@@ -114,6 +114,14 @@ extern const Collision poundable_pole_collision_06002490[];
 
 // whomp
 extern const GeoLayout whomp_geo[];
+extern const Gfx  RCP_HmsEnemywallman[];
+extern const Gfx  RCP_wallman_Rhand[];
+extern const Gfx  RCP_wallman_body[];
+extern const Gfx  RCP_wallman_Lfoot[];
+extern const Gfx  RCP_wallman_Larm[];
+extern const Gfx  RCP_wallman_Lhand[];
+extern const Gfx  RCP_wallman_Rarm[];
+extern const Gfx  RCP_wallman_Rfoot[];
 extern const Gfx whomp_seg6_dl_0601F4F8[];
 extern const Gfx whomp_seg6_dl_0601F570[];
 extern const Gfx whomp_seg6_dl_0601F5A8[];

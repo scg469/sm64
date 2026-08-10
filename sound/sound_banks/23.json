@@ -70,12 +70,12 @@
         "inst3": {
             "release_rate": 10,
             "envelope": "envelope3",
-            "sound": "26_crystal_rhodes_C4"
+            "sound": "26_tine_piano"
         },
         "inst4": {
             "release_rate": 10,
             "envelope": "envelope4",
-            "sound": "26_crystal_rhodes_C4"
+            "sound": "26_tine_piano"
         },
         "inst5": {
             "release_rate": 255,

@@ -16,6 +16,7 @@ extern u8 texture_transition_mario[];
 extern u8 texture_transition_bowser_half[];
 extern u8 texture_waterbox_water[];
 extern u8 texture_waterbox_mist[];
+extern Gfx dl_draw_quad_verts_4567[];
 extern u8 texture_waterbox_jrb_water[];
 extern u8 texture_waterbox_unknown_water[];
 extern u8 texture_waterbox_lava[];
@@ -63,5 +64,9 @@ extern Gfx dl_billboard_num_6[];
 extern Gfx dl_billboard_num_7[];
 extern Gfx dl_billboard_num_8[];
 extern Gfx dl_billboard_num_9[];
+extern const Gfx dl_ia8_up_arrow_begin[];
+extern const Gfx dl_rgba16_unused[];
+extern const Gfx dl_ia8_up_arrow_load_texture_block[];
+extern const Gfx dl_ia8_up_arrow_end[];
 
 #endif // SEGMENT2_H

@@ -24,11 +24,35 @@
             "release_rate": 208,
             "envelope": "envelope0",
             "sound": "02_swim"
+        },
+        "inst3": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "03_swim"
+        },
+        "inst4": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "04_land"
+        },
+        "inst5": {
+            "release_rate": 10,
+            "envelope": "envelope0",
+            "sound": "04_land"
+        },
+        "inst6": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "05_swim"
         }
     },
     "instrument_list": [
         "inst0",
         "inst1",
-        "inst2"
+        "inst2",
+        "inst3",
+        "inst4",
+        "inst5",
+        "inst6"
     ]
 }

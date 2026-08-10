@@ -33,6 +33,7 @@ const GeoLayout castle_grounds_geo_00073C[] = {
         GEO_ZBUFFER(0),
         GEO_OPEN_NODE(),
             GEO_ASM(0, geo_cannon_circle_base),
+             GEO_ASM(1, AreaMap),
         GEO_CLOSE_NODE(),
     GEO_CLOSE_NODE(),
     GEO_END(),

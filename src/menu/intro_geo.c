@@ -60,23 +60,14 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
         // determine scale based on the frame counter
         if (sIntroFrameCounter >= 0 && sIntroFrameCounter < INTRO_STEPS_ZOOM_IN) {
             // zooming in
-            scaleX = scaleTable1[sIntroFrameCounter * 3];
-            scaleY = scaleTable1[sIntroFrameCounter * 3 + 1];
-            scaleZ = scaleTable1[sIntroFrameCounter * 3 + 2];
-        } else if (sIntroFrameCounter >= INTRO_STEPS_ZOOM_IN && sIntroFrameCounter < INTRO_STEPS_HOLD_1) {
-            // holding
-            scaleX = 1.0f;
-            scaleY = 1.0f;
-            scaleZ = 1.0f;
-        } else if (sIntroFrameCounter >= INTRO_STEPS_HOLD_1 && sIntroFrameCounter < INTRO_STEPS_ZOOM_OUT) {
-            // zooming out
-            scaleX = scaleTable2[(sIntroFrameCounter - INTRO_STEPS_HOLD_1) * 3];
-            scaleY = scaleTable2[(sIntroFrameCounter - INTRO_STEPS_HOLD_1) * 3 + 1];
-            scaleZ = scaleTable2[(sIntroFrameCounter - INTRO_STEPS_HOLD_1) * 3 + 2];
+            scaleX = 2.5f;
+            scaleY = 2.5f;
+            scaleZ = 0.0f;
+    
         } else {
             // disappeared
-            scaleX = 0.0f;
-            scaleY = 0.0f;
+            scaleX = 2.5f;
+            scaleY = 2.5f;
             scaleZ = 0.0f;
         }
         guScale(scaleMat, scaleX, scaleY, scaleZ);
@@ -116,7 +107,7 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
                 gDPSetRenderMode(dlIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
                 break;
         }
-        gSPDisplayList(dlIter++, &intro_seg7_dl_copyright);  // draw model
+        //gSPDisplayList(dlIter++, &intro_seg7_dl_copyright);  // draw model
         gSPEndDisplayList(dlIter);
 
         // Once the "Super Mario 64" logo has just about zoomed fully, fade in the "TM" and copyright text

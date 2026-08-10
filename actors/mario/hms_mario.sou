@@ -1,0 +1,248 @@
+/********************************************************************************
+						Ultra 64 MARIO Brothers
+
+					Normal mario hierarchy data module
+
+			Copyright 1995 Nintendo co., ltd.  All rights reserved
+
+							December 16, 1995
+ ********************************************************************************/
+
+extern ulong CtrlMarioAlpha(int code, MapNode *node, void *data);
+extern ulong CtrlMarioRenderMode(int code, MapNode *node);
+
+
+extern Gfx RCP_mario_head1[];
+extern Gfx RCP_mario_head2[];
+extern Gfx RCP_mario_head3[];
+extern Gfx RCP_mario_head4[];
+extern Gfx RCP_mario_head5[];
+extern Gfx RCP_mario_head6[];
+extern Gfx RCP_mario_head7[];
+extern Gfx RCP_mario_head8[];
+
+extern Gfx RCP_mario_far_head1[];
+extern Gfx RCP_mario_far_head2[];
+extern Gfx RCP_mario_far_head3[];
+extern Gfx RCP_mario_far_head4[];
+extern Gfx RCP_mario_far_head5[];
+extern Gfx RCP_mario_far_head6[];
+extern Gfx RCP_mario_far_head7[];
+extern Gfx RCP_mario_far_head8[];
+
+extern Gfx RCP_mario_nohat1[];
+extern Gfx RCP_mario_nohat2[];
+extern Gfx RCP_mario_nohat3[];
+extern Gfx RCP_mario_nohat4[];
+extern Gfx RCP_mario_nohat5[];
+extern Gfx RCP_mario_nohat6[];
+extern Gfx RCP_mario_nohat7[];
+extern Gfx RCP_mario_nohat8[];
+
+extern Gfx RCP_mario_far_nohat1[];
+extern Gfx RCP_mario_far_nohat2[];
+extern Gfx RCP_mario_far_nohat3[];
+extern Gfx RCP_mario_far_nohat4[];
+extern Gfx RCP_mario_far_nohat5[];
+extern Gfx RCP_mario_far_nohat6[];
+extern Gfx RCP_mario_far_nohat7[];
+extern Gfx RCP_mario_far_nohat8[];
+
+extern Gfx RCP_swim_hand_l[];
+extern Gfx RCP_swim_hand_r[];
+extern Gfx RCP_hat_hand_r[];
+extern Gfx RCP_hat_hand_wing[];
+extern Gfx RCP_mario_vsign_hand[];
+
+extern Gfx RCP_mario_near_body[];
+extern Gfx RCP_mario_mid_body[];
+extern Gfx RCP_mario_far_body[];
+
+extern Gfx RCP_mario_near0[];
+extern Gfx RCP_mario_near1[];
+extern Gfx RCP_mario_near2[];
+extern Gfx RCP_mario_near3[];
+extern Gfx RCP_mario_near4[];
+extern Gfx RCP_mario_near5[];
+extern Gfx RCP_mario_near6[];
+extern Gfx RCP_mario_near7[];
+extern Gfx RCP_mario_near8[];
+extern Gfx RCP_mario_near9[];
+extern Gfx RCP_mario_near10[];
+extern Gfx RCP_mario_near11[];
+extern Gfx RCP_mario_near14[];
+
+extern Gfx RCP_mario_mid0[];
+extern Gfx RCP_mario_mid1[];
+extern Gfx RCP_mario_mid2[];
+extern Gfx RCP_mario_mid3[];
+extern Gfx RCP_mario_mid4[];
+extern Gfx RCP_mario_mid5[];
+extern Gfx RCP_mario_mid6[];
+extern Gfx RCP_mario_mid7[];
+extern Gfx RCP_mario_mid8[];
+extern Gfx RCP_mario_mid9[];
+extern Gfx RCP_mario_mid10[];
+extern Gfx RCP_mario_mid11[];
+extern Gfx RCP_mario_mid14[];
+
+extern Gfx RCP_mario_far0[];
+extern Gfx RCP_mario_far1[];
+extern Gfx RCP_mario_far2[];
+extern Gfx RCP_mario_far3[];
+extern Gfx RCP_mario_far4[];
+extern Gfx RCP_mario_far5[];
+extern Gfx RCP_mario_far6[];
+extern Gfx RCP_mario_far7[];
+extern Gfx RCP_mario_far8[];
+extern Gfx RCP_mario_far9[];
+extern Gfx RCP_mario_far10[];
+extern Gfx RCP_mario_far11[];
+extern Gfx RCP_mario_far14[];
+
+
+extern Gfx RCP_mario_head_metal[]	  ;
+extern Gfx RCP_mario_far_head_metal[] ;
+
+extern Gfx RCP_mario_nohat_metal[]	   ;
+extern Gfx RCP_mario_far_nohat_metal[] ;
+
+extern Gfx RCP_swim_hand_l_draw0[]		;
+extern Gfx RCP_swim_hand_r_metal[]		;
+extern Gfx RCP_hat_hand_r_metal[]		;
+extern Gfx RCP_hat_hand_wing_metal[]	;
+extern Gfx RCP_mario_vsign_hand_draw0[]	;
+
+extern Gfx RCP_mario_near_body_metal[] ;
+extern Gfx RCP_mario_mid_body_metal[]  ;
+extern Gfx RCP_mario_far_body_metal[]  ;
+
+extern Gfx RCP_mario_near0_draw0[]	;
+extern Gfx RCP_mario_near2_draw0[]	;
+extern Gfx RCP_mario_near3_metal[]	;
+extern Gfx RCP_mario_near5_draw0[]	;
+extern Gfx RCP_mario_near6_metal[]	;
+extern Gfx RCP_mario_near8_draw0[]	;
+extern Gfx RCP_mario_near9_draw0[]	;
+extern Gfx RCP_mario_near11_metal[]	;
+extern Gfx RCP_mario_near14_metal[]	;
+
+extern Gfx RCP_mario_mid0_draw0[]	;
+extern Gfx RCP_mario_mid2_draw0[]	;
+extern Gfx RCP_mario_mid3_metal[]	;
+extern Gfx RCP_mario_mid5_draw0[]	;
+extern Gfx RCP_mario_mid6_metal[]	;
+extern Gfx RCP_mario_mid8_draw0[]	;
+extern Gfx RCP_mario_mid9_draw0[]	;
+extern Gfx RCP_mario_mid11_metal[]	;
+extern Gfx RCP_mario_mid14_metal[]	;
+
+extern Gfx RCP_mario_far0_draw0[]	;
+extern Gfx RCP_mario_far2_draw0[]	;
+extern Gfx RCP_mario_far3_metal[]	;
+extern Gfx RCP_mario_far5_draw0[]	;
+extern Gfx RCP_mario_far6_metal[]	;
+extern Gfx RCP_mario_far8_draw0[]	;
+extern Gfx RCP_mario_far9_draw0[]	;
+extern Gfx RCP_mario_far11_metal[]	;
+extern Gfx RCP_mario_far14_metal[]	;
+
+extern Gfx RCP_move_wing[];
+extern Gfx RCP_move_wing_xlu[];
+
+extern Gfx RCP_move_metal_wing[];
+extern Gfx RCP_move_metal_wing_xlu[];
+
+
+#include "hms_mario_nor.h"
+#include "hms_mario_xlu.h"
+#include "hms_mario_mtl.h"
+#include "hms_mario_xml.h"
+
+/********************************************************************************/
+/*	Near Mario hierarchy.														*/
+/********************************************************************************/
+
+static Hierarchy RCP_NearMarioHierarchy[] = {
+	hmsSelect(0, CtrlMarioSkin)
+	hmsBegin()
+		hmsCall(RCP_NOR_NearMarioHierarchy)
+		hmsCall(RCP_XLU_NearMarioHierarchy)
+		hmsCall(RCP_MTL_NearMarioHierarchy)
+		hmsCall(RCP_XML_NearMarioHierarchy)
+	hmsEnd()
+	hmsReturn()
+};
+/********************************************************************************/
+/*	Middle Mario hierarchy.														*/
+/********************************************************************************/
+
+static Hierarchy RCP_MidMarioHierarchy[] = {
+	hmsSelect(0, CtrlMarioSkin)
+	hmsBegin()
+		hmsCall(RCP_NOR_MidMarioHierarchy)
+		hmsCall(RCP_XLU_MidMarioHierarchy)
+		hmsCall(RCP_MTL_MidMarioHierarchy)
+		hmsCall(RCP_XML_MidMarioHierarchy)
+	hmsEnd()
+	hmsReturn()
+};
+/********************************************************************************/
+/*	Far Mario hierarchy.														*/
+/********************************************************************************/
+
+static Hierarchy RCP_FarMarioHierarchy[] = {
+	hmsSelect(0, CtrlMarioSkin)
+	hmsBegin()
+		hmsCall(RCP_NOR_FarMarioHierarchy)
+		hmsCall(RCP_XLU_FarMarioHierarchy)
+		hmsCall(RCP_MTL_FarMarioHierarchy)
+		hmsCall(RCP_XML_FarMarioHierarchy)
+	hmsEnd()
+	hmsReturn()
+};
+/********************************************************************************/
+/*	Mario level of detail.														*/
+/********************************************************************************/
+
+static Hierarchy RCP_Level_of_detail[] = {
+	hmsGroup()
+	hmsBegin()
+		hmsLOD(-2048,600)
+		hmsBegin()
+			hmsCall(RCP_NearMarioHierarchy)
+		hmsEnd()
+
+		hmsLOD(600,1600)
+		hmsBegin()
+			hmsCall(RCP_MidMarioHierarchy)
+		hmsEnd()
+
+		hmsLOD(1600,32767)
+		hmsBegin()
+			hmsCall(RCP_FarMarioHierarchy)
+		hmsEnd()
+	hmsEnd()
+	hmsReturn()
+};
+/********************************************************************************/
+/*	Start of Mario hierarchy map data.											*/
+/********************************************************************************/
+
+Hierarchy RCP_MarioHierarchy[] = {
+ 	hmsShadow(100, 180, 99)
+	hmsBegin()
+		hmsScale(0.25f)
+		hmsBegin()
+			hmsCProg(0, CtrlMarioGeoMode)
+			hmsCProg(0, CtrlMarioAlpha)				/* control alpha value		*/
+			hmsSelect(0, CtrlMarioLOD)				/* LOD switch				*/
+			hmsBegin()
+				hmsCall(RCP_NearMarioHierarchy)
+				hmsCall(RCP_Level_of_detail	  )
+			hmsEnd()
+			hmsCProg(1, CtrlMarioGeoMode)
+		hmsEnd()
+	hmsEnd()
+	hmsExit()
+};

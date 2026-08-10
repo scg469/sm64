@@ -2,7 +2,7 @@
 #define BEHAVIOR_ACTIONS_H
 
 void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size);
-void bhv_spawn_star_no_level_exit(u32);
+//void bhv_spawn_star_no_level_exit(u32);
 void bhv_star_door_loop_2(void);
 void spawn_triangle_break_particles(s16 numTris, s16 triModel, f32 triSize, s16 triAnimState);
 
@@ -543,11 +543,6 @@ void bhv_ddd_pole_update(void);
 void bhv_red_coin_star_marker_init(void);
 void bhv_triplet_butterfly_update(void);
 void bhv_bubba_loop(void);
-void bhv_intro_lakitu_loop(void);
-void bhv_intro_peach_loop(void);
-void bhv_end_birds_1_loop(void);
-void bhv_end_birds_2_loop(void);
-void bhv_intro_scene_loop(void);
 void bhv_dust_smoke_loop(void);
 void bhv_yoshi_loop(void);
 void bhv_volcano_trap_loop(void);

@@ -1,44 +1,66 @@
-// 0x16000FE8
-const GeoLayout bubbly_tree_geo[] = {
-    GEO_CULLING_RADIUS(800),
-    GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, tree_seg3_dl_0302FEE8),
-    GEO_CLOSE_NODE(),
-    GEO_END(),
+/********************************************************************************
+		Hms tree data.
+														[ Jan 25, 1996 ]
+*********************************************************************************/
+
+extern Gfx  RCP_main_tree[];
+extern Gfx 	RCP_tree02[];
+extern Gfx 	RCP_tree03[];
+extern Gfx 	RCP_tree04[];
+extern Gfx 	RCP_tree05[];
+
+
+/********************************************************************************/
+/*	Hierarchy map data of MainTree.												*/
+/********************************************************************************/
+Hierarchy RCP_HmsMainTree[] = {
+	hmsHeader(800)
+	hmsBegin()
+		hmsGfx(RM_SPRITE, RCP_main_tree)
+	hmsEnd()
+  	hmsExit()
 };
 
-// 0x16001000
-const GeoLayout spiky_tree_geo[] = {
-    GEO_CULLING_RADIUS(800),
-    GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, tree_seg3_dl_03030FA0),
-    GEO_CLOSE_NODE(),
-    GEO_END(),
+/********************************************************************************/
+/*	Hierarchy map data of Tree02.												*/
+/********************************************************************************/
+Hierarchy RCP_HmsTree02[] = {
+	hmsHeader(800)
+	hmsBegin()
+		hmsGfx(RM_SPRITE, RCP_tree02)
+	hmsEnd()
+  	hmsExit()
 };
 
-// 0x16001018
-const GeoLayout snow_tree_geo[] = {
-    GEO_CULLING_RADIUS(800),
-    GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, tree_seg3_dl_03032088),
-    GEO_CLOSE_NODE(),
-    GEO_END(),
+/********************************************************************************/
+/*	Hierarchy map data of Tree03.												*/
+/********************************************************************************/
+Hierarchy RCP_HmsTree03[] = {
+	hmsHeader(800)
+	hmsBegin()
+		hmsGfx(RM_SPRITE, RCP_tree03)
+	hmsEnd()
+  	hmsExit()
 };
 
-// 0x16001030
-const GeoLayout spiky_tree1_geo[] = {
-    GEO_CULLING_RADIUS(800),
-    GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, tree_seg3_dl_03032170),
-    GEO_CLOSE_NODE(),
-    GEO_END(),
+/********************************************************************************/
+/*	Hierarchy map data of Tree04.												*/
+/********************************************************************************/
+Hierarchy RCP_HmsTree04[] = {
+	hmsHeader(800)
+	hmsBegin()
+		hmsGfx(RM_SPRITE, RCP_tree04)
+	hmsEnd()
+  	hmsExit()
 };
 
-// 0x16001048
-const GeoLayout palm_tree_geo[] = {
-    GEO_CULLING_RADIUS(800),
-    GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, tree_seg3_dl_03033258),
-    GEO_CLOSE_NODE(),
-    GEO_END(),
+/********************************************************************************/
+/*	Hierarchy map data of Tree05.												*/
+/********************************************************************************/
+Hierarchy RCP_HmsTree05[] = {
+	hmsHeader(800)
+	hmsBegin()
+		hmsGfx(RM_SPRITE, RCP_tree05)
+	hmsEnd()
+  	hmsExit()
 };

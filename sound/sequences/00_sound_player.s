@@ -6,11 +6,7 @@
 sequence_start:
 seq_setmutebhv 0x60
 seq_setmutescale 0
-#if defined(VERSION_SH) || defined(VERSION_CN)
-  seq_setvol 100
-#else
-  seq_setvol 127
-#endif
+seq_setvol 127
 seq_settempo 120
 seq_initchannels 0x3ff
 seq_startchannel 0, .channel0
@@ -311,8 +307,8 @@ sound_ref .sound_action_brush_hair
 sound_ref .sound_action_climb_up_pole
 sound_ref .sound_action_metal_bonk
 sound_ref .sound_action_unstuck_from_ground
-sound_ref .sound_action_hit
-sound_ref .sound_action_bonk
+sound_ref .sound_action_spin
+sound_ref .sound_action_spin
 sound_ref .sound_action_enter_bbh
 sound_ref .sound_action_swim_fast
 sound_ref .sound_action_stuck_in_ground_default
@@ -326,7 +322,7 @@ sound_ref .sound_action_stuck_in_ground_sand
 sound_ref .sound_action_metal_jump_water
 sound_ref .sound_action_metal_land_water
 sound_ref .sound_action_metal_step_water
-sound_ref .chan_731
+sound_ref .sound_action_swimming_idle
 sound_ref .chan_743
 sound_ref .chan_756
 sound_ref .sound_action_flying_fast
@@ -336,15 +332,9 @@ sound_ref .sound_action_bounce_off_object
 sound_ref .chan_7ED
 sound_ref .sound_action_read_sign
 sound_ref .chan_810
-#ifdef VERSION_JP
-  sound_ref .sound_action_jump_default
-  sound_ref .sound_action_jump_default
-  sound_ref .sound_action_jump_default
-#else
-  sound_ref .chan_828
-  sound_ref .sound_action_intro_unk45e
-  sound_ref .sound_action_intro_unk45f
-#endif
+sound_ref .sound_action_jump_default
+sound_ref .sound_action_jump_default
+sound_ref .sound_action_jump_default
 sound_ref .sound_action_heavy_landing_default
 sound_ref .sound_action_heavy_landing_grass
 sound_ref .sound_action_heavy_landing_water
@@ -369,8 +359,7 @@ chan_setlayer 0, .layer_234
 chan_end
 
 .layer_234:
-layer_note1 41, 0xc, 117
-layer_note1 46, 0x18, 117
+layer_note1 42, 0x18, 255
 layer_end
 
 .sound_action_jump_grass:
@@ -386,13 +375,12 @@ layer_end
 
 .sound_action_jump_water:
 chan_setbank 2
-chan_setinstr 1
+chan_setinstr 4
 chan_setlayer 0, .layer_252
 chan_end
 
 .layer_252:
-layer_note1 41, 0x6, 80
-layer_note1 50, 0x18, 80
+layer_note1 39, 0xb, 255
 layer_end
 
 .sound_action_jump_stone:
@@ -402,8 +390,7 @@ chan_setlayer 0, .layer_261
 chan_end
 
 .layer_261:
-layer_note1 41, 0xc, 127
-layer_note1 50, 0x18, 127
+layer_note1 42, 0x18, 255
 layer_end
 
 .sound_action_jump_spooky:
@@ -424,8 +411,7 @@ chan_setlayer 0, .layer_27F
 chan_end
 
 .layer_27F:
-layer_note1 41, 0xc, 80
-layer_note1 50, 0x18, 80
+layer_note1 42, 0x18, 255
 layer_end
 
 .sound_action_jump_ice:
@@ -435,8 +421,7 @@ chan_setlayer 0, .layer_28E
 chan_end
 
 .layer_28E:
-layer_note1 29, 0xc, 127
-layer_note1 38, 0x18, 127
+layer_note1 29, 0xc, 255
 layer_end
 
 .sound_action_jump_sand:
@@ -457,8 +442,7 @@ chan_setlayer 0, .layer_2AE
 chan_end
 
 .layer_2AE:
-layer_note1 46, 0xc, 117
-layer_note1 41, 0x18, 117
+layer_note1 46, 0x18, 255
 layer_end
 
 .sound_action_landing_grass:
@@ -474,13 +458,12 @@ layer_end
 
 .sound_action_landing_water:
 chan_setbank 2
-chan_setinstr 1
+chan_setinstr 5
 chan_setlayer 0, .layer_2CC
 chan_end
 
 .layer_2CC:
-layer_note1 50, 0xc, 80
-layer_note1 41, 0x18, 80
+layer_note1 39, 0x24, 127
 layer_end
 
 .sound_action_landing_stone:
@@ -490,8 +473,8 @@ chan_setlayer 0, .layer_2DB
 chan_end
 
 .layer_2DB:
-layer_note1 50, 0xc, 127
-layer_note1 41, 0x18, 127
+layer_portamento 0, 0, 255
+layer_note1 46, 0x18, 255
 layer_end
 
 .sound_action_landing_spooky:
@@ -512,8 +495,7 @@ chan_setlayer 0, .layer_2F9
 chan_end
 
 .layer_2F9:
-layer_note1 50, 0xc, 80
-layer_note1 41, 0x18, 80
+layer_note1 46, 0x18, 255
 layer_end
 
 .sound_action_landing_ice:
@@ -523,8 +505,7 @@ chan_setlayer 0, .layer_308
 chan_end
 
 .layer_308:
-layer_note1 38, 0xc, 127
-layer_note1 29, 0x18, 127
+layer_note1 38, 0xc, 255
 layer_end
 
 .sound_action_landing_sand:
@@ -565,7 +546,7 @@ chan_setlayer 0, .layer_340
 chan_end
 
 .layer_340:
-layer_note1 43, 0x18, 63
+layer_note1 38, 0x18, 100
 layer_end
 
 .sound_action_step_stone:
@@ -595,7 +576,7 @@ chan_setlayer 0, .layer_364
 chan_end
 
 .layer_364:
-layer_note1 39, 0x18, 68
+layer_note1 38, 0x18, 68
 layer_end
 
 .sound_action_step_ice:
@@ -915,13 +896,12 @@ layer_end
 
 .sound_action_swim:
 chan_setbank 2
-chan_setinstr 2
+chan_setinstr 3
 chan_setlayer 0, .layer_51A
 chan_end
 
 .layer_51A:
-layer_portamento 0x81, 35, 255
-layer_note1 30, 0x3c, 110
+layer_note1 39, 0x7f, 110
 layer_end
 
 .chan_522:
@@ -961,13 +941,11 @@ layer_end
 .sound_action_spin:
 chan_setbank 0
 chan_setinstr 0
-chan_setdecayrelease 30
 chan_setlayer 0, .layer_556
 chan_end
 
 .layer_556:
-layer_portamento 0x81, 34, 255
-layer_note1 41, 0xc, 127
+layer_note1 39, 0xf, 100
 layer_end
 
 .sound_action_climb_up_tree:
@@ -1084,17 +1062,6 @@ chan_end
 layer_note1 37, 0x48, 127
 layer_end
 
-.sound_action_hit:
-chan_setbank 7
-chan_setinstr 3
-chan_setlayer 0, .layer_618
-chan_setval 1
-chan_call .delay
-chan_setbank 6
-chan_setinstr 10
-chan_setenvelope .envelope_3314
-chan_end
-
 .layer_618:
 layer_portamento 0x81, 27, 255
 layer_note1 46, 0xb, 127
@@ -1120,18 +1087,6 @@ layer_transpose 10
 .layer_fn_64A:
 layer_note1 20, 0x5, 115
 layer_note1 32, 0x5, 115
-layer_end
-
-.sound_action_bonk:
-chan_setbank 7
-chan_setinstr 3
-chan_setlayer 0, .layer_659
-chan_end
-
-.layer_659:
-layer_portamento 0x82, 19, 255
-layer_note1 34, 0x5, 110
-layer_note1 39, 0x2, 110
 layer_end
 
 .sound_action_enter_bbh:
@@ -1260,16 +1215,14 @@ layer_portamento 0x85, 18, 255
 layer_note1 22, 0x15, 90
 layer_end
 
-.chan_731:
-chan_setbank 1
-chan_setinstr 7
-chan_setenvelope .envelope_3314
+.sound_action_swimming_idle:
+chan_setbank 2
+chan_setinstr 6
 chan_setlayer 0, .layer_73C
 chan_end
 
 .layer_73C:
-layer_note1 11, 0xf, 90
-layer_note1 15, 0x1f, 90
+layer_note1 39, 0x32, 120
 layer_end
 
 .chan_743:
@@ -1412,54 +1365,6 @@ layer_note1 39, 0xa, 127
 layer_note1 42, 0x8, 127
 layer_end
 
-#ifndef VERSION_JP
-  .chan_828: // unused
-  chan_setbank 7
-  chan_setinstr 3
-  chan_setlayer 0, .layer_83C
-  chan_setval 1
-  chan_call .delay
-  chan_setbank 6
-  chan_setinstr 10
-  chan_setenvelope .envelope_3314
-  chan_end
-
-  .layer_83C:
-  layer_portamento 0x81, 27, 255
-  layer_note1 46, 0x7, 127
-  layer_portamento 0x85, 3, 255
-  layer_note1 39, 0xf, 100
-  layer_end
-
-  .sound_action_intro_unk45e:
-  chan_setbank 5
-  chan_setinstr 6
-  chan_setenvelope .envelope_33AC
-  chan_setlayer 0, .layer_859
-  chan_setlayer 1, .layer_85B
-  chan_end
-
-  .layer_859:
-  layer_transpose 12
-
-  .layer_85B:
-  layer_portamento 0x85, 26, 240
-  layer_note1 51, 0x53, 127
-  layer_end
-
-  .sound_action_intro_unk45f:
-  chan_setbank 5
-  chan_setinstr 6
-  chan_setenvelope .envelope_33AC
-  chan_setlayer 0, .layer_871
-  chan_setlayer 1, .layer_776
-  chan_end
-
-  .layer_871:
-  layer_transpose 8
-  layer_jump .layer_776
-#endif
-
 .sound_action_heavy_landing_default:
 chan_call .heavy_landing_common
 chan_setval 1
@@ -1599,7 +1504,7 @@ chan_end
 .layer_96E:
 layer_somethingon
 .layer_96F:
-layer_note1 39, 0x12c, 80
+layer_note1 40, 0x8, 105
 layer_jump .layer_96F
 layer_end
 
@@ -1636,7 +1541,7 @@ chan_end
 layer_delay 1
 layer_somethingon
 .layer_9AB:
-layer_note1 39, 0x12c, 88
+layer_note1 58, 0x12c, 100
 layer_jump .layer_9AB
 layer_end
 
@@ -1678,14 +1583,14 @@ layer_end
 
 .sound_moving_slide_snow:
 chan_setbank 3
-chan_setinstr 5
+chan_setinstr 6
 chan_setlayer 0, .layer_9F1
 chan_end
 
 .layer_9F1:
 layer_somethingon
 .layer_9F2:
-layer_note1 39, 0x12c, 80
+layer_note1 50, 0x12c, 80
 layer_jump .layer_9F2
 layer_end
 
@@ -1698,7 +1603,7 @@ chan_end
 .layer_A02:
 layer_somethingon
 .layer_A03:
-layer_note1 39, 0x12c, 100
+layer_note1 39, 0x12c, 80
 layer_jump .layer_A03
 layer_end
 
@@ -1986,86 +1891,60 @@ layer_jump .layer_BAA
 sound_ref .sound_mario_jump_yah
 sound_ref .sound_mario_jump_wah
 sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_hoohoo
+sound_ref .sound_mario_haugh
 sound_ref .sound_mario_yahoo
-sound_ref .sound_mario_uh
+sound_ref .sound_mario_haugh
 sound_ref .sound_mario_hrmm
-sound_ref .sound_mario_wah2
+sound_ref .sound_mario_haugh
 sound_ref .sound_mario_whoa
 sound_ref .sound_mario_eeuh
 sound_ref .sound_mario_attacked
-sound_ref .sound_mario_ooof
+sound_ref .sound_mario_attacked
 sound_ref .sound_mario_here_we_go
-sound_ref .sound_mario_yawning
-sound_ref .sound_mario_snoring1
-sound_ref .sound_mario_snoring2
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
 sound_ref .sound_mario_waaaooow
-sound_ref .sound_mario_haha
-sound_ref .sound_mario_panting1
-sound_ref .sound_mario_uh2
-sound_ref .sound_mario_on_fire
-sound_ref .sound_mario_dying
-sound_ref .sound_mario_panting_cold
-sound_ref .sound_mario_coughing3
-sound_ref .sound_mario_panting1
-sound_ref .sound_mario_panting2
-sound_ref .sound_mario_panting3
-sound_ref .sound_mario_coughing1
-sound_ref .sound_mario_coughing2
-sound_ref .sound_mario_coughing3
-sound_ref .sound_mario_punch_yah
-sound_ref .sound_mario_punch_hoo
-sound_ref .sound_mario_mama_mia
-sound_ref .sound_mario_okey_dokey
-sound_ref .sound_mario_ground_pound_wah
-sound_ref .sound_mario_drowning
-sound_ref .sound_mario_punch_wah
-sound_ref .sound_mario_uh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_waaaooow
+sound_ref .sound_mario_waaaooow
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_jump_wah
+sound_ref .sound_mario_haugh
 sound_ref .sound_mario_hrmm
-sound_ref .sound_mario_wah2
-#ifdef VERSION_JP
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-#else
-  sound_ref .sound_peach_dear_mario
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_jump_hoo
-  sound_ref .sound_mario_yahoo
-  sound_ref .sound_mario_yahoo
-  sound_ref .sound_mario_yahoo
-  sound_ref .sound_mario_waha
-  sound_ref .sound_mario_yippee
-  sound_ref .sound_mario_doh
-  sound_ref .sound_mario_game_over
-  sound_ref .sound_mario_hello
-  sound_ref .sound_mario_press_start_to_play
-  sound_ref .sound_mario_twirl_bounce
-  sound_ref .sound_mario_snoring3
-  sound_ref .sound_mario_so_longa_bowser
-  sound_ref .sound_mario_ima_tired
-  sound_ref .sound_peach_mario
-  sound_ref .sound_peach_power_of_the_stars
-  sound_ref .sound_peach_thanks_to_you
-  sound_ref .sound_peach_thank_you_mario
-  sound_ref .sound_peach_something_special
-  sound_ref .sound_peach_bake_a_cake
-  sound_ref .sound_peach_for_mario
-  sound_ref .sound_peach_mario2
-#endif
+sound_ref .sound_mario_haugh
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+sound_ref .sound_mario_jump_hoo
+
 
 .sound_mario_jump_hoo:
 chan_setbank 8
@@ -2074,50 +1953,39 @@ chan_setlayer 0, .layer_C3C
 chan_end
 
 .layer_C3C:
-#if defined(VERSION_EU) || defined(VERSION_SH) || defined(VERSION_CN)
-  layer_transpose 2
-#endif
-layer_portamento 0x82, 41, 127
-layer_note1 37, 0x14, 127
+layer_note1 38, 0x64, 127
 layer_end
 
 .sound_mario_jump_wah:
 chan_setbank 8
 chan_setinstr 1
-chan_setlayer 0, .layer_C4C
+chan_setlayer 0, .layer_C4E
 chan_end
 
-.layer_C4C:
-layer_transpose -2
 .layer_C4E:
-layer_note1 38, 0x18, 127
+layer_somethingon
+layer_portamento 0x1, 42, 15
+layer_note1 41, 0x26, 127
 layer_end
 
 .sound_mario_jump_yah:
-chan_setbank 10
-chan_setinstr 9
-chan_setlayer 0, .layer_C5A
+chan_setbank 8
+chan_setinstr 2
+chan_setlayer 0, .layer_C5C
 chan_end
 
-.layer_C5A:
-layer_transpose -2
 .layer_C5C:
-layer_portamento 0x82, 39, 200
-layer_note1 38, 0x24, 120
+layer_note1 44, 0x24, 127
 layer_end
 
-.sound_mario_hoohoo:
+.sound_mario_haugh:
 chan_setbank 10
 chan_setinstr 1
 chan_setlayer 0, .layer_C6C
 chan_end
 
 .layer_C6C:
-#if defined(VERSION_EU) || defined(VERSION_SH) || defined(VERSION_CN)
-  layer_transpose 1
-#endif
-layer_portamento 0x82, 44, 200
-layer_note1 39, 0x30, 127
+layer_note1 42, 0x6f, 127
 layer_end
 
 .sound_mario_yahoo:
@@ -2127,23 +1995,7 @@ chan_setlayer 0, .layer_C7C
 chan_end
 
 .layer_C7C:
-layer_transpose -2
-layer_somethingon
-layer_portamento 0x85, 39, 255
-layer_note1 42, 0x1e, 110
-layer_note1 39, 0x41, 110
-layer_end
-
-.sound_mario_uh:
-chan_setbank 8
-chan_setinstr 5
-chan_setlayer 0, .layer_C92
-chan_end
-
-.layer_C92:
-layer_transpose -2
-layer_portamento 0x81, 41, 255
-layer_note1 38, 0x2b, 115
+layer_note1 41, 0x6f, 110
 layer_end
 
 .sound_mario_hrmm:
@@ -2153,8 +2005,7 @@ chan_setlayer 0, .layer_CA4
 chan_end
 
 .layer_CA4:
-layer_transpose -2
-layer_note1 44, 0x1e, 110
+layer_note1 43, 0x1e, 110
 layer_end
 
 .sound_mario_wah2:
@@ -2175,8 +2026,7 @@ chan_setlayer 0, .layer_CC0
 chan_end
 
 .layer_CC0:
-layer_transpose -2
-layer_note1 40, 0x30, 110
+layer_note1 37, 0x18, 110
 layer_end
 
 .sound_mario_eeuh:
@@ -2186,8 +2036,7 @@ chan_setlayer 0, .layer_CCE
 chan_end
 
 .layer_CCE:
-layer_transpose -2
-layer_note1 40, 0x44, 105
+layer_note1 43, 0x30, 105
 layer_end
 
 .sound_mario_attacked:
@@ -2197,19 +2046,7 @@ chan_setlayer 0, .layer_CDC
 chan_end
 
 .layer_CDC:
-layer_transpose -2
-layer_note1 41, 0x30, 120
-layer_end
-
-.sound_mario_ooof:
-chan_setbank 8
-chan_setinstr 11
-chan_setlayer 0, .layer_CEA
-chan_end
-
-.layer_CEA:
-layer_transpose -2
-layer_note1 38, 0x30, 127
+layer_note1 37, 0x5f, 127
 layer_end
 
 .sound_mario_here_we_go:
@@ -2219,41 +2056,7 @@ chan_setlayer 0, .layer_CF8
 chan_end
 
 .layer_CF8:
-layer_portamento 0x81, 38, 200
-layer_note1 41, 0x85, 127
-layer_end
-
-.sound_mario_yawning:
-chan_setbank 8
-chan_setinstr 13
-chan_setlayer 0, .layer_D09
-chan_end
-
-.layer_D09:
-layer_transpose -2
-layer_note1 39, 0x7f, 105
-layer_end
-
-.sound_mario_snoring1:
-chan_setbank 8
-chan_setinstr 14
-chan_setlayer 0, .layer_D17
-chan_end
-
-.layer_D17:
-layer_transpose -2
-layer_note1 39, 0x60, 64
-layer_end
-
-.sound_mario_snoring2:
-chan_setbank 8
-chan_setinstr 15
-chan_setlayer 0, .layer_D25
-chan_end
-
-.layer_D25:
-layer_transpose -2
-layer_note1 39, 0x5c, 52
+layer_note1 38, 0x85, 127
 layer_end
 
 .sound_mario_waaaooow:
@@ -2263,8 +2066,7 @@ chan_setlayer 0, .layer_D33
 chan_end
 
 .layer_D33:
-layer_transpose -2
-layer_note1 39, 0xaa, 127
+layer_note1 40, 0xaa, 127
 layer_end
 
 .sound_mario_haha:
@@ -2289,69 +2091,6 @@ layer_transpose -2
 layer_note1 43, 0x1e, 105
 layer_end
 
-.sound_mario_on_fire:
-chan_setbank 10
-chan_setinstr 5
-chan_setlayer 0, .layer_D5E
-chan_end
-
-.layer_D5E:
-layer_transpose -2
-layer_note1 39, 0xc8, 127
-layer_end
-
-.sound_mario_dying:
-chan_setbank 10
-chan_setinstr 4
-chan_setlayer 0, .layer_D6D
-chan_end
-
-.layer_D6D:
-layer_transpose -2
-layer_note1 39, 0x8c, 110
-layer_end
-
-.sound_mario_panting_cold:
-chan_setbank 10
-chan_setinstr 2
-chan_setlayer 0, .layer_D7C
-chan_end
-
-.layer_D7C:
-layer_transpose -2
-layer_portamento 0x82, 35, 255
-layer_note1 38, 0x30, 127
-layer_end
-
-.sound_mario_panting1:
-chan_setbank 10
-chan_setinstr 2
-chan_setlayer 0, .layer_D8E
-chan_end
-
-.layer_D8E:
-layer_transpose -2
-layer_note1 39, 0x3c, 100
-layer_end
-
-.sound_mario_panting2:
-chan_setbank 10
-chan_setinstr 2
-chan_setlayer 0, .layer_D9C
-chan_end
-
-.layer_D9C:
-layer_transpose -2
-layer_delay 0x4
-layer_note1 38, 0x3c, 100
-layer_end
-
-.sound_mario_panting3:
-chan_setbank 10
-chan_setinstr 2
-chan_setlayer 0, .layer_DAC
-chan_end
-
 .layer_DAC:
 layer_transpose -2
 layer_delay 0x8
@@ -2368,342 +2107,6 @@ chan_end
 layer_transpose -2
 layer_note1 39, 0x10, 115
 layer_end
-
-.sound_mario_coughing2:
-chan_setbank 10
-chan_setinstr 7
-chan_setlayer 0, .layer_DCA
-chan_end
-
-.layer_DCA:
-layer_transpose -2
-layer_portamento 0x81, 38, 255
-layer_note1 41, 0x18, 115
-layer_end
-
-.sound_mario_coughing3:
-chan_setbank 10
-chan_setinstr 7
-chan_setlayer 0, .layer_DDC
-chan_end
-
-.layer_DDC:
-layer_transpose -2
-layer_somethingon
-layer_portamento 0x85, 38, 255
-layer_note1 41, 0xc, 115
-layer_note1 35, 0x12, 115
-layer_end
-
-.sound_mario_punch_yah:
-chan_setbank 10
-chan_setinstr 9
-chan_setlayer 0, .layer_DFE
-chan_setval 1
-chan_call .delay
-chan_setbank 0
-chan_setinstr 0
-chan_setlayer 1, .layer_538
-chan_end
-
-.layer_DFE:
-layer_transpose -2
-layer_jump .layer_C5C
-
-.sound_mario_punch_hoo:
-chan_setbank 10
-chan_setinstr 10
-chan_setlayer 0, .layer_E17
-chan_setval 1
-chan_call .delay
-chan_setbank 0
-chan_setinstr 0
-chan_setlayer 1, .layer_548
-chan_end
-
-.layer_E17:
-layer_transpose -2
-layer_portamento 0x81, 42, 255
-layer_note1 38, 0x30, 115
-layer_end
-
-.sound_mario_mama_mia:
-chan_setbank 10
-chan_setinstr 11
-chan_setlayer 0, .layer_E29
-chan_end
-
-.layer_E29:
-layer_portamento 0x81, 38, 255
-layer_note1 36, 0x8c, 115
-layer_end
-
-.sound_mario_okey_dokey:
-chan_setbank 10
-chan_setinstr 12
-chan_setlayer 0, .layer_E3A
-chan_end
-
-.layer_E3A:
-layer_note1 39, 0x60, 115
-layer_end
-
-.sound_mario_ground_pound_wah:
-chan_jump .sound_mario_wah2
-
-.sound_mario_drowning:
-chan_setbank 10
-chan_setinstr 13
-chan_setlayer 0, .layer_E49
-chan_end
-
-.layer_E49:
-layer_note1 38, 0x91, 127
-layer_end
-
-.sound_mario_punch_wah:
-chan_setbank 8
-chan_setinstr 1
-chan_setlayer 0, .layer_E62
-chan_setval 1
-chan_call .delay
-chan_setbank 0
-chan_setinstr 0
-chan_setlayer 1, .layer_536
-chan_end
-
-.layer_E62:
-layer_transpose -1
-layer_jump .layer_C4E
-
-#ifndef VERSION_JP
-  .sound_peach_dear_mario:
-  chan_setbank 10
-  chan_setinstr 15
-  chan_setlayer 0, .layer_E6F
-  chan_end
-
-  .layer_E6F:
-  layer_note1 39, 0x2bc, 127
-  layer_end
-
-  .sound_mario_waha:
-  chan_setbank 8
-  chan_setinstr 24
-  chan_setlayer 0, .layer_E7C
-  chan_end
-
-  .layer_E7C:
-  layer_note1 39, 0x5a, 127
-  layer_end
-
-  .sound_mario_yippee:
-  chan_setbank 8
-  chan_setinstr 25
-  chan_setlayer 0, .layer_E88
-  chan_end
-
-  .layer_E88:
-  layer_note1 39, 0x5a, 97
-  layer_end
-
-  .sound_mario_doh:
-  chan_setbank 8
-  chan_setinstr 16
-  chan_setlayer 0, .layer_E94
-  chan_end
-
-  .layer_E94:
-  layer_note1 41, 0x46, 127
-  layer_end
-
-  .sound_mario_game_over:
-  chan_setbank 8
-  chan_setinstr 17
-  chan_setlayer 0, .layer_EA0
-  chan_end
-
-  .layer_EA0:
-  layer_note1 39, 0x55, 110
-  layer_end
-
-  .sound_mario_hello:
-  chan_setbank 8
-  chan_setinstr 18
-  chan_setlayer 0, .layer_EAC
-  chan_end
-
-  .layer_EAC:
-  layer_note1 39, 0x46, 127
-  layer_end
-
-  .sound_mario_press_start_to_play:
-  chan_setbank 8
-  chan_setinstr 19
-  chan_setlayer 0, .layer_EB8
-  chan_end
-
-  .layer_EB8:
-  layer_note1 39, 0x12c, 127
-  layer_end
-
-  .sound_mario_twirl_bounce:
-  chan_setbank 8
-  chan_setinstr 20
-  chan_setlayer 0, .layer_EC5
-  chan_end
-
-  .layer_EC5:
-  layer_note1 39, 0x30, 127
-  layer_end
-
-  .sound_mario_snoring3:
-  chan_setbank 8
-  chan_setlayer 0, .layer_ECF
-  chan_end
-
-  .layer_ECF:
-  layer_delay 0x4e
-  .layer_ED1:
-  layer_loop 50
-  layer_call .layer_fn_EE1
-  layer_loopend
-  layer_setinstr 21
-  layer_note1 39, 0x44c, 127
-  layer_jump .layer_ED1
-  layer_end
-
-  .layer_fn_EE1:
-  layer_setinstr 21
-  layer_note1 37, 0x53, 127
-  layer_setinstr 15
-  layer_note1 37, 0x4e, 64
-  layer_end
-
-  .sound_mario_so_longa_bowser:
-  chan_setbank 8
-  chan_setinstr 22
-  chan_setlayer 0, .layer_EF7
-  chan_setlayer 1, .layer_EF7
-  chan_end
-
-  .layer_EF7:
-  layer_portamento 0x82, 42, 200
-  layer_note1 39, 0xc8, 110
-  layer_end
-
-  .sound_mario_ima_tired:
-  chan_setbank 8
-  chan_setinstr 23
-  chan_setlayer 0, .layer_F08
-  chan_end
-
-  .layer_F08:
-  layer_note1 39, 0x96, 110
-  layer_end
-
-  .sound_peach_mario:
-  chan_setbank 10
-  chan_setinstr 16
-  chan_setlayer 0, .layer_F18
-  chan_setlayer 1, .layer_F18
-  chan_end
-
-  .layer_F18:
-  layer_note1 39, 0x46, 127
-  layer_end
-
-  .sound_peach_power_of_the_stars:
-  chan_setbank 10
-  chan_setinstr 17
-  chan_setlayer 0, .layer_F27
-  chan_setlayer 1, .layer_F27
-  chan_end
-
-  .layer_F27:
-  layer_note1 39, 0x15e, 127
-  layer_end
-
-  .sound_peach_thanks_to_you:
-  chan_setbank 10
-  chan_setinstr 18
-  chan_setlayer 0, .layer_F37
-  chan_setlayer 1, .layer_F37
-  chan_end
-
-  .layer_F37:
-  layer_note1 39, 0xb4, 127
-  layer_end
-
-  .sound_peach_thank_you_mario:
-  chan_setbank 10
-  chan_setinstr 19
-  chan_setlayer 0, .layer_F47
-  chan_setlayer 1, .layer_F47
-  chan_end
-
-  .layer_F47:
-  layer_note1 39, 0x64, 127
-  layer_end
-
-  .sound_peach_something_special:
-  chan_setbank 10
-  chan_setinstr 20
-  chan_setlayer 0, .layer_F56
-  chan_setlayer 1, .layer_F56
-  chan_end
-
-  .layer_F56:
-  layer_note1 39, 0xdc, 127
-  layer_end
-
-  .sound_peach_bake_a_cake:
-  chan_setbank 10
-  chan_setinstr 21
-  chan_setlayer 0, .layer_F66
-  chan_setlayer 1, .layer_F66
-  chan_end
-
-  .layer_F66:
-  layer_note1 39, 0x190, 127
-  layer_end
-
-  .sound_peach_for_mario:
-  chan_setbank 10
-  chan_setinstr 22
-  chan_setlayer 0, .layer_F76
-  chan_setlayer 1, .layer_F76
-  chan_end
-
-  .layer_F76:
-  layer_note1 39, 0x50, 127
-  layer_end
-
-  .sound_peach_mario2:
-  chan_setbank 10
-  chan_setinstr 23
-  chan_setval 20
-  chan_call .set_reverb
-  chan_setlayer 0, .layer_F8A
-  chan_setlayer 1, .layer_F8A
-  chan_end
-
-  .layer_F8A:
-  layer_note1 39, 0x50, 127
-  layer_end
-#endif
-
-#if defined(VERSION_EU) || defined(VERSION_SH) || defined(VERSION_CN)
-  .chan_unused_F9A_eu:
-  chan_setbank 8
-  chan_setinstr 0
-  chan_setlayer 0, .layer_FA2_eu
-  chan_end
-
-  .layer_FA2_eu:
-  layer_delay 0x5
-  layer_end
-#endif
 
 .channel38_table:
 sound_ref .sound_general_activate_cap_switch
@@ -2786,8 +2189,8 @@ sound_ref .sound_general_pyramid_top_explosion
 sound_ref .sound_general_race_gun_shot
 sound_ref .sound_general_star_door_open
 sound_ref .sound_general_star_door_close
-sound_ref .sound_general_bird_chirp2
-sound_ref .sound_obj_bird_chirp3
+sound_ref .sound_obj_bird_chirp1
+sound_ref .sound_obj_bird_chirp1
 sound_ref .sound_obj_bird_chirp1
 sound_ref .sound_air_castle_outdoors_ambient
 sound_ref .sound_general_switch_tick_fast
@@ -2824,29 +2227,16 @@ sound_ref .sound_general_boing3
 sound_ref .sound_general_grand_star
 sound_ref .sound_general_grand_star_jump
 sound_ref .sound_general_boat_rock
-#ifdef VERSION_JP
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_general_open_wood_door
-  sound_ref .sound_general_close_wood_door
-  sound_ref .sound_general_open_iron_door
-  sound_ref .sound_general_close_iron_door
-  sound_ref .sound_general_bubbles
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_menu_enter_hole
-#else
-  sound_ref .sound_general_vanish_sfx
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_general_red_coin
-  sound_ref .sound_general_birds_fly_away
-  sound_ref .sound_general_right_answer
-  sound_ref .sound_general_metal_pound
-  sound_ref .sound_general_boing1
-  sound_ref .sound_general_boing2
-  sound_ref .sound_general_yoshi_walk
-  sound_ref .sound_general_enemy_alert1
-#endif
+sound_ref .sound_menu_enter_hole
+sound_ref .sound_menu_enter_hole
+sound_ref .sound_menu_enter_hole
+sound_ref .sound_general_open_wood_door
+sound_ref .sound_general_close_wood_door
+sound_ref .sound_general_open_iron_door
+sound_ref .sound_general_close_iron_door
+sound_ref .sound_general_bubbles
+sound_ref .sound_menu_enter_hole
+sound_ref .sound_menu_enter_hole
 
 .sound_general_activate_cap_switch:
 chan_setbank 5
@@ -2894,20 +2284,19 @@ chan_setlayer 0, .layer_10D2
 chan_end
 
 .layer_10D2:
-layer_note1 39, 0x18, 100
+layer_note1 39, 0x38, 100
 layer_setinstr 2
-layer_note1 39, 0x48, 60
+layer_note1 39, 0x68, 100
 layer_end
 
 .sound_general_close_wood_door:
 chan_setbank 4
-chan_setinstr 1
+chan_setinstr 4
 chan_setlayer 0, .layer_10E3
 chan_end
 
 .layer_10E3:
-layer_note1 37, 0x6, 100
-layer_note1 34, 0x18, 100
+layer_note1 39, 0x30, 145
 layer_end
 
 .sound_general_open_iron_door:
@@ -3051,17 +2440,13 @@ layer_end
 
 .sound_general_coin:
 chan_setbank 9
-chan_setinstr 3
-chan_setenvelope .envelope_3358
-chan_setvibratoextent 3
-chan_setvibratorate 60
-chan_setval 25
-chan_call .set_reverb
+chan_setinstr 5
 chan_setlayer 0, .layer_11E4
 chan_end
 
 .layer_11E4:
-layer_transpose 24
+layer_note1 39, 0x4E, 127
+layer_end
 
 .layer_fn_11E6:
 layer_note1 25, 0x2, 40
@@ -3284,12 +2669,7 @@ chan_setlayer 0, .layer_1350
 chan_end
 
 .layer_1350:
-layer_note0 36, 0xd, 115, 20
-layer_note0 34, 0xe, 115, 20
-layer_note0 32, 0xd, 115, 20
-layer_note0 31, 0xa, 115, 20
-layer_note0 30, 0x7, 115, 20
-layer_note0 29, 0x60, 115, 20
+layer_note1 39, 0x80, 127
 layer_end
 
 .sound_general_bobomb_explosion:
@@ -3402,17 +2782,11 @@ chan_setbank 9
 chan_setinstr 3
 chan_setval 40
 chan_call .set_reverb
-#if defined(VERSION_SH) || defined(VERSION_CN)
-  chan_setreverb 40
-#endif
 chan_setlayer 0, .layer_141A
 chan_end
 
 .layer_141A:
 layer_transpose 24
-#if defined(VERSION_SH) || defined(VERSION_CN)
-  layer_note1 51, 0xc, 90
-#endif
 layer_note1 39, 0x4, 90
 layer_note1 51, 0xc, 90
 layer_note1 39, 0x4, 50
@@ -3481,18 +2855,11 @@ layer_end
 
 .sound_general_chain_chomp2:
 chan_setbank 7
-#ifdef VERSION_JP
-  chan_setinstr 8
-#else
-  chan_setinstr 14
-#endif
+chan_setinstr 8
 chan_setval 15
 chan_call .set_reverb
 chan_setlayer 0, .layer_14C6
 chan_setlayer 1, .layer_14E3
-#ifndef VERSION_JP
-  chan_setlayer 2, .layer_14E3
-#endif
 chan_setval 1
 chan_call .delay
 chan_setenvelope .envelope_3368
@@ -3501,11 +2868,7 @@ chan_setinstr 7
 chan_setval 13
 chan_call .delay
 chan_setbank 7
-#ifdef VERSION_JP
-  chan_setinstr 8
-#else
-  chan_setinstr 14
-#endif
+chan_setinstr 8
 chan_end
 
 .layer_14C6:
@@ -3521,12 +2884,8 @@ layer_end
 
 .layer_14E3:
 layer_loop 2
-#ifdef VERSION_JP
-  layer_portamento 0x81, 36, 255
-  layer_note1 24, 0x18, 127
-#else
-  layer_note1 34, 0x19, 100
-#endif
+layer_portamento 0x81, 36, 255
+layer_note1 24, 0x18, 127
 layer_loopend
 layer_end
 
@@ -4148,27 +3507,11 @@ layer_note1 31, 0x14, 127
 layer_end
 
 .sound_general_red_coin:
-#ifdef VERSION_JP
-  chan_setbank 9
-  chan_setinstr 3
-  chan_setlayer 0, .layer_1909
-  chan_setlayer 1, .layer_1902
-  chan_setlayer 2, .layer_1907
-#else
-  #if defined(VERSION_EU) || defined(VERSION_SH) || defined(VERSION_CN)
-    chan_setbank 9
-    chan_setinstr 3
-  #else
-    chan_setinstr 128
-  #endif
-  chan_setenvelope .envelope_3378
-  // Small bugfix: .main_loop_023589 expects layer 0 to live the longest.
-  // I don't think this actually makes any audible difference given the
-  // silence at the end.
-  chan_setlayer 0, .layer_1907
-  chan_setlayer 1, .layer_1902
-  chan_setlayer 2, .layer_1909
-#endif
+chan_setbank 9
+chan_setinstr 3
+chan_setlayer 0, .layer_1909
+chan_setlayer 1, .layer_1902
+chan_setlayer 2, .layer_1907
 chan_end
 
 .layer_1902:
@@ -4425,61 +3768,21 @@ layer_portamento 0x81, 36, 40
 layer_note1 41, 0xc, 127
 layer_end
 
-#ifdef VERSION_JP
-  .sound_general_boat_rock:
-  chan_setbank 9
-  chan_setinstr 0
-  chan_setenvelope .envelope_3438
-  chan_setvibratorate 25
-  chan_setvibratoextent 110
-  chan_setlayer 0, .layer_1943_jp
-  chan_setval 40
-  chan_call .delay
-  chan_end
+.sound_general_boat_rock:
+chan_setbank 9
+chan_setinstr 0
+chan_setenvelope .envelope_3438
+chan_setvibratorate 25
+chan_setvibratoextent 110
+chan_setlayer 0, .layer_1943_jp
+chan_setval 40
+chan_call .delay
+chan_end
 
-  .layer_1943_jp:
-  layer_portamento 0x1, 32, 0x7f
-  layer_note1 60, 0x28, 100
-  layer_end
-#else
-  .sound_general_boat_rock:
-  chan_setbank 4
-  chan_setinstr 2
-  chan_setlayer 0, .layer_1AC1
-  chan_setlayer 1, .layer_1ABF
-  chan_end
-
-  .layer_1ABF:
-  layer_transpose 12
-
-  .layer_1AC1:
-  layer_portamento 0x81, 7, 255
-  layer_note1 15, 0x3c, 127
-  layer_portamento 0x81, 20, 200
-  layer_note1 7, 0x5a, 127
-  layer_end
-
-  .sound_general_vanish_sfx:
-  chan_setbank 9
-  chan_setinstr 3
-  chan_setvibratoextent 70
-  chan_setvibratorate 70
-  chan_setenvelope .envelope_32E4
-  chan_setlayer 0, .layer_1AEB
-  chan_setlayer 1, .layer_1AE9
-  chan_setval 35
-  chan_call .delay
-  chan_setvibratoextent 0
-  chan_end
-
-  .layer_1AE9:
-  layer_transpose 1
-
-  .layer_1AEB:
-  layer_portamento 0x81, 19, 255
-  layer_note1 31, 0x32, 115
-  layer_end
-#endif
+.layer_1943_jp:
+layer_portamento 0x1, 32, 0x7f
+layer_note1 60, 0x28, 100
+layer_end
 
 .channel4_table:
 sound_ref .sound_env_waterfall1
@@ -4528,21 +3831,13 @@ chan_setbank 5
 chan_setinstr 1
 chan_setval 25
 chan_call .set_reverb
-#ifdef VERSION_JP
-  chan_setenvelope .envelope_32E4
-#else
-  chan_setenvelope .envelope_32C4
-#endif
+chan_setenvelope .envelope_32E4
 chan_setlayer 0, .layer_1B53
 chan_end
 
 .layer_1B53:
 layer_somethingon
-#ifdef VERSION_JP
-  layer_delay 0x6
-#else
-  layer_delay 0x4
-#endif
+layer_delay 0x6
 .layer_1B56:
 layer_note1 41, 0x12c, 95
 layer_jump .layer_1B56
@@ -4697,11 +3992,7 @@ chan_end
 
 .layer_1C69:
 layer_portamento 0x81, 15, 255
-#ifdef VERSION_JP
-  layer_note1 11, 0x1f4, 100
-#else
-  layer_note1 11, 0x1f4, 127
-#endif
+layer_note1 11, 0x1f4, 100
 layer_end
 
 .sound_env_elevator3:
@@ -5055,8 +4346,8 @@ sound_ref .sound_obj_mr_blizzard_alert
 sound_ref .sound_obj_snufit_shoot
 sound_ref .sound_obj_skeeter_walk
 sound_ref .sound_obj_walking_water
-sound_ref .sound_general_bird_chirp2
-sound_ref .sound_obj_bird_chirp3
+sound_ref .sound_obj_bird_chirp1
+sound_ref .sound_obj_bird_chirp1
 sound_ref .sound_obj_bird_chirp1
 sound_ref .sound_air_castle_outdoors_ambient
 sound_ref .sound_obj_piranha_plant_appear
@@ -5111,51 +4402,38 @@ chan_setlayer 0, .layer_1F56
 chan_end
 
 .layer_1F56:
-layer_note1 27, 0x8, 90
-layer_portamento 0x81, 43, 255
-layer_note1 27, 0x21, 90
+layer_note1 35, 0x28, 90
 layer_end
 
 .sound_obj_mri_shoot:
-chan_setbank 7
-chan_setinstr 3
-chan_setlayer 0, .layer_1F72
-chan_setval 1
-chan_call .delay
 chan_setbank 6
 chan_setinstr 0
+chan_setlayer 0, .layer_1F72
 chan_end
 
 .layer_1F72:
-layer_note1 43, 0xf, 90
-layer_portamento 0x82, 27, 255
-layer_note1 36, 0xb, 90
+layer_note1 50, 0x9, 80
 layer_end
 
 .sound_obj_baby_penguin_walk:
 chan_setbank 6
-chan_setinstr 7
+chan_setinstr 17
 chan_setlayer 0, .layer_1F85
 chan_end
 
 .layer_1F85:
-layer_portamento 0x81, 43, 255
-layer_note1 48, 0x30, 110
+layer_note1 18, 0x30, 110
 layer_end
 
 .sound_obj_bowser_walk:
 chan_setbank 6
 chan_setinstr 1
-chan_setval 60
 chan_call .set_reverb
 chan_setlayer 0, .layer_1F9D
-chan_setlayer 1, .layer_1FA6
 chan_end
 
 .layer_1F9D:
-layer_note1 36, 0x8, 120
-layer_note1 35, 0x28, 120
-layer_delay 0x30
+layer_note1 37, 0x28, 130
 layer_end
 
 .layer_1FA6:
@@ -5174,7 +4452,6 @@ chan_end
 
 .layer_1FBC:
 layer_delay 0x3
-layer_transpose 5
 
 .layer_1FC0:
 layer_note1 39, 0x7f, 127
@@ -5182,7 +4459,7 @@ layer_end
 
 .sound_obj_bowser_tail_pickup:
 chan_setbank 6
-chan_setinstr 2
+chan_setinstr 3
 chan_setval 10
 chan_call .set_reverb
 chan_setlayer 0, .layer_1FD8
@@ -5191,11 +4468,9 @@ chan_end
 
 .layer_1FD4:
 layer_delay 0x3
-layer_transpose 5
 
 .layer_1FD8:
-layer_portamento 0x81, 45, 255
-layer_note1 33, 0x30, 127
+layer_note1 39, 0x30, 127
 layer_end
 
 .sound_obj_bowser_defeated:
@@ -5207,7 +4482,7 @@ chan_setlayer 0, .layer_1FED
 chan_end
 
 .layer_1FED:
-layer_note1 32, 0x104, 127
+layer_note1 39, 0x104, 127
 layer_end
 
 .sound_obj_bowser_spinning:
@@ -5217,7 +4492,7 @@ chan_setlayer 0, .layer_1FFA
 chan_end
 
 .layer_1FFA:
-layer_note1 32, 0x28, 127
+layer_note1 38, 0x28, 127
 layer_end
 
 .sound_obj_bowser_inhaling:
@@ -5227,7 +4502,7 @@ chan_setlayer 0, .layer_2006
 chan_end
 
 .layer_2006:
-layer_note1 36, 0x5a, 127
+layer_note1 39, 0x5a, 127
 layer_end
 
 .sound_obj_big_penguin_walk:
@@ -5237,8 +4512,7 @@ chan_setlayer 0, .layer_2012
 chan_end
 
 .layer_2012:
-layer_portamento 0x81, 39, 255
-layer_note1 36, 0x26, 100
+layer_note1 39, 0x26, 100
 layer_end
 
 .sound_obj_boo_bounce_top:
@@ -5265,14 +4539,7 @@ layer_end
 .sound_obj_thwomp:
 chan_setbank 7
 chan_setinstr 12
-chan_setval 55
-chan_call .set_reverb
 chan_setlayer 0, .layer_2055
-chan_setval 1
-chan_call .delay
-chan_setbank 6
-chan_setinstr 1
-chan_setlayer 1, .layer_204E
 chan_end
 
 .layer_204E:
@@ -5281,7 +4548,7 @@ layer_note1 31, 0x1e, 127
 layer_end
 
 .layer_2055:
-layer_note1 31, 0x2a, 127
+layer_note1 37, 0x96, 127
 layer_end
 
 .sound_obj_cannon1:
@@ -5291,6 +4558,7 @@ chan_setlayer 0, .layer_2061
 chan_end
 
 .layer_2061:
+layer_portamento 0x81, 38, 255
 layer_note1 39, 0xd2, 127
 layer_end
 
@@ -5316,17 +4584,12 @@ layer_end
 
 .sound_obj_piranha_plant_bite:
 chan_setbank 6
-chan_setinstr 11
+chan_setinstr 16
 chan_setlayer 0, .layer_2087
 chan_end
 
 .layer_2087:
-layer_portamento 0x81, 33, 255
-layer_note1 57, 0x4, 127
-layer_transpose -4
-layer_portamento 0x81, 57, 255
-layer_note1 33, 0x6, 127
-layer_delay 0x14
+layer_note1 39, 0x85, 127
 layer_end
 
 .sound_obj_piranha_plant_dying:
@@ -5377,11 +4640,7 @@ chan_end
 
 .layer_20D2:
 layer_portamento 0x81, 44, 255
-#ifdef VERSION_JP
-  layer_note1 36, 0x18, 90
-#else
-  layer_note1 36, 0x18, 115
-#endif
+layer_note1 36, 0x18, 90
 layer_delay 0x32
 layer_end
 
@@ -5401,13 +4660,8 @@ layer_note1 31, 0x26, 127
 layer_end
 
 .layer_20F4:
-#ifdef VERSION_JP
-  layer_note1 38, 0x8, 120
-  layer_note1 33, 0x1e, 120
-#else
-  layer_note1 38, 0x8, 127
-  layer_note1 33, 0x1e, 127
-#endif
+layer_note1 38, 0x8, 120
+layer_note1 33, 0x1e, 120
 layer_end
 
 .sound_obj_bully_metal:
@@ -5452,7 +4706,7 @@ chan_setlayer 0, .layer_2136
 chan_end
 
 .layer_2136:
-layer_note1 39, 0xc, 105
+layer_note1 50, 0xc, 60
 layer_end
 
 .sound_obj_pounding_cannon:
@@ -5462,7 +4716,7 @@ chan_setlayer 0, .layer_2142
 chan_end
 
 .layer_2142:
-layer_note1 39, 0x68, 127
+layer_note1 40, 0x68, 127
 layer_end
 
 .sound_obj_bully_walk:
@@ -5595,9 +4849,7 @@ chan_setlayer 0, .layer_2219
 chan_end
 
 .layer_2219:
-layer_note1 43, 0x6, 105
-layer_portamento 0x81, 32, 255
-layer_note1 44, 0x18, 105
+layer_note1 39, 0x9f, 105
 layer_end
 
 .sound_obj_cannon4:
@@ -6992,51 +6244,19 @@ sound_ref .sound_menu_thank_you_playing_my_game
 sound_ref .sound_menu_read_a_sign
 sound_ref .sound_menu_exit_a_sign
 sound_ref .sound_menu_mario_castle_warp2
-#ifdef VERSION_JP
-  sound_ref .sound_menu_message_next_page
-  sound_ref .sound_menu_coin_its_a_me_mario
-  sound_ref .sound_menu_yoshi_gain_lives
-  sound_ref .sound_menu_enter_pipe
-  sound_ref .sound_menu_exit_pipe
-  sound_ref .sound_menu_bowser_laugh
-  sound_ref .sound_menu_enter_hole
-  sound_ref .sound_menu_click_change_view
-  sound_ref .sound_menu_camera_unused1
-  sound_ref .sound_menu_camera_unused2
-  sound_ref .sound_menu_mario_castle_warp
-  sound_ref .sound_menu_star_sound
-  sound_ref .sound_menu_change_select
-#else
-  sound_ref .sound_menu_star_sound_okey_dokey
-  sound_ref .sound_menu_star_sound_lets_a_go
-  sound_ref .sound_menu_yoshi_gain_lives
-  sound_ref .sound_menu_enter_pipe
-  sound_ref .sound_menu_exit_pipe
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_red_coin
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_collect_secret
-  sound_ref .sound_menu_pinch_mario_face
-  sound_ref .sound_menu_let_go_mario_face
-  sound_ref .sound_menu_hand_appear
-  sound_ref .sound_menu_hand_disappear
-  sound_ref .chan_2D18
-  sound_ref .sound_menu_power_meter
-  sound_ref .sound_menu_camera_buzz
-  sound_ref .sound_menu_camera_turn
-#endif
+sound_ref .sound_menu_message_next_page
+sound_ref .sound_menu_coin_its_a_me_mario
+sound_ref .sound_menu_yoshi_gain_lives
+sound_ref .sound_menu_enter_pipe
+sound_ref .sound_menu_exit_pipe
+sound_ref .sound_menu_bowser_laugh
+sound_ref .sound_menu_enter_hole
+sound_ref .sound_menu_click_change_view
+sound_ref .sound_menu_camera_unused1
+sound_ref .sound_menu_camera_unused2
+sound_ref .sound_menu_mario_castle_warp
+sound_ref .sound_menu_star_sound
+sound_ref .sound_menu_change_select
 
 .sound_menu_change_select:
 chan_setbank 9
@@ -7182,16 +6402,14 @@ chan_setbank 9
 chan_setnotepriority 14
 chan_setinstr 1
 chan_setenvelope .envelope_3444
-chan_setvibratorate 1
-chan_setvibratoextent 100
 chan_setlayer 0, .layer_2CA0
 chan_end
 
 .layer_2CA0:
 layer_somethingon
-layer_portamento 0x85, 27, 255
-layer_note1 15, 0x6, 127
-layer_note1 34, 0xc, 127
+layer_portamento 0x85, 22, 255
+layer_note1 18, 0x4, 127
+layer_note1 34, 0x8, 127
 layer_end
 
 .sound_menu_let_go_mario_face:
@@ -7395,6 +6613,7 @@ layer_portamento 0x81, 15, 255
 layer_note1 51, 0x5, 73
 layer_end
 
+//remove this
 .sound_menu_coin_its_a_me_mario:
 chan_setbank 9
 chan_setinstr 3
@@ -7509,13 +6728,8 @@ layer_end
 chan_reservenotes 4
 chan_setbank 9
 chan_setinstr 2
-#if defined(VERSION_SH) || defined(VERSION_CN)
-  chan_setval 15
-  .set EXIT_PIPE_NOTE_VELOCITY, 106
-#else
-  chan_setval 30
-  .set EXIT_PIPE_NOTE_VELOCITY, 126
-#endif
+chan_setval 30
+.set EXIT_PIPE_NOTE_VELOCITY, 126
 chan_call .set_reverb
 chan_setenvelope .envelope_3464
 chan_setdecayrelease 220
@@ -7777,155 +6991,6 @@ chan_setlayer 0, .layer_3041
 chan_setlayer 1, .layer_2FC9
 chan_end
 
-#ifndef VERSION_JP
-  .sound_menu_star_sound_okey_dokey:
-  chan_setbank 4
-  chan_setinstr 14
-  chan_setlayer 0, .layer_1344
-  chan_setval 1
-  chan_call .delay
-  chan_setbank 10
-  chan_setinstr 12
-  chan_setlayer 1, .layer_E3A
-  chan_end
-
-  .sound_menu_star_sound_lets_a_go:
-  chan_setbank 8
-  chan_setinstr 26
-  chan_setlayer 0, .layer_311D
-  chan_setval 1
-  chan_call .delay
-  chan_setbank 4
-  chan_setinstr 14
-  chan_setlayer 1, .layer_1344
-  chan_end
-
-  .layer_311D:
-  layer_note1 39, 0xb4, 127
-  layer_end
-
-  .sound_menu_collect_red_coin:
-  chan_setinstr 128
-  chan_setnotepriority 14
-  chan_setpanmix 0
-  chan_setenvelope .envelope_3378
-  chan_ioreadval 4
-  chan_subtract 0x28
-  chan_readseq .major_scale
-  chan_writeseq 0, .transpose_by_coin_index, 1
-  chan_setlayer 0, .layer_3146
-  chan_setlayer 1, .layer_3168
-  chan_setlayer 2, .layer_3148
-  chan_end
-
-  .major_scale:
-  .byte 0
-  .byte 2
-  .byte 4
-  .byte 5
-  .byte 7
-  .byte 9
-  .byte 11
-  .byte 12
-
-  .layer_3146:
-  layer_delay 0x6
-
-  #if defined(VERSION_SH) || defined(VERSION_CN)
-    .set RED_COIN_NOTE_VELOCITY_SUB, 10
-  #else
-    .set RED_COIN_NOTE_VELOCITY_SUB, 0
-  #endif
-
-  .layer_3148:
-  layer_call .transpose_by_coin_index
-  layer_note0 46, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 45, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 46, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 58, 0x10, (80 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 58, 0x10, (45 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 58, 0x10, (20 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 58, 0x10, (15 - RED_COIN_NOTE_VELOCITY_SUB), 80
-
-  layer_end
-
-  .layer_3168:
-  layer_call .transpose_by_coin_index
-  layer_note0 41, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 40, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 41, 0xc, (75 - RED_COIN_NOTE_VELOCITY_SUB), 20
-  layer_note0 53, 0x10, (80 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 53, 0x10, (45 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 53, 0x10, (20 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_note0 53, 0x10, (15 - RED_COIN_NOTE_VELOCITY_SUB), 80
-  layer_end
-
-  .transpose_by_coin_index:
-  layer_transpose 0
-  layer_end
-
-  .sound_menu_collect_secret:
-  chan_setbank 4
-  chan_setinstr 14
-  chan_setnotepriority 14
-  chan_setpanmix 0
-  chan_ioreadval 4
-  chan_subtract 0x30
-  chan_readseq .major_scale
-  chan_writeseq 0, .layer_31A0, 1
-  chan_setlayer 0, .layer_31A0
-  chan_end
-
-  .layer_31A0:
-  layer_transpose 0
-  layer_note1 32, 0x7f, 115
-  layer_end
-#endif
-
-.sound_general_bird_chirp2:
-chan_setbank 5
-chan_setinstr 9
-chan_setval 40
-chan_call .set_reverb
-chan_setlayer 0, .layer_31B3
-chan_end
-
-.layer_31B3:
-layer_delay 0x4b
-layer_note0 39, 0xf5, 100, 127
-layer_note0 39, 0xa, 85, 127
-layer_note0 40, 0x123, 98, 127
-layer_note0 39, 0x91, 75, 127
-layer_note0 41, 0xbd, 84, 127
-layer_note0 39, 0x4b, 73, 127
-layer_note0 39, 0x96, 94, 127
-layer_note0 36, 0x74, 78, 127
-layer_jump .layer_31B3
-layer_end
-
-.sound_obj_bird_chirp3:
-chan_setbank 5
-chan_setinstr 10
-chan_setval 60
-chan_call .set_reverb
-chan_setlayer 0, .layer_31EB
-chan_end
-
-.layer_31EB:
-layer_delay 0x14
-layer_note1 39, 0x71, 70
-layer_note1 37, 0xd3, 62
-layer_note1 39, 0x48, 84
-layer_note1 40, 0x71, 49
-layer_note1 39, 0xa8, 65
-layer_note1 41, 0x86, 59
-layer_note1 41, 0x31, 54
-layer_note1 38, 0x6f, 51
-layer_note1 39, 0xc7, 79
-layer_note1 35, 0xe9, 74
-layer_jump .layer_31EB
-layer_end
-
 .sound_obj_bird_chirp1:
 chan_setbank 5
 chan_setinstr 12
@@ -7935,18 +7000,7 @@ chan_setlayer 0, .layer_3221
 chan_end
 
 .layer_3221:
-layer_delay 0x32
-layer_note1 41, 0x31, 66
-layer_delay 0x9f
-layer_note1 39, 0x31, 51
-layer_delay 0xf9
-layer_note1 38, 0x1d, 60
-layer_note1 41, 0x4c, 77
-layer_delay_long 0x64
-layer_note1 42, 0x31, 59
-layer_delay 0x159
-layer_note1 36, 0x4f, 61
-layer_delay 0xc6
+layer_note1 43, 0x352, 116
 layer_jump .layer_3221
 layer_end
 
@@ -8087,15 +7141,6 @@ envelope_line 1 32700
 envelope_line 10 0
 envelope_goto 2
 
-#ifndef VERSION_JP
-  .envelope_3378:
-  envelope_line 3 32700
-  envelope_line 10 30000
-  envelope_line 10 10000
-  envelope_line 100 0
-  envelope_goto 3
-#endif
-
 .envelope_338C:
 envelope_line 1 32700
 envelope_line 20 32700
@@ -8153,11 +7198,7 @@ envelope_goto 2
 .envelope_341C:
 envelope_line 25 32760
 envelope_line 60 10000
-#if defined(VERSION_SH) || defined(VERSION_CN)
-  envelope_hang
-#else
-  envelope_goto 2
-#endif
+envelope_goto 2
 
 .envelope_3428:
 envelope_line 1 10000

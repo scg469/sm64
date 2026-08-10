@@ -113,12 +113,12 @@ s16 intro_level_select(void) {
         play_sound(SOUND_GENERAL_LEVEL_SELECT_CHANGE, gGlobalSoundSource);
     }
 
-    if (gCurrLevelNum > LEVEL_MAX) {
-        gCurrLevelNum = LEVEL_MIN; // exceeded max. set to min.
+    if (gCurrLevelNum > 4) {
+        gCurrLevelNum = 4; // cap the level select at stage 4
     }
 
-    if (gCurrLevelNum < LEVEL_MIN) {
-        gCurrLevelNum = LEVEL_MAX; // exceeded min. set to max.
+    if (gCurrLevelNum < 1) {
+        gCurrLevelNum = 1; // keep the selection at a valid minimum
     }
 
     // Use file 4 and last act as a test
@@ -220,7 +220,7 @@ s32 intro_game_over(void) {
  */
 s32 intro_play_its_a_me_mario(void) {
     set_background_music(0, SEQ_SOUND_PLAYER, 0);
-    play_sound(SOUND_MENU_COIN_ITS_A_ME_MARIO, gGlobalSoundSource);
+    play_sound(SOUND_GENERAL_COIN, gGlobalSoundSource);
     return 1;
 }
 

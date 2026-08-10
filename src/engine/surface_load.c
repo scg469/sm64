@@ -524,7 +524,6 @@ void alloc_surface_pools(void) {
     sSurfacePool = main_pool_alloc(sSurfacePoolSize * sizeof(struct Surface), MEMORY_POOL_LEFT);
 
     gCCMEnteredSlide = 0;
-    reset_red_coins_collected();
 }
 
 #ifdef NO_SEGMENTED_MEMORY

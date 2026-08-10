@@ -44,7 +44,6 @@ s32 check_common_idle_cancels(struct MarioState *m) {
     }
 
     if (m->input & INPUT_NONZERO_ANALOG) {
-        m->faceAngle[1] = (s16) m->intendedYaw;
         return set_mario_action(m, ACT_WALKING, 0);
     }
 
@@ -61,6 +60,8 @@ s32 check_common_idle_cancels(struct MarioState *m) {
 
 s32 check_common_hold_idle_cancels(struct MarioState *m) {
     if (m->floor->normal.y < 0.29237169f) {
+                m->faceAngle[1] = (s16) m->intendedYaw;
+
         return mario_push_off_steep_floor(m, ACT_HOLD_FREEFALL, 0);
     }
 
@@ -87,7 +88,6 @@ s32 check_common_hold_idle_cancels(struct MarioState *m) {
     }
 
     if (m->input & INPUT_NONZERO_ANALOG) {
-        m->faceAngle[1] = (s16) m->intendedYaw;
         return set_mario_action(m, ACT_HOLD_WALKING, 0);
     }
 
@@ -145,25 +145,7 @@ s32 act_idle(struct MarioState *m) {
         }
 
         if (is_anim_at_end(m)) {
-            // Fall asleep after 10 head turning cycles.
-            // act_start_sleeping is triggered earlier in the function
-            // when actionState == 3. This happens when Mario's done
-            // turning his head back and forth. However, we do some checks
-            // here to make sure that Mario would be able to sleep here,
-            // and that he's gone through 10 cycles before sleeping.
-            // actionTimer is used to track how many cycles have passed.
-            if (++m->actionState == 3) {
-                f32 deltaYOfFloorBehindMario = m->pos[1] - find_floor_height_relative_polar(m, -0x8000, 60.0f);
-                if (deltaYOfFloorBehindMario < -24.0f || 24.0f < deltaYOfFloorBehindMario || m->floor->flags & SURFACE_FLAG_DYNAMIC) {
-                    m->actionState = 0;
-                } else {
-                    // If Mario hasn't turned his head 10 times yet, stay idle instead of going to sleep.
-                    m->actionTimer++;
-                    if (m->actionTimer < 10) {
-                        m->actionState = 0;
-                    }
-                }
-            }
+         ++m->actionState;
         }
     }
 

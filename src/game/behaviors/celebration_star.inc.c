@@ -89,6 +89,10 @@ void bhv_celebration_star_sparkle_loop(void) {
 }
 
 void bhv_star_key_collection_puff_spawner_loop(void) {
-    spawn_mist_particles_variable(0, 10, 30.0f);
-    o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+
+    o->oAnimState ++;
+    if (o->oTimer > 31) {
+        mark_obj_for_deletion(o);
+    }
+
 }
