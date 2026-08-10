@@ -1,0 +1,480 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x7000000
+LOAD build/jp/bin/cave.elf
+LOAD build/jp/levels/hmc/leveldata.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x00400094                        . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x00400094       0x18
+ *(.reginfo)
+ .reginfo       0x00400094       0x18 build/jp/levels/hmc/leveldata.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x004000ac        0x0 build/jp/levels/hmc/leveldata.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x07000000        0x0
+                0x07000000                        _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x07000000                        . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x07000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x07000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x07000000                        . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x07000000    0x2b970
+                0x07000000                        _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x07000000    0x2b970 build/jp/levels/hmc/leveldata.o
+                0x070078b0                hmc_seg7_dl_070078B0
+                0x07007b50                hmc_seg7_dl_07007B50
+                0x070080e8                hmc_seg7_dl_070080E8
+                0x070093f0                hmc_seg7_dl_070093F0
+                0x0700e448                hmc_seg7_dl_0700E448
+                0x0700ef00                hmc_seg7_dl_0700EF00
+                0x0700f3e8                hmc_seg7_dl_0700F3E8
+                0x0700fa40                hmc_seg7_dl_0700FA40
+                0x0700fef0                hmc_seg7_dl_0700FEF0
+                0x07010070                hmc_seg7_dl_07010070
+                0x07013ca8                hmc_seg7_dl_07013CA8
+                0x07013e80                hmc_seg7_dl_07013E80
+                0x07014300                hmc_seg7_dl_07014300
+                0x07014b08                hmc_seg7_dl_07014B08
+                0x07014c00                hmc_seg7_dl_07014C00
+                0x07014e48                hmc_seg7_dl_07014E48
+                0x070173a8                hmc_seg7_dl_070173A8
+                0x07017c98                hmc_seg7_dl_07017C98
+                0x07018200                hmc_seg7_dl_07018200
+                0x07019248                hmc_seg7_dl_07019248
+                0x07019368                hmc_seg7_dl_07019368
+                0x0701a080                hmc_seg7_dl_0701A080
+                0x0701a400                hmc_seg7_dl_0701A400
+                0x0701e820                hmc_seg7_dl_0701E820
+                0x0701f1b0                hmc_seg7_dl_0701F1B0
+                0x0701f690                hmc_seg7_dl_0701F690
+                0x0701f818                hmc_seg7_dl_0701F818
+                0x0701fd58                hmc_seg7_dl_0701FD58
+                0x0701fff8                hmc_seg7_dl_0701FFF8
+                0x07020fd0                hmc_seg7_dl_07020FD0
+                0x07021760                hmc_seg7_dl_07021760
+                0x07021ba0                hmc_seg7_dl_07021BA0
+                0x070228a0                hmc_seg7_dl_070228A0
+                0x07022aa0                hmc_seg7_dl_07022AA0
+                0x07022da0                hmc_seg7_dl_07022DA0
+                0x07023090                hmc_seg7_dl_07023090
+                0x07023bc8                hmc_seg7_dl_07023BC8
+                0x07023e10                hmc_seg7_dl_07023E10
+                0x07024110                hmc_seg7_dl_07024110
+                0x07024268                hmc_seg7_dl_07024268
+                0x070242a0                hmc_seg7_dl_070242A0
+                0x07025518                hmc_seg7_painting_textures_07025518
+                0x0702551c                cotmc_painting
+                0x07025594                hmc_seg7_collision_level
+                0x0702aa78                hmc_seg7_macro_objs
+                0x0702adc4                hmc_seg7_rooms
+                0x0702b5e4                hmc_seg7_collision_elevator
+                0x0702b65c                hmc_seg7_collision_0702B65C
+                0x0702b6e0                hmc_seg7_collision_controllable_platform
+                0x0702b7f4                hmc_seg7_collision_controllable_platform_sub
+                0x0702b86c                hmc_seg7_trajectory_0702B86C
+                0x0702b900                hmc_movtex_dorrie_pool_water
+                0x0702b950                hmc_movtex_toxic_maze_mist
+
+.data1
+ *(.data1)
+                0x0702b970                        . = .
+                0x07033960                        _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0702b970                        _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0702b970                        . = .
+                0x0702b970                        __bss_start = .
+                0x0702b970                        _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x0702b970        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x0702b970                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0702b970                        . = ALIGN (0x4)
+                0x0702b970                        . = SEGMENT_START ("ldata-segment", .)
+                0x0702b970                        . = ALIGN (0x4)
+                0x0702b970                        _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x0702b970                        . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x00000000       0x20
+ .options       0x00000000       0x20 build/jp/levels/hmc/leveldata.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x0702b970      0x248
+ *(.gptab.data)
+ .gptab.data    0x0702b970      0x248 build/jp/levels/hmc/leveldata.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/levels/hmc/leveldata.elf elf32-tradbigmips)
+
+.mdebug         0x00000000    0x1ee28
+ .mdebug        0x00000000    0x237f4 build/jp/levels/hmc/leveldata.o

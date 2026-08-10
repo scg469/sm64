@@ -1,0 +1,565 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x8000000
+LOAD build/jp/actors/common0.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x00400094                        . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x00400094       0x18
+ *(.reginfo)
+ .reginfo       0x00400094       0x18 build/jp/actors/common0.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x004000ac        0x0 build/jp/actors/common0.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x08000000        0x0
+                0x08000000                        _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x08000000                        . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x08000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x08000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x08000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x08000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x08000000                        . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x08000000    0x28bf0
+                0x08000000                        _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x08000000    0x28bf0 build/jp/actors/common0.o
+                0x08000d58                blue_coin_switch_seg8_dl_08000D58
+                0x08000dd0                blue_coin_switch_seg8_dl_08000DD0
+                0x08000e08                blue_coin_switch_seg8_dl_08000E08
+                0x08000e98                blue_coin_switch_seg8_collision_08000E98
+                0x08002b68                dAmpElectricitySubDl
+                0x08002ba0                dAmpElectricityDl
+                0x08002c50                dAmpEyeSubDl
+                0x08002c88                dAmpEyeDl
+                0x08002d38                dAmpMouthSubDl
+                0x08002d70                dAmpMouthDl
+                0x08002e20                dAmpBodySubDl
+                0x08002e58                dAmpBodyDl
+                0x08003910                dAmpUnused3DElectricDl1
+                0x08003940                dAmpUnused3DElectricDl2
+                0x08003970                dAmpUnused3DElectricDl3
+                0x080039a0                dAmpUnused3DElectricDl4
+                0x080039d0                dAmpUnused3DModelDl
+                0x08003da8                dAmpUnused3DElectricDl5
+                0x08003dd8                dAmpUnused3DElectricDl6
+                0x08003e00                dAmpUnused3DElectricDl7
+                0x08004034                dAmpAnimsList
+                0x08004898                cannon_lid_seg8_dl_08004898
+                0x080048e0                cannon_lid_seg8_dl_080048E0
+                0x08004950                cannon_lid_seg8_collision_08004950
+                0x08005658                cannon_base_seg8_dl_08005658
+                0x080056d0                cannon_base_seg8_dl_080056D0
+                0x080057f8                cannon_base_seg8_dl_080057F8
+                0x08006408                cannon_barrel_seg8_dl_08006408
+                0x080064c0                cannon_barrel_seg8_dl_080064C0
+                0x08006660                cannon_barrel_seg8_dl_08006660
+                0x08009ff8                chuckya_seg8_dl_08009FF8
+                0x0800a030                chuckya_seg8_dl_0800A030
+                0x0800a068                chuckya_seg8_dl_0800A068
+                0x0800a160                chuckya_seg8_dl_0800A160
+                0x0800a198                chuckya_seg8_dl_0800A198
+                0x0800a1d0                chuckya_seg8_dl_0800A1D0
+                0x0800a2c8                chuckya_seg8_dl_0800A2C8
+                0x0800a300                chuckya_seg8_dl_0800A300
+                0x0800a338                chuckya_seg8_dl_0800A338
+                0x0800a3f0                chuckya_seg8_dl_0800A3F0
+                0x0800a428                chuckya_seg8_dl_0800A428
+                0x0800a4d8                chuckya_seg8_dl_0800A4D8
+                0x0800a510                chuckya_seg8_dl_0800A510
+                0x0800a5c0                chuckya_seg8_dl_0800A5C0
+                0x0800a5f8                chuckya_seg8_dl_0800A5F8
+                0x0800a700                chuckya_seg8_dl_0800A700
+                0x0800a758                chuckya_seg8_dl_0800A758
+                0x0800a870                chuckya_seg8_dl_0800A870
+                0x0800a8d0                chuckya_seg8_dl_0800A8D0
+                0x0800a958                chuckya_seg8_dl_0800A958
+                0x0800a998                chuckya_seg8_dl_0800A998
+                0x0800ab70                chuckya_seg8_dl_0800AB70
+                0x0800abe8                chuckya_seg8_dl_0800ABE8
+                0x0800c070                chuckya_seg8_anims_0800C070
+                0x0800c668                purple_switch_seg8_dl_0800C668
+                0x0800c6e0                purple_switch_seg8_dl_0800C6E0
+                0x0800c718                purple_switch_seg8_dl_0800C718
+                0x0800c7a8                purple_switch_seg8_collision_0800C7A8
+                0x0800d5c0                checkerboard_platform_seg8_dl_0800D5C0
+                0x0800d618                checkerboard_platform_seg8_dl_0800D618
+                0x0800d680                checkerboard_platform_seg8_dl_0800D680
+                0x0800d710                checkerboard_platform_seg8_collision_0800D710
+                0x0800dfe0                heart_seg8_dl_0800DFE0
+                0x08010840                flyguy_seg8_dl_08010840
+                0x08010968                flyguy_seg8_dl_08010968
+                0x08010a90                flyguy_seg8_dl_08010A90
+                0x08010b38                flyguy_seg8_dl_08010B38
+                0x08010b80                flyguy_seg8_dl_08010B80
+                0x080113a8                flyguy_seg8_dl_080113A8
+                0x08011420                flyguy_seg8_dl_08011420
+                0x080116d0                flyguy_seg8_dl_080116D0
+                0x08011710                flyguy_seg8_dl_08011710
+                0x08011a64                flyguy_seg8_anims_08011A64
+                0x08012c30                breakable_box_seg8_dl_08012C30
+                0x08012cd8                breakable_box_seg8_dl_08012CD8
+                0x08012d20                breakable_box_seg8_dl_08012D20
+                0x08012d48                breakable_box_seg8_dl_08012D48
+                0x08012d70                breakable_box_seg8_collision_08012D70
+                0x08018fa8                exclamation_box_seg8_dl_08018FA8
+                0x08019008                exclamation_box_seg8_dl_08019008
+                0x08019058                exclamation_box_seg8_dl_08019058
+                0x08019220                exclamation_box_seg8_dl_08019220
+                0x08019280                exclamation_box_seg8_dl_08019280
+                0x080192d0                exclamation_box_seg8_dl_080192D0
+                0x08019318                exclamation_box_seg8_dl_08019318
+                0x08019378                exclamation_box_seg8_dl_08019378
+                0x080193d8                exclamation_box_seg8_dl_080193D8
+                0x08019438                exclamation_box_seg8_dl_08019438
+                0x0801b2e8                goomba_seg8_dl_0801B2E8
+                0x0801b560                goomba_seg8_dl_0801B560
+                0x0801b5a0                goomba_seg8_dl_0801B5A0
+                0x0801b5c8                goomba_seg8_dl_0801B5C8
+                0x0801b5f0                goomba_seg8_dl_0801B5F0
+                0x0801b658                goomba_seg8_dl_0801B658
+                0x0801b690                goomba_seg8_dl_0801B690
+                0x0801ce20                goomba_seg8_dl_0801CE20
+                0x0801cf78                goomba_seg8_dl_0801CF78
+                0x0801d0d0                goomba_seg8_dl_0801D0D0
+                0x0801d360                goomba_seg8_dl_0801D360
+                0x0801d760                goomba_seg8_dl_0801D760
+                0x0801da4c                goomba_seg8_anims_0801DA4C
+                0x08022ac0                bobomb_seg8_dl_08022AC0
+                0x08022b08                bobomb_seg8_dl_08022B08
+                0x08022b58                bobomb_seg8_dl_08022B58
+                0x08022b88                bobomb_seg8_dl_08022B88
+                0x08022c38                bobomb_seg8_dl_08022C38
+                0x08022ca0                bobomb_seg8_dl_08022CA0
+                0x08022d08                bobomb_seg8_dl_08022D08
+                0x08022d78                bobomb_seg8_dl_08022D78
+                0x08023270                bobomb_seg8_dl_08023270
+                0x08023378                bobomb_seg8_dl_08023378
+                0x08023480                bobomb_seg8_dl_08023480
+                0x0802396c                bobomb_seg8_anims_0802396C
+                0x08024b18                metal_box_seg8_dl_08024B18
+                0x08024bb8                metal_box_dl
+                0x08024c28                metal_box_seg8_collision_08024C28
+                0x08024eb8                exclamation_box_outline_seg8_dl_08024EB8
+                0x08024f30                exclamation_box_outline_seg8_dl_08024F30
+                0x08024f58                exclamation_box_outline_seg8_dl_08024F58
+                0x08024f88                exclamation_box_outline_seg8_dl_08024F88
+                0x08024fa8                exclamation_box_outline_seg8_dl_08024FA8
+                0x08024fc8                exclamation_box_outline_seg8_dl_08024FC8
+                0x08024fe8                exclamation_box_outline_seg8_dl_08024FE8
+                0x08025968                exclamation_box_outline_seg8_dl_08025968
+                0x080259f8                exclamation_box_outline_seg8_dl_080259F8
+                0x08025ec0                exclamation_box_outline_seg8_dl_08025EC0
+                0x08025f08                exclamation_box_outline_seg8_dl_08025F08
+                0x08025f78                exclamation_box_outline_seg8_collision_08025F78
+                0x08026260                unknown_seg8_dl_08026260
+                0x080262f8                unknown_seg8_collision_080262F8
+                0x08027108                koopa_shell_seg8_dl_08027108
+                0x08027170                koopa_shell_seg8_dl_08027170
+                0x08027258                koopa_shell_seg8_dl_08027258
+                0x080273c8                koopa_shell_seg8_dl_080273C8
+                0x08027420                koopa_shell_seg8_dl_08027420
+                0x080288e0                koopa_shell_seg8_dl_080288E0
+                0x08028978                koopa_shell_seg8_dl_08028978
+                0x08028a20                koopa_shell_seg8_dl_08028A20
+                0x08028b78                koopa_shell_seg8_dl_08028B78
+
+.data1
+ *(.data1)
+                0x08028bf0                        . = .
+                0x08030be0                        _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x08028bf0                        _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x08028bf0                        . = .
+                0x08028bf0                        __bss_start = .
+                0x08028bf0                        _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x08028bf0        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x08028bf0                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x08028bf0                        . = ALIGN (0x4)
+                0x08028bf0                        . = SEGMENT_START ("ldata-segment", .)
+                0x08028bf0                        . = ALIGN (0x4)
+                0x08028bf0                        _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x08028bf0                        . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x00000000       0x20
+ .options       0x00000000       0x20 build/jp/actors/common0.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x08028bf0      0x1b8
+ *(.gptab.data)
+ .gptab.data    0x08028bf0      0x1b8 build/jp/actors/common0.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/actors/common0.elf elf32-tradbigmips)
+
+.mdebug         0x00000000    0x10efc
+ .mdebug        0x00000000    0x14504 build/jp/actors/common0.o

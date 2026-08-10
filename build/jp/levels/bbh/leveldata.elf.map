@@ -1,0 +1,547 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x7000000
+LOAD build/jp/bin/spooky.elf
+LOAD build/jp/levels/bbh/leveldata.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x00400094                        . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x00400094       0x18
+ *(.reginfo)
+ .reginfo       0x00400094       0x18 build/jp/levels/bbh/leveldata.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x004000ac        0x0 build/jp/levels/bbh/leveldata.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x07000000        0x0
+                0x07000000                        _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x07000000                        . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x07000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x07000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x07000000                        . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x07000000    0x2c4b0
+                0x07000000                        _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x07000000    0x2c4b0 build/jp/levels/bbh/leveldata.o
+                0x070095a8                bbh_seg7_dl_070075A8
+                0x07009940                bbh_seg7_dl_07007940
+                0x07009b90                bbh_seg7_dl_07007B90
+                0x07009fd0                bbh_seg7_dl_07007FD0
+                0x0700ab58                bbh_seg7_dl_07008B58
+                0x0700aea8                bbh_seg7_dl_07008EA8
+                0x0700cff0                bbh_seg7_dl_0700AFF0
+                0x0700d1c8                bbh_seg7_dl_0700B1C8
+                0x0700d418                bbh_seg7_dl_0700B418
+                0x0700d9e0                bbh_seg7_dl_0700B9E0
+                0x0700dbf8                bbh_seg7_dl_0700BBF8
+                0x0700f080                bbh_seg7_dl_0700D080
+                0x0700f2e0                bbh_seg7_dl_0700D2E0
+                0x0700f490                bbh_seg7_dl_0700D490
+                0x0700f7e0                bbh_seg7_dl_0700D7E0
+                0x07011510                bbh_seg7_dl_0700F510
+                0x07011848                bbh_seg7_dl_0700F848
+                0x07013120                bbh_seg7_dl_07011120
+                0x07014220                bbh_seg7_dl_07012220
+                0x07014510                bbh_seg7_dl_07012510
+                0x070146e8                bbh_seg7_dl_070126E8
+                0x070159a8                bbh_seg7_dl_070139A8
+                0x07015be8                bbh_seg7_dl_07013BE8
+                0x07016fd8                bbh_seg7_dl_07014FD8
+                0x07017398                bbh_seg7_dl_07015398
+                0x070176e0                bbh_seg7_dl_070156E0
+                0x07017a20                bbh_seg7_dl_07015A20
+                0x07019378                bbh_seg7_dl_07017378
+                0x07019570                bbh_seg7_dl_07017570
+                0x07019788                bbh_seg7_dl_07017788
+                0x0701bef8                bbh_seg7_dl_07019EF8
+                0x0701c080                bbh_seg7_dl_0701A080
+                0x0701c850                bbh_seg7_dl_0701A850
+                0x0701d6d0                bbh_seg7_dl_0701B6D0
+                0x070204e0                bbh_seg7_dl_0701E4E0
+                0x070208d8                bbh_seg7_dl_0701E8D8
+                0x07020d18                bbh_seg7_dl_0701ED18
+                0x07020ec8                bbh_seg7_dl_0701EEC8
+                0x07021070                bbh_seg7_dl_0701F070
+                0x070212e8                bbh_seg7_dl_0701F2E8
+                0x070215f8                bbh_seg7_dl_0701F5F8
+                0x070217e8                bbh_seg7_dl_0701F7E8
+                0x07021ab0                bbh_seg7_dl_0701FAB0
+                0x07021d28                bbh_seg7_dl_0701FD28
+                0x07021fe8                bbh_seg7_dl_0701FFE8
+                0x070222f0                bbh_seg7_dl_070202F0
+                0x070226f0                bbh_seg7_dl_070206F0
+                0x070227a0                bbh_seg7_collision_level
+                0x0702805c                bbh_seg7_rooms
+                0x070288c4                bbh_seg7_macro_objs
+                0x07028a1c                bbh_seg7_collision_staircase_step
+                0x07028a98                bbh_seg7_collision_tilt_floor_platform
+                0x07028b1c                bbh_seg7_collision_07026B1C
+                0x07028b4c                bbh_seg7_collision_haunted_bookshelf
+                0x07028b94                bbh_seg7_collision_mesh_elevator
+                0x07028c1c                bbh_seg7_collision_merry_go_round
+                0x07028d18                bbh_seg7_collision_coffin
+                0x07028e24                bbh_movtex_merry_go_round_water_entrance
+                0x07028e34                bbh_movtex_merry_go_round_water_side
+                0x07028e44                areaMap_04_01
+                0x07028e5c                bbh_area_1_collision
+                0x070293d8                bbh_area_1_macro_objs
+                0x070293e0                bbh_dl_f3dlite_material_004_lights
+                0x070293f8                bbh_dl_f3dlite_material_005_lights
+                0x07029410                bbh_dl_f3dlite_material_lights
+                0x07029428                bbh_dl_Material_001_lights
+                0x07029440                bbh_dl_Material_lights
+                0x07029458                bbh_dl_f3dlite_material_001_lights
+                0x07029470                bbh_dl_Sm64_Obakabe00_txt_ci8_aligner
+                0x07029478                bbh_dl_Sm64_Obakabe00_txt_ci8
+                0x07029c78                bbh_dl_Sm64_Obakabe00_txt_pal_rgba16_aligner
+                0x07029c80                bbh_dl_Sm64_Obakabe00_txt_pal_rgba16
+                0x07029ce0                bbh_dl_ttm_textures_07000_rgba16_ci8_aligner
+                0x07029ce8                bbh_dl_ttm_textures_07000_rgba16_ci8
+                0x0702a0e8                bbh_dl_ttm_textures_07000_rgba16_pal_rgba16_aligner
+                0x0702a0f0                bbh_dl_ttm_textures_07000_rgba16_pal_rgba16
+                0x0702a198                bbh_dl_Sm64_Kabe_8_txt_ci4_aligner
+                0x0702a1a0                bbh_dl_Sm64_Kabe_8_txt_ci4
+                0x0702a3a0                bbh_dl_Sm64_Kabe_8_txt_pal_rgba16_aligner
+                0x0702a3a8                bbh_dl_Sm64_Kabe_8_txt_pal_rgba16
+                0x0702a3b0                bbh_dl_inside_castle_textures_05000_rgba16_ci4_aligner
+                0x0702a3b8                bbh_dl_inside_castle_textures_05000_rgba16_ci4
+                0x0702a5b8                bbh_dl_inside_castle_textures_05000_rgba16_pal_rgba16_aligner
+                0x0702a5c0                bbh_dl_inside_castle_textures_05000_rgba16_pal_rgba16
+                0x0702a5c8                bbh_dl_inside_castle_textures_05000_rgba16_ci4_copy_aligner
+                0x0702a5d0                bbh_dl_inside_castle_textures_05000_rgba16_ci4_copy
+                0x0702a7d0                bbh_dl_inside_castle_textures_05000_rgba16_pal_rgba16_copy_aligner
+                0x0702a7d8                bbh_dl_inside_castle_textures_05000_rgba16_pal_rgba16_copy
+                0x0702a7e0                bbh_dl_ttc_textures_07000_rgba16_ci8_aligner
+                0x0702a7e8                bbh_dl_ttc_textures_07000_rgba16_ci8
+                0x0702abe8                bbh_dl_ttc_textures_07000_rgba16_pal_rgba16_aligner
+                0x0702abf0                bbh_dl_ttc_textures_07000_rgba16_pal_rgba16
+                0x0702ac78                bbh_dl_Cube_002_mesh_layer_1_vtx_0
+                0x0702b598                bbh_dl_Cube_002_mesh_layer_1_tri_0
+                0x0702b8a0                bbh_dl_Cube_002_mesh_layer_1_vtx_1
+                0x0702bb20                bbh_dl_Cube_002_mesh_layer_1_tri_1
+                0x0702bc20                bbh_dl_Cube_002_mesh_layer_1_vtx_2
+                0x0702bdf0                bbh_dl_Cube_002_mesh_layer_1_tri_2
+                0x0702beb0                bbh_dl_Plane_mesh_layer_1_vtx_0
+                0x0702bef0                bbh_dl_Plane_mesh_layer_1_tri_0
+                0x0702bf10                bbh_dl_Plane_001_mesh_layer_1_vtx_0
+                0x0702bf50                bbh_dl_Plane_001_mesh_layer_1_tri_0
+                0x0702bf70                bbh_dl_Plane_002_mesh_layer_1_vtx_0
+                0x0702bfb0                bbh_dl_Plane_002_mesh_layer_1_tri_0
+                0x0702bfd0                mat_bbh_dl_f3dlite_material_004
+                0x0702c058                mat_revert_bbh_dl_f3dlite_material_004
+                0x0702c078                mat_bbh_dl_f3dlite_material_005
+                0x0702c100                mat_revert_bbh_dl_f3dlite_material_005
+                0x0702c120                mat_bbh_dl_f3dlite_material
+                0x0702c1a8                mat_revert_bbh_dl_f3dlite_material
+                0x0702c1c8                mat_bbh_dl_Material_001
+                0x0702c250                mat_revert_bbh_dl_Material_001
+                0x0702c270                mat_bbh_dl_Material
+                0x0702c2f8                mat_revert_bbh_dl_Material
+                0x0702c318                mat_bbh_dl_f3dlite_material_001
+                0x0702c3a0                mat_revert_bbh_dl_f3dlite_material_001
+                0x0702c3c0                bbh_dl_Cube_002_mesh_layer_1
+                0x0702c410                bbh_dl_Plane_mesh_layer_1
+                0x0702c430                bbh_dl_Plane_001_mesh_layer_1
+                0x0702c450                bbh_dl_Plane_002_mesh_layer_1
+
+.data1
+ *(.data1)
+                0x0702c4b0                        . = .
+                0x070344a0                        _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0702c4b0                        _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x0702c4b0                        . = .
+                0x0702c4b0                        __bss_start = .
+                0x0702c4b0                        _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x0702c4b0        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x0702c4b0                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0702c4b0                        . = ALIGN (0x4)
+                0x0702c4b0                        . = SEGMENT_START ("ldata-segment", .)
+                0x0702c4b0                        . = ALIGN (0x4)
+                0x0702c4b0                        _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x0702c4b0                        . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x00000000       0x20
+ .options       0x00000000       0x20 build/jp/levels/bbh/leveldata.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x0702c4b0      0x260
+ *(.gptab.data)
+ .gptab.data    0x0702c4b0      0x260 build/jp/levels/bbh/leveldata.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/levels/bbh/leveldata.elf elf32-tradbigmips)
+
+.mdebug         0x00000000    0x20e2c
+ .mdebug        0x00000000    0x25ff4 build/jp/levels/bbh/leveldata.o

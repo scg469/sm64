@@ -1,0 +1,523 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x7000000
+LOAD build/jp/bin/grass.elf
+LOAD build/jp/levels/wf/leveldata.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x00400094                        . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x00400094       0x18
+ *(.reginfo)
+ .reginfo       0x00400094       0x18 build/jp/levels/wf/leveldata.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x004000ac        0x0 build/jp/levels/wf/leveldata.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x07000000        0x0
+                0x07000000                        _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x07000000                        . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x07000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x07000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x07000000                        . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x07000000    0x23240
+                0x07000000                        _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x07000000    0x23240 build/jp/levels/wf/leveldata.o
+                0x070050c8                wf_seg7_dl_070050C8
+                0x070052b8                wf_seg7_dl_070052B8
+                0x07005538                wf_seg7_dl_07005538
+                0x07005690                wf_seg7_dl_07005690
+                0x07005dd8                wf_seg7_dl_07005DD8
+                0x07005ee8                wf_seg7_dl_07005EE8
+                0x070064e8                wf_seg7_dl_070064E8
+                0x070065f8                wf_seg7_dl_070065F8
+                0x07006820                wf_seg7_dl_07006820
+                0x07007220                wf_seg7_dl_07007220
+                0x07007518                wf_seg7_dl_07007518
+                0x070087b0                wf_seg7_dl_070087B0
+                0x07008fe8                wf_seg7_dl_07008FE8
+                0x07009278                wf_seg7_dl_07009278
+                0x07009780                wf_seg7_dl_07009780
+                0x07009890                wf_seg7_dl_07009890
+                0x07009db0                wf_seg7_dl_07009DB0
+                0x0700a170                wf_seg7_dl_0700A170
+                0x0700aba0                wf_seg7_dl_0700ABA0
+                0x0700aec8                wf_seg7_dl_0700AEC8
+                0x0700afb8                wf_seg7_dl_0700AFB8
+                0x0700ba28                wf_seg7_dl_0700BA28
+                0x0700bf50                wf_seg7_dl_0700BF50
+                0x0700d028                wf_seg7_dl_0700D028
+                0x0700d300                wf_seg7_dl_0700D300
+                0x0700d708                wf_seg7_dl_0700D708
+                0x0700d9f0                wf_seg7_dl_0700D9F0
+                0x0700de20                wf_seg7_dl_0700DE20
+                0x0700e0f0                wf_seg7_dl_0700E0F0
+                0x0700e3d0                wf_seg7_dl_0700E3D0
+                0x0700e760                wf_seg7_dl_0700E760
+                0x0700e9b8                wf_seg7_dl_0700E9B8
+                0x0700eb40                wf_seg7_dl_0700EB40
+                0x0700edc0                wf_seg7_dl_0700EDC0
+                0x0700f018                wf_seg7_dl_0700F018
+                0x0700f1a8                wf_seg7_dl_0700F1A8
+                0x0700f340                wf_seg7_dl_0700F340
+                0x0700f610                wf_seg7_dl_0700F610
+                0x0700f6c0                wf_seg7_dl_0700F6C0
+                0x0700f7f8                wf_seg7_dl_0700F7F8
+                0x0700f868                wf_seg7_collision_small_bomp
+                0x0700f934                wf_seg7_collision_large_bomp
+                0x0700fa00                wf_seg7_collision_clocklike_rotation
+                0x0700faa4                wf_seg7_collision_sliding_brick_platform
+                0x0700faec                wf_seg7_collision_tumbling_bridge
+                0x0700fb1c                wf_seg7_collision_trapezoid
+                0x0700fb94                wf_seg7_collision_platform
+                0x0700fc0c                wf_seg7_collision_breakable_wall
+                0x0700fc44                wf_seg7_collision_breakable_wall_2
+                0x0700fc7c                wf_seg7_collision_kickable_board
+                0x0700fd00                wf_seg7_collision_tower_door
+                0x0700fd30                wf_seg7_collision_rotating_platform
+                0x0700fe14                wf_seg7_collision_tower
+                0x07010260                wf_seg7_collision_bullet_bill_cannon
+                0x070102d8                wf_seg7_collision_070102D8
+                0x07011c38                wf_seg7_macro_objs
+                0x07011e08                wf_movtex_water
+                0x07011e18                wf_area_1_collision
+                0x070145f8                wf_area_1_macro_objs
+                0x07014600                wf_dl_f3dlite_material_001_lights
+                0x07014618                wf_dl_f3dlite_material_002_lights
+                0x07014630                wf_dl_f3dlite_material_003_lights
+                0x07014648                wf_dl_f3dlite_material_lights
+                0x07014660                wf_dl_f3dlite_material_004_lights
+                0x07014678                wf_dl_wf_textures_02800_rgba16_rgba16_aligner
+                0x07014680                wf_dl_wf_textures_02800_rgba16_rgba16
+                0x07014e80                wf_dl_wf_textures_02000_rgba16_rgba16_aligner
+                0x07014e88                wf_dl_wf_textures_02000_rgba16_rgba16
+                0x07015688                wf_dl_wf_textures_05800_rgba16_ci8_aligner
+                0x07015690                wf_dl_wf_textures_05800_rgba16_ci8
+                0x07015a90                wf_dl_wf_textures_05800_rgba16_pal_rgba16_aligner
+                0x07015a98                wf_dl_wf_textures_05800_rgba16_pal_rgba16
+                0x07015b08                wf_dl_gnarp_rgba16_aligner
+                0x07015b10                wf_dl_gnarp_rgba16
+                0x07016310                wf_dl_Cylinder_001_mesh_layer_1_vtx_0
+                0x070184a0                wf_dl_Cylinder_001_mesh_layer_1_tri_0
+                0x070193d8                wf_dl_Cylinder_001_mesh_layer_1_vtx_1
+                0x0701a2a8                wf_dl_Cylinder_001_mesh_layer_1_tri_1
+                0x0701a8f8                wf_dl_Cylinder_002_mesh_layer_1_vtx_0
+                0x0701c558                wf_dl_Cylinder_002_mesh_layer_1_tri_0
+                0x0701ce88                wf_dl_Cylinder_002_mesh_layer_1_vtx_1
+                0x070210b8                wf_dl_Cylinder_002_mesh_layer_1_tri_1
+                0x07022da8                wf_dl_Cylinder_002_mesh_layer_1_vtx_2
+                0x07022ea8                wf_dl_Cylinder_002_mesh_layer_1_tri_2
+                0x07022ef8                mat_wf_dl_f3dlite_material_001
+                0x07022f60                mat_revert_wf_dl_f3dlite_material_001
+                0x07022f78                mat_wf_dl_f3dlite_material_002
+                0x07022fe0                mat_revert_wf_dl_f3dlite_material_002
+                0x07022ff8                mat_wf_dl_f3dlite_material_003
+                0x07023038                mat_revert_wf_dl_f3dlite_material_003
+                0x07023050                mat_wf_dl_f3dlite_material
+                0x070230d8                mat_revert_wf_dl_f3dlite_material
+                0x070230f8                mat_wf_dl_f3dlite_material_004
+                0x07023160                mat_revert_wf_dl_f3dlite_material_004
+                0x07023178                wf_dl_Cylinder_001_mesh_layer_1
+                0x070231b0                wf_dl_Cylinder_002_mesh_layer_1
+
+.data1
+ *(.data1)
+                0x07023240                        . = .
+                0x0702b230                        _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x07023240                        _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x07023240                        . = .
+                0x07023240                        __bss_start = .
+                0x07023240                        _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x07023240        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x07023240                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x07023240                        . = ALIGN (0x4)
+                0x07023240                        . = SEGMENT_START ("ldata-segment", .)
+                0x07023240                        . = ALIGN (0x4)
+                0x07023240                        _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x07023240                        . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x00000000       0x20
+ .options       0x00000000       0x20 build/jp/levels/wf/leveldata.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x07023240      0x1d8
+ *(.gptab.data)
+ .gptab.data    0x07023240      0x1d8 build/jp/levels/wf/leveldata.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/levels/wf/leveldata.elf elf32-tradbigmips)
+
+.mdebug         0x00000000    0x1be00
+ .mdebug        0x00000000    0x205b0 build/jp/levels/wf/leveldata.o

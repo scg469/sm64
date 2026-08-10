@@ -1,0 +1,497 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x7000000
+LOAD build/jp/bin/mountain.elf
+LOAD build/jp/levels/ttm/leveldata.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x400000))
+                0x00400094                        . = (SEGMENT_START ("text-segment", 0x400000) + SIZEOF_HEADERS)
+
+.interp
+ *(.interp)
+
+.MIPS.abiflags
+ *(.MIPS.abiflags)
+
+.reginfo        0x00400094       0x18
+ *(.reginfo)
+ .reginfo       0x00400094       0x18 build/jp/levels/ttm/leveldata.o
+
+.MIPS.xhash
+ *(.MIPS.xhash)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic
+ *(.dynamic)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x004000ac        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x004000ac        0x0 build/jp/levels/ttm/leveldata.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x004000ac        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(SORT_NONE(.init))
+
+.text           0x07000000        0x0
+                0x07000000                        _ftext = .
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.fini
+ *(SORT_NONE(.fini))
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.sdata2
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+
+.sbss2
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.plt
+ *(.plt)
+
+.iplt
+ *(.iplt)
+                0x07000000                        . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.sframe
+ *(.sframe)
+ *(.sframe.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x07000000        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x07000000        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x07000000        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+                0x07000000                        . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt
+ *(.got.plt)
+
+.data           0x07000000    0x30480
+                0x07000000                        _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x07000000    0x30480 build/jp/levels/ttm/leveldata.o
+                0x0700a120                ttm_seg7_dl_0700A120
+                0x0700a2e0                ttm_seg7_dl_0700A2E0
+                0x0700a8c0                ttm_seg7_dl_0700A8C0
+                0x0700ab08                ttm_seg7_dl_0700AB08
+                0x0700af90                ttm_seg7_dl_0700AF90
+                0x0700b0d0                ttm_seg7_dl_0700B0D0
+                0x0700b530                ttm_seg7_dl_0700B530
+                0x0700b670                ttm_seg7_dl_0700B670
+                0x0700bad0                ttm_seg7_dl_0700BAD0
+                0x0700bc10                ttm_seg7_dl_0700BC10
+                0x0700be20                ttm_seg7_dl_0700BE20
+                0x0700c070                ttm_seg7_dl_0700C070
+                0x0700c408                ttm_seg7_dl_0700C408
+                0x0700cae0                ttm_seg7_dl_0700CAE0
+                0x0700cd10                ttm_seg7_dl_0700CD10
+                0x0700d1d8                ttm_seg7_dl_0700D1D8
+                0x0700d688                ttm_seg7_dl_0700D688
+                0x0700df78                ttm_seg7_dl_0700DF78
+                0x0700e308                ttm_seg7_dl_0700E308
+                0x0700eac8                ttm_seg7_dl_0700EAC8
+                0x0700ec58                ttm_seg7_dl_0700EC58
+                0x0700f270                ttm_seg7_dl_0700F270
+                0x0700fa18                ttm_seg7_dl_0700FA18
+                0x07010978                ttm_seg7_dl_07010978
+                0x07010a68                ttm_seg7_dl_07010A68
+                0x07011128                ttm_seg7_dl_07011128
+                0x07011608                ttm_seg7_dl_07011608
+                0x07011c78                ttm_seg7_dl_07011C78
+                0x07011d78                ttm_seg7_dl_07011D78
+                0x07012270                ttm_seg7_dl_07012270
+                0x07012388                ttm_seg7_dl_07012388
+                0x070123a0                ttm_seg7_dl_070123A0
+                0x070123b8                ttm_seg7_dl_070123B8
+                0x07012410                ttm_seg7_dl_07012410
+                0x07012f00                ttm_slide_painting
+                0x07013430                ttm_seg7_dl_07013430
+                0x07013608                ttm_seg7_dl_07013608
+                0x07013678                ttm_seg7_collision_pitoune_2
+                0x07013790                ttm_seg7_collision_ukiki_cage
+                0x07013814                ttm_seg7_area_1_collision
+                0x07016f18                ttm_seg7_area_1_macro_objs
+                0x070170a0                ttm_seg7_trajectory_070170A0
+                0x07017124                ttm_movtex_puddle
+                0x07017134                ttm_movtex_tris_begin_waterfall
+                0x07017174                ttm_movtex_tris_begin_puddle_waterfall
+                0x070171a0                ttm_movtex_tris_end_waterfall
+                0x070171e0                ttm_movtex_tris_end_puddle_waterfall
+                0x0701720c                ttm_movtex_tris_puddle_waterfall
+                0x07017260                ttm_dl_waterfall
+                0x07017288                ttm_dl_bottom_waterfall
+                0x070172a0                ttm_dl_puddle_waterfall
+                0x0701d798                ttm_seg7_dl_0701D798
+                0x0701dbb8                ttm_seg7_dl_0701DBB8
+                0x070249a0                ttm_seg7_dl_070249A0
+                0x07024c78                ttm_seg7_dl_07024C78
+                0x07025f48                ttm_seg7_dl_07025F48
+                0x0702a1b8                ttm_seg7_dl_0702A1B8
+                0x0702a8a0                ttm_seg7_dl_0702A8A0
+                0x0702a9c0                ttm_seg7_dl_0702A9C0
+                0x0702aaa8                ttm_seg7_dl_0702AAA8
+                0x0702ab90                ttm_seg7_dl_0702AB90
+                0x0702ac78                ttm_seg7_dl_0702AC78
+                0x0702bb60                ttm_seg7_dl_0702BB60
+                0x0702bbd0                ttm_seg7_area_2_collision
+                0x0702d5ec                ttm_seg7_area_3_collision
+                0x0702f0f8                ttm_seg7_area_4_collision
+                0x0703013c                ttm_seg7_collision_podium_warp
+                0x070302c8                ttm_seg7_area_2_macro_objs
+                0x07030338                ttm_seg7_area_3_macro_objs
+                0x07030418                ttm_seg7_area_4_macro_objs
+
+.data1
+ *(.data1)
+                0x07030480                        . = .
+                0x07038470                        _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got)
+
+.sdata
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x07030480                        _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x07030480                        . = .
+                0x07030480                        __bss_start = .
+                0x07030480                        _fbss = .
+
+.sbss
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x07030480        0x0
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ *(COMMON)
+                0x07030480                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x07030480                        . = ALIGN (0x4)
+                0x07030480                        . = SEGMENT_START ("ldata-segment", .)
+                0x07030480                        . = ALIGN (0x4)
+                0x07030480                        _end = .
+                [!provide]                        PROVIDE (end = .)
+                0x07030480                        . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.options        0x00000000       0x20
+ .options       0x00000000       0x20 build/jp/levels/ttm/leveldata.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+ *(.debug_loclists)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+ *(.debug_rnglists)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.gptab.sdata    0x07030480      0x228
+ *(.gptab.data)
+ .gptab.data    0x07030480      0x228 build/jp/levels/ttm/leveldata.o
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.mdebug.abi32
+ *(.mdebug.abi32)
+
+.mdebug.abiN32
+ *(.mdebug.abiN32)
+
+.mdebug.abi64
+ *(.mdebug.abi64)
+
+.mdebug.abiO64
+ *(.mdebug.abiO64)
+
+.mdebug.eabi32
+ *(.mdebug.eabi32)
+
+.mdebug.eabi64
+ *(.mdebug.eabi64)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/jp/levels/ttm/leveldata.elf elf32-tradbigmips)
+
+.mdebug         0x00000000    0x21c3c
+ .mdebug        0x00000000    0x26e50 build/jp/levels/ttm/leveldata.o
