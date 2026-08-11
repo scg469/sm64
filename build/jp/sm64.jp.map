@@ -8878,11 +8878,11 @@ Linker script and memory map
 .debug_level_select_mio0
                 0x07000000     0x13b0 load address 0x00260660
  build/jp/bin/debug_level_select.mio0.o(.data)
- .data          0x07000000     0x13aa build/jp/bin/debug_level_select.mio0.o
+ .data          0x07000000     0x13a9 build/jp/bin/debug_level_select.mio0.o
                 0x07000000                _binary_build_jp_bin_debug_level_select_mio0_start
-                0x070013aa                _binary_build_jp_bin_debug_level_select_mio0_end
+                0x070013a9                _binary_build_jp_bin_debug_level_select_mio0_end
                 0x070013b0                        . = ALIGN (0x10)
- *fill*         0x070013aa        0x6 
+ *fill*         0x070013a9        0x7 
                 0x070013b0                        _debug_level_select_mio0SegmentEnd = (ADDR (.debug_level_select_mio0) + SIZEOF (.debug_level_select_mio0))
                 0x00261a10                        _debug_level_select_mio0SegmentRomEnd = (__romPos + SIZEOF (.debug_level_select_mio0))
                 0x00898600                        __romPos = (__romPos + SIZEOF (.debug_level_select_mio0))
