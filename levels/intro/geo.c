@@ -123,7 +123,7 @@ const GeoLayout intro_geo_000414[] = {
             GEO_OPEN_NODE(),
                 GEO_CAMERA(0, 0, 0, 1200, 0, 0, 0, 0x00000000),
                 GEO_OPEN_NODE(),
-                    GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -230, 300, 0, G_Text_mesh),
+                    GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -230, 300, 0, G_Trace_Master_001_mesh),
                    
                 GEO_CLOSE_NODE(),
             GEO_CLOSE_NODE(),

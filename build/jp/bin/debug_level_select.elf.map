@@ -228,20 +228,36 @@ LOAD build/jp/bin/debug_level_select.o
 .got.plt
  *(.got.plt)
 
-.data           0x07000000    0x22830
+.data           0x07000000    0x34650
                 0x07000000                        _fdata = .
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x07000000    0x22830 build/jp/bin/debug_level_select.o
+ .data          0x07000000    0x34650 build/jp/bin/debug_level_select.o
                 0x07000000                G_f3dlite_material_003_lights
-                0x07000018                G_Text_002_mesh_vtx_0
-                0x07019b48                G_Text_002_mesh_tri_0
-                0x070227b8                mat_G_f3dlite_material_003
-                0x070227f0                G_Text_002_mesh
+                0x07000018                G_f3dlite_material_002_lights
+                0x07000030                G_f3dlite_material_005_lights
+                0x07000048                G_f3dlite_material_lights
+                0x07000060                G_f3dlite_material_006_lights
+                0x07000078                G_Trace_Master_001_mesh_vtx_0
+                0x07014488                G_Trace_Master_001_mesh_tri_0
+                0x0701ce10                G_Trace_Master_001_mesh_vtx_1
+                0x07025a80                G_Trace_Master_001_mesh_tri_1
+                0x07029678                G_Trace_Master_001_mesh_vtx_2
+                0x0702a6d8                G_Trace_Master_001_mesh_tri_2
+                0x0702ae08                G_Trace_Master_001_mesh_vtx_3
+                0x0702f1d8                G_Trace_Master_001_mesh_tri_3
+                0x07030de8                G_Trace_Master_001_mesh_vtx_4
+                0x07033438                G_Trace_Master_001_mesh_tri_4
+                0x070344b8                mat_G_f3dlite_material_003
+                0x070344f0                mat_G_f3dlite_material_002
+                0x07034528                mat_G_f3dlite_material_005
+                0x07034560                mat_G_f3dlite_material
+                0x07034598                mat_G_f3dlite_material_006
+                0x070345d0                G_Trace_Master_001_mesh
 
 .data1
  *(.data1)
-                0x07022830                        . = .
-                0x0702a820                        _gp = (ALIGN (0x10) + 0x7ff0)
+                0x07034650                        . = .
+                0x0703c640                        _gp = (ALIGN (0x10) + 0x7ff0)
 
 .got
  *(.got)
@@ -254,28 +270,28 @@ LOAD build/jp/bin/debug_level_select.o
 
 .lit4
  *(.lit4)
-                0x07022830                        _edata = .
+                0x07034650                        _edata = .
                 [!provide]                        PROVIDE (edata = .)
-                0x07022830                        . = .
-                0x07022830                        __bss_start = .
-                0x07022830                        _fbss = .
+                0x07034650                        . = .
+                0x07034650                        __bss_start = .
+                0x07034650                        _fbss = .
 
 .sbss
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  *(.scommon)
 
-.bss            0x07022830        0x0
+.bss            0x07034650        0x0
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  *(COMMON)
-                0x07022830                        . = ALIGN ((. != 0x0)?0x4:0x1)
-                0x07022830                        . = ALIGN (0x4)
-                0x07022830                        . = SEGMENT_START ("ldata-segment", .)
-                0x07022830                        . = ALIGN (0x4)
-                0x07022830                        _end = .
+                0x07034650                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x07034650                        . = ALIGN (0x4)
+                0x07034650                        . = SEGMENT_START ("ldata-segment", .)
+                0x07034650                        . = ALIGN (0x4)
+                0x07034650                        _end = .
                 [!provide]                        PROVIDE (end = .)
-                0x07022830                        . = DATA_SEGMENT_END (.)
+                0x07034650                        . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)
@@ -388,9 +404,9 @@ LOAD build/jp/bin/debug_level_select.o
 .gnu.attributes
  *(.gnu.attributes)
 
-.gptab.sdata    0x07022830       0x38
+.gptab.sdata    0x07034650       0x78
  *(.gptab.data)
- .gptab.data    0x07022830       0x38 build/jp/bin/debug_level_select.o
+ .gptab.data    0x07034650       0x78 build/jp/bin/debug_level_select.o
  *(.gptab.sdata)
 
 .gptab.sbss
@@ -427,5 +443,5 @@ LOAD build/jp/bin/debug_level_select.o
  *(.gnu.lto_*)
 OUTPUT(build/jp/bin/debug_level_select.elf elf32-tradbigmips)
 
-.mdebug         0x00000000     0x9d50
- .mdebug        0x00000000     0xb61c build/jp/bin/debug_level_select.o
+.mdebug         0x00000000     0xa1e4
+ .mdebug        0x00000000     0xbb30 build/jp/bin/debug_level_select.o
