@@ -228,45 +228,28 @@ LOAD build/jp/bin/debug_level_select.o
 .got.plt
  *(.got.plt)
 
-.data           0x07000000     0x5d00
+.data           0x07000000     0x3440
                 0x07000000                        _fdata = .
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x07000000     0x5d00 build/jp/bin/debug_level_select.o
-                0x07000000                mat_ultraU
-                0x07000018                vtx_mariotitle_u2
-                0x070006d8                RCP_TitleUltraU
-                0x07000868                mat_ultraL
-                0x07000880                vtx_mariotitle_l1
-                0x07000c40                RCP_TitleUltraL
-                0x07000d30                mat_ultraT
-                0x07000d48                vtx_mariotitle_t1
-                0x07001288                RCP_TitleUltraT
-                0x070013c8                mat_ultraR
-                0x070013e0                vtx_mariotitle_r3
-                0x07001e60                RCP_TitleUltraR
-                0x070020b0                mat_ultraA
-                0x070020c8                vtx_mariotitle_a2
-                0x070029c8                RCP_TitleUltraA
-                0x07002bc8                mat_marioM
-                0x07002be0                vtx_mariotitle_m1
-                0x070034e0                RCP_TitleMarioM
-                0x070036e0                mat_marioA
-                0x070036f8                vtx_mariotitle_a1
-                0x07003ff8                RCP_TitleMarioA
-                0x070041f8                mat_marioR
-                0x07004210                vtx_mariotitle_r2
-                0x07004c90                RCP_TitleMarioR
-                0x07004ee0                mat_marioI
-                0x07004ef8                vtx_mariotitle_i1
-                0x07005138                RCP_TitleMarioI
-                0x070051e0                mat_marioO
-                0x070051f8                vtx_mariotitle_o1
-                0x07005af8                RCP_TitleMarioO
+ .data          0x07000000     0x3440 build/jp/bin/debug_level_select.o
+                0x07000000                G_f3dlite_material_lights
+                0x07000018                G_f3dlite_material_001_lights
+                0x07000030                G_f3dlite_material_002_lights
+                0x07000048                G_Text_mesh_vtx_0
+                0x07000608                G_Text_mesh_tri_0
+                0x070008a0                G_Text_mesh_vtx_1
+                0x07002320                G_Text_mesh_tri_1
+                0x07002f30                G_Text_mesh_vtx_2
+                0x07003230                G_Text_mesh_tri_2
+                0x07003330                mat_G_f3dlite_material
+                0x07003368                mat_G_f3dlite_material_001
+                0x070033a0                mat_G_f3dlite_material_002
+                0x070033d8                G_Text_mesh
 
 .data1
  *(.data1)
-                0x07005d00                        . = .
-                0x0700dcf0                        _gp = (ALIGN (0x10) + 0x7ff0)
+                0x07003440                        . = .
+                0x0700b430                        _gp = (ALIGN (0x10) + 0x7ff0)
 
 .got
  *(.got)
@@ -279,28 +262,28 @@ LOAD build/jp/bin/debug_level_select.o
 
 .lit4
  *(.lit4)
-                0x07005d00                        _edata = .
+                0x07003440                        _edata = .
                 [!provide]                        PROVIDE (edata = .)
-                0x07005d00                        . = .
-                0x07005d00                        __bss_start = .
-                0x07005d00                        _fbss = .
+                0x07003440                        . = .
+                0x07003440                        __bss_start = .
+                0x07003440                        _fbss = .
 
 .sbss
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  *(.scommon)
 
-.bss            0x07005d00        0x0
+.bss            0x07003440        0x0
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  *(COMMON)
-                0x07005d00                        . = ALIGN ((. != 0x0)?0x4:0x1)
-                0x07005d00                        . = ALIGN (0x4)
-                0x07005d00                        . = SEGMENT_START ("ldata-segment", .)
-                0x07005d00                        . = ALIGN (0x4)
-                0x07005d00                        _end = .
+                0x07003440                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x07003440                        . = ALIGN (0x4)
+                0x07003440                        . = SEGMENT_START ("ldata-segment", .)
+                0x07003440                        . = ALIGN (0x4)
+                0x07003440                        _end = .
                 [!provide]                        PROVIDE (end = .)
-                0x07005d00                        . = DATA_SEGMENT_END (.)
+                0x07003440                        . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)
@@ -413,9 +396,9 @@ LOAD build/jp/bin/debug_level_select.o
 .gnu.attributes
  *(.gnu.attributes)
 
-.gptab.sdata    0x07005d00       0x78
+.gptab.sdata    0x07003440       0x58
  *(.gptab.data)
- .gptab.data    0x07005d00       0x78 build/jp/bin/debug_level_select.o
+ .gptab.data    0x07003440       0x58 build/jp/bin/debug_level_select.o
  *(.gptab.sdata)
 
 .gptab.sbss
@@ -452,5 +435,5 @@ LOAD build/jp/bin/debug_level_select.o
  *(.gnu.lto_*)
 OUTPUT(build/jp/bin/debug_level_select.elf elf32-tradbigmips)
 
-.mdebug         0x00000000     0xa298
- .mdebug        0x00000000     0xbc2c build/jp/bin/debug_level_select.o
+.mdebug         0x00000000     0x9f50
+ .mdebug        0x00000000     0xb858 build/jp/bin/debug_level_select.o

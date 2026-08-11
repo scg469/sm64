@@ -3,7 +3,7 @@
 
 #include <PR/gbi.h>
 
-extern const Gfx RCP_TitleUltraU[];
+extern const Gfx G_Text_mesh[];
 extern const Gfx RCP_TitleUltraL[];
 extern const Gfx RCP_TitleUltraT[];
 extern const Gfx RCP_TitleUltraR[];
