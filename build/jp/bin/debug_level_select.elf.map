@@ -228,28 +228,20 @@ LOAD build/jp/bin/debug_level_select.o
 .got.plt
  *(.got.plt)
 
-.data           0x07000000     0x3440
+.data           0x07000000    0x22830
                 0x07000000                        _fdata = .
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x07000000     0x3440 build/jp/bin/debug_level_select.o
-                0x07000000                G_f3dlite_material_lights
-                0x07000018                G_f3dlite_material_001_lights
-                0x07000030                G_f3dlite_material_002_lights
-                0x07000048                G_Text_mesh_vtx_0
-                0x07000608                G_Text_mesh_tri_0
-                0x070008a0                G_Text_mesh_vtx_1
-                0x07002320                G_Text_mesh_tri_1
-                0x07002f30                G_Text_mesh_vtx_2
-                0x07003230                G_Text_mesh_tri_2
-                0x07003330                mat_G_f3dlite_material
-                0x07003368                mat_G_f3dlite_material_001
-                0x070033a0                mat_G_f3dlite_material_002
-                0x070033d8                G_Text_mesh
+ .data          0x07000000    0x22830 build/jp/bin/debug_level_select.o
+                0x07000000                G_f3dlite_material_003_lights
+                0x07000018                G_Text_002_mesh_vtx_0
+                0x07019b48                G_Text_002_mesh_tri_0
+                0x070227b8                mat_G_f3dlite_material_003
+                0x070227f0                G_Text_002_mesh
 
 .data1
  *(.data1)
-                0x07003440                        . = .
-                0x0700b430                        _gp = (ALIGN (0x10) + 0x7ff0)
+                0x07022830                        . = .
+                0x0702a820                        _gp = (ALIGN (0x10) + 0x7ff0)
 
 .got
  *(.got)
@@ -262,28 +254,28 @@ LOAD build/jp/bin/debug_level_select.o
 
 .lit4
  *(.lit4)
-                0x07003440                        _edata = .
+                0x07022830                        _edata = .
                 [!provide]                        PROVIDE (edata = .)
-                0x07003440                        . = .
-                0x07003440                        __bss_start = .
-                0x07003440                        _fbss = .
+                0x07022830                        . = .
+                0x07022830                        __bss_start = .
+                0x07022830                        _fbss = .
 
 .sbss
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  *(.scommon)
 
-.bss            0x07003440        0x0
+.bss            0x07022830        0x0
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  *(COMMON)
-                0x07003440                        . = ALIGN ((. != 0x0)?0x4:0x1)
-                0x07003440                        . = ALIGN (0x4)
-                0x07003440                        . = SEGMENT_START ("ldata-segment", .)
-                0x07003440                        . = ALIGN (0x4)
-                0x07003440                        _end = .
+                0x07022830                        . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x07022830                        . = ALIGN (0x4)
+                0x07022830                        . = SEGMENT_START ("ldata-segment", .)
+                0x07022830                        . = ALIGN (0x4)
+                0x07022830                        _end = .
                 [!provide]                        PROVIDE (end = .)
-                0x07003440                        . = DATA_SEGMENT_END (.)
+                0x07022830                        . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)
@@ -396,9 +388,9 @@ LOAD build/jp/bin/debug_level_select.o
 .gnu.attributes
  *(.gnu.attributes)
 
-.gptab.sdata    0x07003440       0x58
+.gptab.sdata    0x07022830       0x38
  *(.gptab.data)
- .gptab.data    0x07003440       0x58 build/jp/bin/debug_level_select.o
+ .gptab.data    0x07022830       0x38 build/jp/bin/debug_level_select.o
  *(.gptab.sdata)
 
 .gptab.sbss
@@ -435,5 +427,5 @@ LOAD build/jp/bin/debug_level_select.o
  *(.gnu.lto_*)
 OUTPUT(build/jp/bin/debug_level_select.elf elf32-tradbigmips)
 
-.mdebug         0x00000000     0x9f50
- .mdebug        0x00000000     0xb858 build/jp/bin/debug_level_select.o
+.mdebug         0x00000000     0x9d50
+ .mdebug        0x00000000     0xb61c build/jp/bin/debug_level_select.o
