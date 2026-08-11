@@ -1944,7 +1944,7 @@ Linker script and memory map
                 0x80000384                        __osBbPakSize = 0x80000384
                 0x80000388                        __osBbIsBb = 0x80000388
                 0x8000038c                        __osBbHackFlags = 0x8000038c
-                0x00899840                        __romPos = 0x0
+                0x00898620                        __romPos = 0x0
                 0x04000000                        _bootSegmentStart = ADDR (.boot)
                 0x00000000                        _bootSegmentRomStart = __romPos
 
@@ -1959,7 +1959,7 @@ Linker script and memory map
                 0x04000b70                ipl3_font
                 0x04001000                        _bootSegmentEnd = (ADDR (.boot) + SIZEOF (.boot))
                 0x00001000                        _bootSegmentRomEnd = (__romPos + SIZEOF (.boot))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.boot))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.boot))
                 0x80000400                        . = 0x80000400
                 0x80000400                        _zbufferSegmentNoloadStart = ADDR (.zbuffer.noload)
 
@@ -6138,7 +6138,7 @@ Linker script and memory map
                 0x801cdb40                rspAspMainDataEnd
                 0x801cdb40                        _mainSegmentEnd = (ADDR (.main) + SIZEOF (.main))
                 0x000edb40                        _mainSegmentRomEnd = (__romPos + SIZEOF (.main))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.main))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.main))
                 0x801cdb40                        _mainSegmentNoloadStart = ADDR (.main.noload)
 
 .main.noload    0x801cdb40    0x2cef0 load address 0x000edb40
@@ -6737,7 +6737,7 @@ Linker script and memory map
  build/jp/src/engine*.o(.rodata*)
                 0x8020e490                        _engineSegmentEnd = (ADDR (.engine) + SIZEOF (.engine))
                 0x00100fd0                        _engineSegmentRomEnd = (__romPos + SIZEOF (.engine))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.engine))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.engine))
                 0x8020e490                        _engineSegmentNoloadStart = ADDR (.engine.noload)
 
 .engine.noload  0x8020e490     0x3260 load address 0x00100fd0
@@ -6799,24 +6799,23 @@ Linker script and memory map
                 0x10000000                level_script_entry
                 0x10000030                        _entrySegmentEnd = (ADDR (.entry) + SIZEOF (.entry))
                 0x00101000                        _entrySegmentRomEnd = (__romPos + SIZEOF (.entry))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.entry))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.entry))
                 0x02000000                        _segment2_mio0SegmentStart = ADDR (.segment2_mio0)
                 0x00101000                        _segment2_mio0SegmentRomStart = __romPos
 
-.segment2_mio0  0x02000000     0xb480 load address 0x00101000
+.segment2_mio0  0x02000000     0xa260 load address 0x00101000
  build/jp/bin/segment2.mio0.o(.data)
- .data          0x02000000     0xb476 build/jp/bin/segment2.mio0.o
+ .data          0x02000000     0xa260 build/jp/bin/segment2.mio0.o
                 0x02000000                _binary_build_jp_bin_segment2_mio0_start
-                0x0200b476                _binary_build_jp_bin_segment2_mio0_end
-                0x0200b480                        . = ALIGN (0x10)
- *fill*         0x0200b476        0xa 
-                0x0200b480                        _segment2_mio0SegmentEnd = (ADDR (.segment2_mio0) + SIZEOF (.segment2_mio0))
-                0x0010c480                        _segment2_mio0SegmentRomEnd = (__romPos + SIZEOF (.segment2_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.segment2_mio0))
+                0x0200a260                _binary_build_jp_bin_segment2_mio0_end
+                0x0200a260                        . = ALIGN (0x10)
+                0x0200a260                        _segment2_mio0SegmentEnd = (ADDR (.segment2_mio0) + SIZEOF (.segment2_mio0))
+                0x0010b260                        _segment2_mio0SegmentRomEnd = (__romPos + SIZEOF (.segment2_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.segment2_mio0))
                 0x04000000                        _group0_mio0SegmentStart = ADDR (.group0_mio0)
-                0x0010c480                        _group0_mio0SegmentRomStart = __romPos
+                0x0010b260                        _group0_mio0SegmentRomStart = __romPos
 
-.group0_mio0    0x04000000     0xdc10 load address 0x0010c480
+.group0_mio0    0x04000000     0xdc10 load address 0x0010b260
  build/jp/actors/group0.mio0.o(.data)
  .data          0x04000000     0xdc01 build/jp/actors/group0.mio0.o
                 0x04000000                _binary_build_jp_actors_group0_mio0_start
@@ -6824,12 +6823,12 @@ Linker script and memory map
                 0x0400dc10                        . = ALIGN (0x10)
  *fill*         0x0400dc01        0xf 
                 0x0400dc10                        _group0_mio0SegmentEnd = (ADDR (.group0_mio0) + SIZEOF (.group0_mio0))
-                0x0011a090                        _group0_mio0SegmentRomEnd = (__romPos + SIZEOF (.group0_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group0_mio0))
+                0x00118e70                        _group0_mio0SegmentRomEnd = (__romPos + SIZEOF (.group0_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group0_mio0))
                 0x17000000                        _group0_geoSegmentStart = ADDR (.group0_geo)
-                0x0011a090                        _group0_geoSegmentRomStart = __romPos
+                0x00118e70                        _group0_geoSegmentRomStart = __romPos
 
-.group0_geo     0x17000000     0x13f0 load address 0x0011a090
+.group0_geo     0x17000000     0x13f0 load address 0x00118e70
  build/jp/actors/group0_geo.o(.data)
  .data          0x17000000     0x13f0 build/jp/actors/group0_geo.o
                 0x17000000                bubble_geo
@@ -6846,12 +6845,12 @@ Linker script and memory map
                 0x170012dc                mario_geo
                 0x170013d4                RCP_TitleMario
                 0x170013f0                        _group0_geoSegmentEnd = (ADDR (.group0_geo) + SIZEOF (.group0_geo))
-                0x0011b480                        _group0_geoSegmentRomEnd = (__romPos + SIZEOF (.group0_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group0_geo))
+                0x0011a260                        _group0_geoSegmentRomEnd = (__romPos + SIZEOF (.group0_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group0_geo))
                 0x05000000                        _group1_mio0SegmentStart = ADDR (.group1_mio0)
-                0x0011b480                        _group1_mio0SegmentRomStart = __romPos
+                0x0011a260                        _group1_mio0SegmentRomStart = __romPos
 
-.group1_mio0    0x05000000     0x8070 load address 0x0011b480
+.group1_mio0    0x05000000     0x8070 load address 0x0011a260
  build/jp/actors/group1.mio0.o(.data)
  .data          0x05000000     0x806f build/jp/actors/group1.mio0.o
                 0x05000000                _binary_build_jp_actors_group1_mio0_start
@@ -6859,12 +6858,12 @@ Linker script and memory map
                 0x05008070                        . = ALIGN (0x10)
  *fill*         0x0500806f        0x1 
                 0x05008070                        _group1_mio0SegmentEnd = (ADDR (.group1_mio0) + SIZEOF (.group1_mio0))
-                0x001234f0                        _group1_mio0SegmentRomEnd = (__romPos + SIZEOF (.group1_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group1_mio0))
+                0x001222d0                        _group1_mio0SegmentRomEnd = (__romPos + SIZEOF (.group1_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group1_mio0))
                 0x0c000000                        _group1_geoSegmentStart = ADDR (.group1_geo)
-                0x001234f0                        _group1_geoSegmentRomStart = __romPos
+                0x001222d0                        _group1_geoSegmentRomStart = __romPos
 
-.group1_geo     0x0c000000      0x410 load address 0x001234f0
+.group1_geo     0x0c000000      0x410 load address 0x001222d0
  build/jp/actors/group1_geo.o(.data)
  .data          0x0c000000      0x410 build/jp/actors/group1_geo.o
                 0x0c000000                yellow_sphere_geo
@@ -6874,12 +6873,12 @@ Linker script and memory map
                 0x0c000264                bullet_bill_geo
                 0x0c00028c                heave_ho_geo
                 0x0c000410                        _group1_geoSegmentEnd = (ADDR (.group1_geo) + SIZEOF (.group1_geo))
-                0x00123900                        _group1_geoSegmentRomEnd = (__romPos + SIZEOF (.group1_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group1_geo))
+                0x001226e0                        _group1_geoSegmentRomEnd = (__romPos + SIZEOF (.group1_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group1_geo))
                 0x05000000                        _group2_mio0SegmentStart = ADDR (.group2_mio0)
-                0x00123900                        _group2_mio0SegmentRomStart = __romPos
+                0x001226e0                        _group2_mio0SegmentRomStart = __romPos
 
-.group2_mio0    0x05000000     0x1e10 load address 0x00123900
+.group2_mio0    0x05000000     0x1e10 load address 0x001226e0
  build/jp/actors/group2.mio0.o(.data)
  .data          0x05000000     0x1e0c build/jp/actors/group2.mio0.o
                 0x05000000                _binary_build_jp_actors_group2_mio0_start
@@ -6887,24 +6886,24 @@ Linker script and memory map
                 0x05001e10                        . = ALIGN (0x10)
  *fill*         0x05001e0c        0x4 
                 0x05001e10                        _group2_mio0SegmentEnd = (ADDR (.group2_mio0) + SIZEOF (.group2_mio0))
-                0x00125710                        _group2_mio0SegmentRomEnd = (__romPos + SIZEOF (.group2_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group2_mio0))
+                0x001244f0                        _group2_mio0SegmentRomEnd = (__romPos + SIZEOF (.group2_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group2_mio0))
                 0x0c000000                        _group2_geoSegmentStart = ADDR (.group2_geo)
-                0x00125710                        _group2_geoSegmentRomStart = __romPos
+                0x001244f0                        _group2_geoSegmentRomStart = __romPos
 
-.group2_geo     0x0c000000      0x2b0 load address 0x00125710
+.group2_geo     0x0c000000      0x2b0 load address 0x001244f0
  build/jp/actors/group2_geo.o(.data)
  .data          0x0c000000      0x2b0 build/jp/actors/group2_geo.o
                 0x0c000000                bully_geo
                 0x0c000120                bully_boss_geo
                 0x0c000240                blargg_geo
                 0x0c0002b0                        _group2_geoSegmentEnd = (ADDR (.group2_geo) + SIZEOF (.group2_geo))
-                0x001259c0                        _group2_geoSegmentRomEnd = (__romPos + SIZEOF (.group2_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group2_geo))
+                0x001247a0                        _group2_geoSegmentRomEnd = (__romPos + SIZEOF (.group2_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group2_geo))
                 0x05000000                        _group3_mio0SegmentStart = ADDR (.group3_mio0)
-                0x001259c0                        _group3_mio0SegmentRomStart = __romPos
+                0x001247a0                        _group3_mio0SegmentRomStart = __romPos
 
-.group3_mio0    0x05000000     0x68b0 load address 0x001259c0
+.group3_mio0    0x05000000     0x68b0 load address 0x001247a0
  build/jp/actors/group3.mio0.o(.data)
  .data          0x05000000     0x68a1 build/jp/actors/group3.mio0.o
                 0x05000000                _binary_build_jp_actors_group3_mio0_start
@@ -6912,24 +6911,24 @@ Linker script and memory map
                 0x050068b0                        . = ALIGN (0x10)
  *fill*         0x050068a1        0xf 
                 0x050068b0                        _group3_mio0SegmentEnd = (ADDR (.group3_mio0) + SIZEOF (.group3_mio0))
-                0x0012c270                        _group3_mio0SegmentRomEnd = (__romPos + SIZEOF (.group3_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group3_mio0))
+                0x0012b050                        _group3_mio0SegmentRomEnd = (__romPos + SIZEOF (.group3_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group3_mio0))
                 0x0c000000                        _group3_geoSegmentStart = ADDR (.group3_geo)
-                0x0012c270                        _group3_geoSegmentRomStart = __romPos
+                0x0012b050                        _group3_geoSegmentRomStart = __romPos
 
-.group3_geo     0x0c000000      0x340 load address 0x0012c270
+.group3_geo     0x0c000000      0x340 load address 0x0012b050
  build/jp/actors/group3_geo.o(.data)
  .data          0x0c000000      0x340 build/jp/actors/group3_geo.o
                 0x0c000000                king_bobomb_geo
                 0x0c000308                water_bomb_geo
                 0x0c000328                water_bomb_shadow_geo
                 0x0c000340                        _group3_geoSegmentEnd = (ADDR (.group3_geo) + SIZEOF (.group3_geo))
-                0x0012c5b0                        _group3_geoSegmentRomEnd = (__romPos + SIZEOF (.group3_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group3_geo))
+                0x0012b390                        _group3_geoSegmentRomEnd = (__romPos + SIZEOF (.group3_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group3_geo))
                 0x05000000                        _group4_mio0SegmentStart = ADDR (.group4_mio0)
-                0x0012c5b0                        _group4_mio0SegmentRomStart = __romPos
+                0x0012b390                        _group4_mio0SegmentRomStart = __romPos
 
-.group4_mio0    0x05000000     0xa300 load address 0x0012c5b0
+.group4_mio0    0x05000000     0xa300 load address 0x0012b390
  build/jp/actors/group4.mio0.o(.data)
  .data          0x05000000     0xa2ff build/jp/actors/group4.mio0.o
                 0x05000000                _binary_build_jp_actors_group4_mio0_start
@@ -6937,24 +6936,24 @@ Linker script and memory map
                 0x0500a300                        . = ALIGN (0x10)
  *fill*         0x0500a2ff        0x1 
                 0x0500a300                        _group4_mio0SegmentEnd = (ADDR (.group4_mio0) + SIZEOF (.group4_mio0))
-                0x001368b0                        _group4_mio0SegmentRomEnd = (__romPos + SIZEOF (.group4_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group4_mio0))
+                0x00135690                        _group4_mio0SegmentRomEnd = (__romPos + SIZEOF (.group4_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group4_mio0))
                 0x0c000000                        _group4_geoSegmentStart = ADDR (.group4_geo)
-                0x001368b0                        _group4_geoSegmentRomStart = __romPos
+                0x00135690                        _group4_geoSegmentRomStart = __romPos
 
-.group4_geo     0x0c000000      0x260 load address 0x001368b0
+.group4_geo     0x0c000000      0x260 load address 0x00135690
  build/jp/actors/group4_geo.o(.data)
  .data          0x0c000000      0x260 build/jp/actors/group4_geo.o
                 0x0c000000                clam_shell_geo
                 0x0c000068                sushi_geo
                 0x0c00010c                unagi_geo
                 0x0c000260                        _group4_geoSegmentEnd = (ADDR (.group4_geo) + SIZEOF (.group4_geo))
-                0x00136b10                        _group4_geoSegmentRomEnd = (__romPos + SIZEOF (.group4_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group4_geo))
+                0x001358f0                        _group4_geoSegmentRomEnd = (__romPos + SIZEOF (.group4_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group4_geo))
                 0x05000000                        _group5_mio0SegmentStart = ADDR (.group5_mio0)
-                0x00136b10                        _group5_mio0SegmentRomStart = __romPos
+                0x001358f0                        _group5_mio0SegmentRomStart = __romPos
 
-.group5_mio0    0x05000000     0xbce0 load address 0x00136b10
+.group5_mio0    0x05000000     0xbce0 load address 0x001358f0
  build/jp/actors/group5.mio0.o(.data)
  .data          0x05000000     0xbcd1 build/jp/actors/group5.mio0.o
                 0x05000000                _binary_build_jp_actors_group5_mio0_start
@@ -6962,12 +6961,12 @@ Linker script and memory map
                 0x0500bce0                        . = ALIGN (0x10)
  *fill*         0x0500bcd1        0xf 
                 0x0500bce0                        _group5_mio0SegmentEnd = (ADDR (.group5_mio0) + SIZEOF (.group5_mio0))
-                0x001427f0                        _group5_mio0SegmentRomEnd = (__romPos + SIZEOF (.group5_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group5_mio0))
+                0x001415d0                        _group5_mio0SegmentRomEnd = (__romPos + SIZEOF (.group5_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group5_mio0))
                 0x0c000000                        _group5_geoSegmentStart = ADDR (.group5_geo)
-                0x001427f0                        _group5_geoSegmentRomStart = __romPos
+                0x001415d0                        _group5_geoSegmentRomStart = __romPos
 
-.group5_geo     0x0c000000      0x630 load address 0x001427f0
+.group5_geo     0x0c000000      0x630 load address 0x001415d0
  build/jp/actors/group5_geo.o(.data)
  .data          0x0c000000      0x630 build/jp/actors/group5_geo.o
                 0x0c000000                klepto_geo
@@ -6977,12 +6976,12 @@ Linker script and memory map
                 0x0c0005d4                pokey_head_geo
                 0x0c000608                pokey_body_part_geo
                 0x0c000630                        _group5_geoSegmentEnd = (ADDR (.group5_geo) + SIZEOF (.group5_geo))
-                0x00142e20                        _group5_geoSegmentRomEnd = (__romPos + SIZEOF (.group5_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group5_geo))
+                0x00141c00                        _group5_geoSegmentRomEnd = (__romPos + SIZEOF (.group5_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group5_geo))
                 0x05000000                        _group6_mio0SegmentStart = ADDR (.group6_mio0)
-                0x00142e20                        _group6_mio0SegmentRomStart = __romPos
+                0x00141c00                        _group6_mio0SegmentRomStart = __romPos
 
-.group6_mio0    0x05000000     0xe110 load address 0x00142e20
+.group6_mio0    0x05000000     0xe110 load address 0x00141c00
  build/jp/actors/group6.mio0.o(.data)
  .data          0x05000000     0xe108 build/jp/actors/group6.mio0.o
                 0x05000000                _binary_build_jp_actors_group6_mio0_start
@@ -6990,24 +6989,24 @@ Linker script and memory map
                 0x0500e110                        . = ALIGN (0x10)
  *fill*         0x0500e108        0x8 
                 0x0500e110                        _group6_mio0SegmentEnd = (ADDR (.group6_mio0) + SIZEOF (.group6_mio0))
-                0x00150f30                        _group6_mio0SegmentRomEnd = (__romPos + SIZEOF (.group6_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group6_mio0))
+                0x0014fd10                        _group6_mio0SegmentRomEnd = (__romPos + SIZEOF (.group6_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group6_mio0))
                 0x0c000000                        _group6_geoSegmentStart = ADDR (.group6_geo)
-                0x00150f30                        _group6_geoSegmentRomStart = __romPos
+                0x0014fd10                        _group6_geoSegmentRomStart = __romPos
 
-.group6_geo     0x0c000000      0x390 load address 0x00150f30
+.group6_geo     0x0c000000      0x390 load address 0x0014fd10
  build/jp/actors/group6_geo.o(.data)
  .data          0x0c000000      0x390 build/jp/actors/group6_geo.o
                 0x0c000000                monty_mole_geo
                 0x0c000110                ukiki_geo
                 0x0c00036c                fwoosh_geo
                 0x0c000390                        _group6_geoSegmentEnd = (ADDR (.group6_geo) + SIZEOF (.group6_geo))
-                0x001512c0                        _group6_geoSegmentRomEnd = (__romPos + SIZEOF (.group6_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group6_geo))
+                0x001500a0                        _group6_geoSegmentRomEnd = (__romPos + SIZEOF (.group6_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group6_geo))
                 0x05000000                        _group7_mio0SegmentStart = ADDR (.group7_mio0)
-                0x001512c0                        _group7_mio0SegmentRomStart = __romPos
+                0x001500a0                        _group7_mio0SegmentRomStart = __romPos
 
-.group7_mio0    0x05000000     0x4640 load address 0x001512c0
+.group7_mio0    0x05000000     0x4640 load address 0x001500a0
  build/jp/actors/group7.mio0.o(.data)
  .data          0x05000000     0x463b build/jp/actors/group7.mio0.o
                 0x05000000                _binary_build_jp_actors_group7_mio0_start
@@ -7015,12 +7014,12 @@ Linker script and memory map
                 0x05004640                        . = ALIGN (0x10)
  *fill*         0x0500463b        0x5 
                 0x05004640                        _group7_mio0SegmentEnd = (ADDR (.group7_mio0) + SIZEOF (.group7_mio0))
-                0x00155900                        _group7_mio0SegmentRomEnd = (__romPos + SIZEOF (.group7_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group7_mio0))
+                0x001546e0                        _group7_mio0SegmentRomEnd = (__romPos + SIZEOF (.group7_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group7_mio0))
                 0x0c000000                        _group7_geoSegmentStart = ADDR (.group7_geo)
-                0x00155900                        _group7_geoSegmentRomStart = __romPos
+                0x001546e0                        _group7_geoSegmentRomStart = __romPos
 
-.group7_geo     0x0c000000      0x370 load address 0x00155900
+.group7_geo     0x0c000000      0x370 load address 0x001546e0
  build/jp/actors/group7_geo.o(.data)
  .data          0x0c000000      0x370 build/jp/actors/group7_geo.o
                 0x0c000000                spindrift_geo
@@ -7028,12 +7027,12 @@ Linker script and memory map
                 0x0c00021c                mr_blizzard_hidden_geo
                 0x0c000348                mr_blizzard_geo
                 0x0c000370                        _group7_geoSegmentEnd = (ADDR (.group7_geo) + SIZEOF (.group7_geo))
-                0x00155c70                        _group7_geoSegmentRomEnd = (__romPos + SIZEOF (.group7_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group7_geo))
+                0x00154a50                        _group7_geoSegmentRomEnd = (__romPos + SIZEOF (.group7_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group7_geo))
                 0x05000000                        _group8_mio0SegmentStart = ADDR (.group8_mio0)
-                0x00155c70                        _group8_mio0SegmentRomStart = __romPos
+                0x00154a50                        _group8_mio0SegmentRomStart = __romPos
 
-.group8_mio0    0x05000000     0x1180 load address 0x00155c70
+.group8_mio0    0x05000000     0x1180 load address 0x00154a50
  build/jp/actors/group8.mio0.o(.data)
  .data          0x05000000     0x1177 build/jp/actors/group8.mio0.o
                 0x05000000                _binary_build_jp_actors_group8_mio0_start
@@ -7041,12 +7040,12 @@ Linker script and memory map
                 0x05001180                        . = ALIGN (0x10)
  *fill*         0x05001177        0x9 
                 0x05001180                        _group8_mio0SegmentEnd = (ADDR (.group8_mio0) + SIZEOF (.group8_mio0))
-                0x00156df0                        _group8_mio0SegmentRomEnd = (__romPos + SIZEOF (.group8_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group8_mio0))
+                0x00155bd0                        _group8_mio0SegmentRomEnd = (__romPos + SIZEOF (.group8_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group8_mio0))
                 0x0c000000                        _group8_geoSegmentStart = ADDR (.group8_geo)
-                0x00156df0                        _group8_geoSegmentRomStart = __romPos
+                0x00155bd0                        _group8_geoSegmentRomStart = __romPos
 
-.group8_geo     0x0c000000       0x90 load address 0x00156df0
+.group8_geo     0x0c000000       0x90 load address 0x00155bd0
  build/jp/actors/group8_geo.o(.data)
  .data          0x0c000000       0x90 build/jp/actors/group8_geo.o
                 0x0c000000                springboard_top_geo
@@ -7054,12 +7053,12 @@ Linker script and memory map
                 0x0c000030                springboard_bottom_geo
                 0x0c000048                cap_switch_geo
                 0x0c000090                        _group8_geoSegmentEnd = (ADDR (.group8_geo) + SIZEOF (.group8_geo))
-                0x00156e80                        _group8_geoSegmentRomEnd = (__romPos + SIZEOF (.group8_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group8_geo))
+                0x00155c60                        _group8_geoSegmentRomEnd = (__romPos + SIZEOF (.group8_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group8_geo))
                 0x05000000                        _group9_mio0SegmentStart = ADDR (.group9_mio0)
-                0x00156e80                        _group9_mio0SegmentRomStart = __romPos
+                0x00155c60                        _group9_mio0SegmentRomStart = __romPos
 
-.group9_mio0    0x05000000     0x6420 load address 0x00156e80
+.group9_mio0    0x05000000     0x6420 load address 0x00155c60
  build/jp/actors/group9.mio0.o(.data)
  .data          0x05000000     0x6414 build/jp/actors/group9.mio0.o
                 0x05000000                _binary_build_jp_actors_group9_mio0_start
@@ -7067,12 +7066,12 @@ Linker script and memory map
                 0x05006420                        . = ALIGN (0x10)
  *fill*         0x05006414        0xc 
                 0x05006420                        _group9_mio0SegmentEnd = (ADDR (.group9_mio0) + SIZEOF (.group9_mio0))
-                0x0015d2a0                        _group9_mio0SegmentRomEnd = (__romPos + SIZEOF (.group9_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group9_mio0))
+                0x0015c080                        _group9_mio0SegmentRomEnd = (__romPos + SIZEOF (.group9_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group9_mio0))
                 0x0c000000                        _group9_geoSegmentStart = ADDR (.group9_geo)
-                0x0015d2a0                        _group9_geoSegmentRomStart = __romPos
+                0x0015c080                        _group9_geoSegmentRomStart = __romPos
 
-.group9_geo     0x0c000000      0x2b0 load address 0x0015d2a0
+.group9_geo     0x0c000000      0x2b0 load address 0x0015c080
  build/jp/actors/group9_geo.o(.data)
  .data          0x0c000000      0x2b0 build/jp/actors/group9_geo.o
                 0x0c000000                bookend_part_geo
@@ -7083,12 +7082,12 @@ Linker script and memory map
                 0x0c000224                boo_geo
                 0x0c000274                haunted_cage_geo
                 0x0c0002b0                        _group9_geoSegmentEnd = (ADDR (.group9_geo) + SIZEOF (.group9_geo))
-                0x0015d550                        _group9_geoSegmentRomEnd = (__romPos + SIZEOF (.group9_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group9_geo))
+                0x0015c330                        _group9_geoSegmentRomEnd = (__romPos + SIZEOF (.group9_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group9_geo))
                 0x05000000                        _group10_mio0SegmentStart = ADDR (.group10_mio0)
-                0x0015d550                        _group10_mio0SegmentRomStart = __romPos
+                0x0015c330                        _group10_mio0SegmentRomStart = __romPos
 
-.group10_mio0   0x05000000    0x12ca0 load address 0x0015d550
+.group10_mio0   0x05000000    0x12ca0 load address 0x0015c330
  build/jp/actors/group10.mio0.o(.data)
  .data          0x05000000    0x12c99 build/jp/actors/group10.mio0.o
                 0x05000000                _binary_build_jp_actors_group10_mio0_start
@@ -7096,12 +7095,12 @@ Linker script and memory map
                 0x05012ca0                        . = ALIGN (0x10)
  *fill*         0x05012c99        0x7 
                 0x05012ca0                        _group10_mio0SegmentEnd = (ADDR (.group10_mio0) + SIZEOF (.group10_mio0))
-                0x001701f0                        _group10_mio0SegmentRomEnd = (__romPos + SIZEOF (.group10_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group10_mio0))
+                0x0016efd0                        _group10_mio0SegmentRomEnd = (__romPos + SIZEOF (.group10_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group10_mio0))
                 0x0c000000                        _group10_geoSegmentStart = ADDR (.group10_geo)
-                0x001701f0                        _group10_geoSegmentRomStart = __romPos
+                0x0016efd0                        _group10_geoSegmentRomStart = __romPos
 
-.group10_geo    0x0c000000      0x670 load address 0x001701f0
+.group10_geo    0x0c000000      0x670 load address 0x0016efd0
  build/jp/actors/group10_geo.o(.data)
  .data          0x0c000000      0x670 build/jp/actors/group10_geo.o
                 0x0c000000                birds_geo
@@ -7110,12 +7109,12 @@ Linker script and memory map
                 0x0c000410                peach_geo
                 0x0c000468                yoshi_geo
                 0x0c000670                        _group10_geoSegmentEnd = (ADDR (.group10_geo) + SIZEOF (.group10_geo))
-                0x00170860                        _group10_geoSegmentRomEnd = (__romPos + SIZEOF (.group10_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group10_geo))
+                0x0016f640                        _group10_geoSegmentRomEnd = (__romPos + SIZEOF (.group10_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group10_geo))
                 0x05000000                        _group11_mio0SegmentStart = ADDR (.group11_mio0)
-                0x00170860                        _group11_mio0SegmentRomStart = __romPos
+                0x0016f640                        _group11_mio0SegmentRomStart = __romPos
 
-.group11_mio0   0x05000000     0x73f0 load address 0x00170860
+.group11_mio0   0x05000000     0x73f0 load address 0x0016f640
  build/jp/actors/group11.mio0.o(.data)
  .data          0x05000000     0x73ea build/jp/actors/group11.mio0.o
                 0x05000000                _binary_build_jp_actors_group11_mio0_start
@@ -7123,12 +7122,12 @@ Linker script and memory map
                 0x050073f0                        . = ALIGN (0x10)
  *fill*         0x050073ea        0x6 
                 0x050073f0                        _group11_mio0SegmentEnd = (ADDR (.group11_mio0) + SIZEOF (.group11_mio0))
-                0x00177c50                        _group11_mio0SegmentRomEnd = (__romPos + SIZEOF (.group11_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group11_mio0))
+                0x00176a30                        _group11_mio0SegmentRomEnd = (__romPos + SIZEOF (.group11_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group11_mio0))
                 0x0c000000                        _group11_geoSegmentStart = ADDR (.group11_geo)
-                0x00177c50                        _group11_geoSegmentRomStart = __romPos
+                0x00176a30                        _group11_geoSegmentRomStart = __romPos
 
-.group11_geo    0x0c000000      0x4a0 load address 0x00177c50
+.group11_geo    0x0c000000      0x4a0 load address 0x00176a30
  build/jp/actors/group11_geo.o(.data)
  .data          0x0c000000      0x4a0 build/jp/actors/group11_geo.o
                 0x0c000000                bubba_geo
@@ -7137,12 +7136,12 @@ Linker script and memory map
                 0x0c000290                spiny_ball_geo
                 0x0c000328                spiny_geo
                 0x0c0004a0                        _group11_geoSegmentEnd = (ADDR (.group11_geo) + SIZEOF (.group11_geo))
-                0x001780f0                        _group11_geoSegmentRomEnd = (__romPos + SIZEOF (.group11_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group11_geo))
+                0x00176ed0                        _group11_geoSegmentRomEnd = (__romPos + SIZEOF (.group11_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group11_geo))
                 0x06000000                        _group12_mio0SegmentStart = ADDR (.group12_mio0)
-                0x001780f0                        _group12_mio0SegmentRomStart = __romPos
+                0x00176ed0                        _group12_mio0SegmentRomStart = __romPos
 
-.group12_mio0   0x06000000    0x30bf0 load address 0x001780f0
+.group12_mio0   0x06000000    0x30bf0 load address 0x00176ed0
  build/jp/actors/group12.mio0.o(.data)
  .data          0x06000000    0x30beb build/jp/actors/group12.mio0.o
                 0x06000000                _binary_build_jp_actors_group12_mio0_start
@@ -7150,12 +7149,12 @@ Linker script and memory map
                 0x06030bf0                        . = ALIGN (0x10)
  *fill*         0x06030beb        0x5 
                 0x06030bf0                        _group12_mio0SegmentEnd = (ADDR (.group12_mio0) + SIZEOF (.group12_mio0))
-                0x001a8ce0                        _group12_mio0SegmentRomEnd = (__romPos + SIZEOF (.group12_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group12_mio0))
+                0x001a7ac0                        _group12_mio0SegmentRomEnd = (__romPos + SIZEOF (.group12_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group12_mio0))
                 0x0d000000                        _group12_geoSegmentStart = ADDR (.group12_geo)
-                0x001a8ce0                        _group12_geoSegmentRomStart = __romPos
+                0x001a7ac0                        _group12_geoSegmentRomStart = __romPos
 
-.group12_geo    0x0d000000      0xc10 load address 0x001a8ce0
+.group12_geo    0x0d000000      0xc10 load address 0x001a7ac0
  build/jp/actors/group12_geo.o(.data)
  .data          0x0d000000      0xc10 build/jp/actors/group12_geo.o
                 0x0d000000                bowser_flames_geo
@@ -7169,12 +7168,12 @@ Linker script and memory map
                 0x0d000b78                bowser_bomb_geo
                 0x0d000bb8                bowser_impact_smoke_geo
                 0x0d000c10                        _group12_geoSegmentEnd = (ADDR (.group12_geo) + SIZEOF (.group12_geo))
-                0x001a98f0                        _group12_geoSegmentRomEnd = (__romPos + SIZEOF (.group12_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group12_geo))
+                0x001a86d0                        _group12_geoSegmentRomEnd = (__romPos + SIZEOF (.group12_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group12_geo))
                 0x06000000                        _group13_mio0SegmentStart = ADDR (.group13_mio0)
-                0x001a98f0                        _group13_mio0SegmentRomStart = __romPos
+                0x001a86d0                        _group13_mio0SegmentRomStart = __romPos
 
-.group13_mio0   0x06000000     0xa0f0 load address 0x001a98f0
+.group13_mio0   0x06000000     0xa0f0 load address 0x001a86d0
  build/jp/actors/group13.mio0.o(.data)
  .data          0x06000000     0xa0e4 build/jp/actors/group13.mio0.o
                 0x06000000                _binary_build_jp_actors_group13_mio0_start
@@ -7182,12 +7181,12 @@ Linker script and memory map
                 0x0600a0f0                        . = ALIGN (0x10)
  *fill*         0x0600a0e4        0xc 
                 0x0600a0f0                        _group13_mio0SegmentEnd = (ADDR (.group13_mio0) + SIZEOF (.group13_mio0))
-                0x001b39e0                        _group13_mio0SegmentRomEnd = (__romPos + SIZEOF (.group13_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group13_mio0))
+                0x001b27c0                        _group13_mio0SegmentRomEnd = (__romPos + SIZEOF (.group13_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group13_mio0))
                 0x0d000000                        _group13_geoSegmentStart = ADDR (.group13_geo)
-                0x001b39e0                        _group13_geoSegmentRomStart = __romPos
+                0x001b27c0                        _group13_geoSegmentRomStart = __romPos
 
-.group13_geo    0x0d000000      0x480 load address 0x001b39e0
+.group13_geo    0x0d000000      0x480 load address 0x001b27c0
  build/jp/actors/group13_geo.o(.data)
  .data          0x0d000000      0x480 build/jp/actors/group13_geo.o
                 0x0d000000                skeeter_geo
@@ -7199,12 +7198,12 @@ Linker script and memory map
                 0x0d000450                treasure_chest_base_geo
                 0x0d000468                treasure_chest_lid_geo
                 0x0d000480                        _group13_geoSegmentEnd = (ADDR (.group13_geo) + SIZEOF (.group13_geo))
-                0x001b3e60                        _group13_geoSegmentRomEnd = (__romPos + SIZEOF (.group13_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group13_geo))
+                0x001b2c40                        _group13_geoSegmentRomEnd = (__romPos + SIZEOF (.group13_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group13_geo))
                 0x06000000                        _group14_mio0SegmentStart = ADDR (.group14_mio0)
-                0x001b3e60                        _group14_mio0SegmentRomStart = __romPos
+                0x001b2c40                        _group14_mio0SegmentRomStart = __romPos
 
-.group14_mio0   0x06000000    0x13510 load address 0x001b3e60
+.group14_mio0   0x06000000    0x13510 load address 0x001b2c40
  build/jp/actors/group14.mio0.o(.data)
  .data          0x06000000    0x13506 build/jp/actors/group14.mio0.o
                 0x06000000                _binary_build_jp_actors_group14_mio0_start
@@ -7212,12 +7211,12 @@ Linker script and memory map
                 0x06013510                        . = ALIGN (0x10)
  *fill*         0x06013506        0xa 
                 0x06013510                        _group14_mio0SegmentEnd = (ADDR (.group14_mio0) + SIZEOF (.group14_mio0))
-                0x001c7370                        _group14_mio0SegmentRomEnd = (__romPos + SIZEOF (.group14_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group14_mio0))
+                0x001c6150                        _group14_mio0SegmentRomEnd = (__romPos + SIZEOF (.group14_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group14_mio0))
                 0x0d000000                        _group14_geoSegmentStart = ADDR (.group14_geo)
-                0x001c7370                        _group14_geoSegmentRomStart = __romPos
+                0x001c6150                        _group14_geoSegmentRomStart = __romPos
 
-.group14_geo    0x0d000000      0x660 load address 0x001c7370
+.group14_geo    0x0d000000      0x660 load address 0x001c6150
  build/jp/actors/group14_geo.o(.data)
  .data          0x0d000000      0x660 build/jp/actors/group14_geo.o
                 0x0d000000                koopa_flag_geo
@@ -7229,12 +7228,12 @@ Linker script and memory map
                 0x0d0005b0                metallic_ball_geo
                 0x0d0005cc                chain_chomp_geo
                 0x0d000660                        _group14_geoSegmentEnd = (ADDR (.group14_geo) + SIZEOF (.group14_geo))
-                0x001c79d0                        _group14_geoSegmentRomEnd = (__romPos + SIZEOF (.group14_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group14_geo))
+                0x001c67b0                        _group14_geoSegmentRomEnd = (__romPos + SIZEOF (.group14_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group14_geo))
                 0x06000000                        _group15_mio0SegmentStart = ADDR (.group15_mio0)
-                0x001c79d0                        _group15_mio0SegmentRomStart = __romPos
+                0x001c67b0                        _group15_mio0SegmentRomStart = __romPos
 
-.group15_mio0   0x06000000     0xc8c0 load address 0x001c79d0
+.group15_mio0   0x06000000     0xc8c0 load address 0x001c67b0
  build/jp/actors/group15.mio0.o(.data)
  .data          0x06000000     0xc8b7 build/jp/actors/group15.mio0.o
                 0x06000000                _binary_build_jp_actors_group15_mio0_start
@@ -7242,12 +7241,12 @@ Linker script and memory map
                 0x0600c8c0                        . = ALIGN (0x10)
  *fill*         0x0600c8b7        0x9 
                 0x0600c8c0                        _group15_mio0SegmentEnd = (ADDR (.group15_mio0) + SIZEOF (.group15_mio0))
-                0x001d4290                        _group15_mio0SegmentRomEnd = (__romPos + SIZEOF (.group15_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group15_mio0))
+                0x001d3070                        _group15_mio0SegmentRomEnd = (__romPos + SIZEOF (.group15_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group15_mio0))
                 0x0d000000                        _group15_geoSegmentStart = ADDR (.group15_geo)
-                0x001d4290                        _group15_geoSegmentRomStart = __romPos
+                0x001d3070                        _group15_geoSegmentRomStart = __romPos
 
-.group15_geo    0x0d000000      0x600 load address 0x001d4290
+.group15_geo    0x0d000000      0x600 load address 0x001d3070
  build/jp/actors/group15_geo.o(.data)
  .data          0x0d000000      0x600 build/jp/actors/group15_geo.o
                 0x0d000000                lakitu_geo
@@ -7257,12 +7256,12 @@ Linker script and memory map
                 0x0d000448                mips_geo
                 0x0d0005b0                boo_castle_geo
                 0x0d000600                        _group15_geoSegmentEnd = (ADDR (.group15_geo) + SIZEOF (.group15_geo))
-                0x001d4890                        _group15_geoSegmentRomEnd = (__romPos + SIZEOF (.group15_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group15_geo))
+                0x001d3670                        _group15_geoSegmentRomEnd = (__romPos + SIZEOF (.group15_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group15_geo))
                 0x06000000                        _group16_mio0SegmentStart = ADDR (.group16_mio0)
-                0x001d4890                        _group16_mio0SegmentRomStart = __romPos
+                0x001d3670                        _group16_mio0SegmentRomStart = __romPos
 
-.group16_mio0   0x06000000     0x2ba0 load address 0x001d4890
+.group16_mio0   0x06000000     0x2ba0 load address 0x001d3670
  build/jp/actors/group16.mio0.o(.data)
  .data          0x06000000     0x2b98 build/jp/actors/group16.mio0.o
                 0x06000000                _binary_build_jp_actors_group16_mio0_start
@@ -7270,24 +7269,24 @@ Linker script and memory map
                 0x06002ba0                        . = ALIGN (0x10)
  *fill*         0x06002b98        0x8 
                 0x06002ba0                        _group16_mio0SegmentEnd = (ADDR (.group16_mio0) + SIZEOF (.group16_mio0))
-                0x001d7430                        _group16_mio0SegmentRomEnd = (__romPos + SIZEOF (.group16_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group16_mio0))
+                0x001d6210                        _group16_mio0SegmentRomEnd = (__romPos + SIZEOF (.group16_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group16_mio0))
                 0x0d000000                        _group16_geoSegmentStart = ADDR (.group16_geo)
-                0x001d7430                        _group16_geoSegmentRomStart = __romPos
+                0x001d6210                        _group16_geoSegmentRomStart = __romPos
 
-.group16_geo    0x0d000000      0x150 load address 0x001d7430
+.group16_geo    0x0d000000      0x150 load address 0x001d6210
  build/jp/actors/group16_geo.o(.data)
  .data          0x0d000000      0x150 build/jp/actors/group16_geo.o
                 0x0d000000                moneybag_geo_000000
                 0x0d000078                moneybag_geo_000078
                 0x0d0000f0                moneybag_geo
                 0x0d000150                        _group16_geoSegmentEnd = (ADDR (.group16_geo) + SIZEOF (.group16_geo))
-                0x001d7580                        _group16_geoSegmentRomEnd = (__romPos + SIZEOF (.group16_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group16_geo))
+                0x001d6360                        _group16_geoSegmentRomEnd = (__romPos + SIZEOF (.group16_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group16_geo))
                 0x06000000                        _group17_mio0SegmentStart = ADDR (.group17_mio0)
-                0x001d7580                        _group17_mio0SegmentRomStart = __romPos
+                0x001d6360                        _group17_mio0SegmentRomStart = __romPos
 
-.group17_mio0   0x06000000     0x9c50 load address 0x001d7580
+.group17_mio0   0x06000000     0x9c50 load address 0x001d6360
  build/jp/actors/group17.mio0.o(.data)
  .data          0x06000000     0x9c4b build/jp/actors/group17.mio0.o
                 0x06000000                _binary_build_jp_actors_group17_mio0_start
@@ -7295,12 +7294,12 @@ Linker script and memory map
                 0x06009c50                        . = ALIGN (0x10)
  *fill*         0x06009c4b        0x5 
                 0x06009c50                        _group17_mio0SegmentEnd = (ADDR (.group17_mio0) + SIZEOF (.group17_mio0))
-                0x001e11d0                        _group17_mio0SegmentRomEnd = (__romPos + SIZEOF (.group17_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group17_mio0))
+                0x001dffb0                        _group17_mio0SegmentRomEnd = (__romPos + SIZEOF (.group17_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group17_mio0))
                 0x0d000000                        _group17_geoSegmentStart = ADDR (.group17_geo)
-                0x001e11d0                        _group17_geoSegmentRomStart = __romPos
+                0x001dffb0                        _group17_geoSegmentRomStart = __romPos
 
-.group17_geo    0x0d000000      0x6d0 load address 0x001e11d0
+.group17_geo    0x0d000000      0x6d0 load address 0x001dffb0
  build/jp/actors/group17_geo.o(.data)
  .data          0x0d000000      0x6d0 build/jp/actors/group17_geo.o
                 0x0d000000                mr_i_geo
@@ -7310,12 +7309,12 @@ Linker script and memory map
                 0x0d000230                dorrie_geo
                 0x0d000394                scuttlebug_geo
                 0x0d0006d0                        _group17_geoSegmentEnd = (ADDR (.group17_geo) + SIZEOF (.group17_geo))
-                0x001e18a0                        _group17_geoSegmentRomEnd = (__romPos + SIZEOF (.group17_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.group17_geo))
+                0x001e0680                        _group17_geoSegmentRomEnd = (__romPos + SIZEOF (.group17_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.group17_geo))
                 0x08000000                        _common0_mio0SegmentStart = ADDR (.common0_mio0)
-                0x001e18a0                        _common0_mio0SegmentRomStart = __romPos
+                0x001e0680                        _common0_mio0SegmentRomStart = __romPos
 
-.common0_mio0   0x08000000     0xe6d0 load address 0x001e18a0
+.common0_mio0   0x08000000     0xe6d0 load address 0x001e0680
  build/jp/actors/common0.mio0.o(.data)
  .data          0x08000000     0xe6c4 build/jp/actors/common0.mio0.o
                 0x08000000                _binary_build_jp_actors_common0_mio0_start
@@ -7323,12 +7322,12 @@ Linker script and memory map
                 0x0800e6d0                        . = ALIGN (0x10)
  *fill*         0x0800e6c4        0xc 
                 0x0800e6d0                        _common0_mio0SegmentEnd = (ADDR (.common0_mio0) + SIZEOF (.common0_mio0))
-                0x001eff70                        _common0_mio0SegmentRomEnd = (__romPos + SIZEOF (.common0_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.common0_mio0))
+                0x001eed50                        _common0_mio0SegmentRomEnd = (__romPos + SIZEOF (.common0_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.common0_mio0))
                 0x0f000000                        _common0_geoSegmentStart = ADDR (.common0_geo)
-                0x001eff70                        _common0_geoSegmentRomStart = __romPos
+                0x001eed50                        _common0_geoSegmentRomStart = __romPos
 
-.common0_geo    0x0f000000      0xb40 load address 0x001eff70
+.common0_geo    0x0f000000      0xb40 load address 0x001eed50
  build/jp/actors/common0_geo.o(.data)
  .data          0x0f000000      0xb40 build/jp/actors/common0_geo.o
                 0x0f000000                blue_coin_switch_geo
@@ -7355,12 +7354,12 @@ Linker script and memory map
                 0x0f000adc                koopa_shell2_geo
                 0x0f000b08                koopa_shell3_geo
                 0x0f000b40                        _common0_geoSegmentEnd = (ADDR (.common0_geo) + SIZEOF (.common0_geo))
-                0x001f0ab0                        _common0_geoSegmentRomEnd = (__romPos + SIZEOF (.common0_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.common0_geo))
+                0x001ef890                        _common0_geoSegmentRomEnd = (__romPos + SIZEOF (.common0_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.common0_geo))
                 0x03000000                        _common1_mio0SegmentStart = ADDR (.common1_mio0)
-                0x001f0ab0                        _common1_mio0SegmentRomStart = __romPos
+                0x001ef890                        _common1_mio0SegmentRomStart = __romPos
 
-.common1_mio0   0x03000000    0x1d070 load address 0x001f0ab0
+.common1_mio0   0x03000000    0x1d070 load address 0x001ef890
  build/jp/actors/common1.mio0.o(.data)
  .data          0x03000000    0x1d061 build/jp/actors/common1.mio0.o
                 0x03000000                _binary_build_jp_actors_common1_mio0_start
@@ -7368,12 +7367,12 @@ Linker script and memory map
                 0x0301d070                        . = ALIGN (0x10)
  *fill*         0x0301d061        0xf 
                 0x0301d070                        _common1_mio0SegmentEnd = (ADDR (.common1_mio0) + SIZEOF (.common1_mio0))
-                0x0020db20                        _common1_mio0SegmentRomEnd = (__romPos + SIZEOF (.common1_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.common1_mio0))
+                0x0020c900                        _common1_mio0SegmentRomEnd = (__romPos + SIZEOF (.common1_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.common1_mio0))
                 0x16000000                        _common1_geoSegmentStart = ADDR (.common1_geo)
-                0x0020db20                        _common1_geoSegmentRomStart = __romPos
+                0x0020c900                        _common1_geoSegmentRomStart = __romPos
 
-.common1_geo    0x16000000     0x1130 load address 0x0020db20
+.common1_geo    0x16000000     0x1130 load address 0x0020c900
  build/jp/actors/common1_geo.o(.data)
  .data          0x16000000     0x1130 build/jp/actors/common1_geo.o
                 0x16000000                mist_geo
@@ -7425,12 +7424,12 @@ Linker script and memory map
                 0x160010fc                spiky_tree1_geo
                 0x16001114                palm_tree_geo
                 0x16001130                        _common1_geoSegmentEnd = (ADDR (.common1_geo) + SIZEOF (.common1_geo))
-                0x0020ec50                        _common1_geoSegmentRomEnd = (__romPos + SIZEOF (.common1_geo))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.common1_geo))
+                0x0020da30                        _common1_geoSegmentRomEnd = (__romPos + SIZEOF (.common1_geo))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.common1_geo))
                 0x13000000                        _behaviorSegmentStart = ADDR (.behavior)
-                0x0020ec50                        _behaviorSegmentRomStart = __romPos
+                0x0020da30                        _behaviorSegmentRomStart = __romPos
 
-.behavior       0x13000000     0x5670 load address 0x0020ec50
+.behavior       0x13000000     0x5670 load address 0x0020da30
  build/jp/data/behavior_data.o(.data)
  .data          0x13000000     0x5670 build/jp/data/behavior_data.o
                 0x13000000                bhvStarDoor
@@ -7966,12 +7965,12 @@ Linker script and memory map
                 0x13005644                bhvEndBirds2
                 0x13005660                bhvIntroScene
                 0x13005670                        _behaviorSegmentEnd = (ADDR (.behavior) + SIZEOF (.behavior))
-                0x002142c0                        _behaviorSegmentRomEnd = (__romPos + SIZEOF (.behavior))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.behavior))
+                0x002130a0                        _behaviorSegmentRomEnd = (__romPos + SIZEOF (.behavior))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.behavior))
                 0x807ae000                        _goddardSegmentStart = ADDR (.goddard)
-                0x002142c0                        _goddardSegmentRomStart = __romPos
+                0x002130a0                        _goddardSegmentRomStart = __romPos
 
-.goddard        0x807ae000    0x4a710 load address 0x002142c0
+.goddard        0x807ae000    0x4a710 load address 0x002130a0
  build/jp/src/menu/title_screen.o(.text)
  .text          0x807ae000      0x5d0 build/jp/src/menu/title_screen.o
                 0x807ae000                run_level_id_or_demo
@@ -8756,12 +8755,12 @@ Linker script and memory map
  build/jp/libgoddard.a:renderer.o(.rodata*)
  .rodata        0x807f7b60      0xbb0 build/jp/libgoddard.a(renderer.o)
                 0x807f8710                        _goddardSegmentEnd = (ADDR (.goddard) + SIZEOF (.goddard))
-                0x0025e9d0                        _goddardSegmentRomEnd = (__romPos + SIZEOF (.goddard))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.goddard))
+                0x0025d7b0                        _goddardSegmentRomEnd = (__romPos + SIZEOF (.goddard))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.goddard))
                 0x807f8710                        _goddardSegmentNoloadStart = ADDR (.goddard.noload)
 
 .goddard.noload
-                0x807f8710     0x5150 load address 0x0025e9d0
+                0x807f8710     0x5150 load address 0x0025d7b0
  build/jp/src/menu/intro_geo.o(.bss*)
  .bss           0x807f8710       0x10 build/jp/src/menu/intro_geo.o
  build/jp/src/menu/file_select.o(.bss*)
@@ -8836,9 +8835,9 @@ Linker script and memory map
  build/jp/libgoddard.a:*.o(.bss*)
                 0x807fd860                        _goddardSegmentNoloadEnd = (ADDR (.goddard.noload) + SIZEOF (.goddard.noload))
                 0x14000000                        _introSegmentStart = ADDR (.intro)
-                0x0025e9d0                        _introSegmentRomStart = __romPos
+                0x0025d7b0                        _introSegmentRomStart = __romPos
 
-.intro          0x14000000      0x500 load address 0x0025e9d0
+.intro          0x14000000      0x500 load address 0x0025d7b0
  build/jp/levels/intro/script.o(.data)
  .data          0x14000000      0x2d0 build/jp/levels/intro/script.o
                 0x14000000                level_intro_splash_screen
@@ -8857,13 +8856,13 @@ Linker script and memory map
                 0x140003b8                intro_geo_mario_head_dizzy
                 0x14000414                intro_geo_000414
                 0x14000500                        _introSegmentEnd = (ADDR (.intro) + SIZEOF (.intro))
-                0x0025eed0                        _introSegmentRomEnd = (__romPos + SIZEOF (.intro))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.intro))
+                0x0025dcb0                        _introSegmentRomEnd = (__romPos + SIZEOF (.intro))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.intro))
                 0x07000000                        _intro_segment_7SegmentStart = ADDR (.intro_segment_7)
-                0x0025eed0                        _intro_segment_7SegmentRomStart = __romPos
+                0x0025dcb0                        _intro_segment_7SegmentRomStart = __romPos
 
 .intro_segment_7
-                0x07000000     0x2a20 load address 0x0025eed0
+                0x07000000     0x2a20 load address 0x0025dcb0
  build/jp/levels/intro/leveldata.mio0.o(.data)
  .data          0x07000000     0x2a18 build/jp/levels/intro/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_intro_leveldata_mio0_start
@@ -8871,13 +8870,13 @@ Linker script and memory map
                 0x07002a20                        . = ALIGN (0x10)
  *fill*         0x07002a18        0x8 
                 0x07002a20                        _intro_segment_7SegmentEnd = (ADDR (.intro_segment_7) + SIZEOF (.intro_segment_7))
-                0x002618f0                        _intro_segment_7SegmentRomEnd = (__romPos + SIZEOF (.intro_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.intro_segment_7))
+                0x002606d0                        _intro_segment_7SegmentRomEnd = (__romPos + SIZEOF (.intro_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.intro_segment_7))
                 0x07000000                        _debug_level_select_mio0SegmentStart = ADDR (.debug_level_select_mio0)
-                0x002618f0                        _debug_level_select_mio0SegmentRomStart = __romPos
+                0x002606d0                        _debug_level_select_mio0SegmentRomStart = __romPos
 
 .debug_level_select_mio0
-                0x07000000     0x1360 load address 0x002618f0
+                0x07000000     0x1360 load address 0x002606d0
  build/jp/bin/debug_level_select.mio0.o(.data)
  .data          0x07000000     0x1355 build/jp/bin/debug_level_select.mio0.o
                 0x07000000                _binary_build_jp_bin_debug_level_select_mio0_start
@@ -8885,13 +8884,13 @@ Linker script and memory map
                 0x07001360                        . = ALIGN (0x10)
  *fill*         0x07001355        0xb 
                 0x07001360                        _debug_level_select_mio0SegmentEnd = (ADDR (.debug_level_select_mio0) + SIZEOF (.debug_level_select_mio0))
-                0x00262c50                        _debug_level_select_mio0SegmentRomEnd = (__romPos + SIZEOF (.debug_level_select_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.debug_level_select_mio0))
+                0x00261a30                        _debug_level_select_mio0SegmentRomEnd = (__romPos + SIZEOF (.debug_level_select_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.debug_level_select_mio0))
                 0x0a000000                        _title_screen_bg_mio0SegmentStart = ADDR (.title_screen_bg_mio0)
-                0x00262c50                        _title_screen_bg_mio0SegmentRomStart = __romPos
+                0x00261a30                        _title_screen_bg_mio0SegmentRomStart = __romPos
 
 .title_screen_bg_mio0
-                0x0a000000     0x30e0 load address 0x00262c50
+                0x0a000000     0x30e0 load address 0x00261a30
  build/jp/bin/title_screen_bg.mio0.o(.data)
  .data          0x0a000000     0x30de build/jp/bin/title_screen_bg.mio0.o
                 0x0a000000                _binary_build_jp_bin_title_screen_bg_mio0_start
@@ -8899,12 +8898,12 @@ Linker script and memory map
                 0x0a0030e0                        . = ALIGN (0x10)
  *fill*         0x0a0030de        0x2 
                 0x0a0030e0                        _title_screen_bg_mio0SegmentEnd = (ADDR (.title_screen_bg_mio0) + SIZEOF (.title_screen_bg_mio0))
-                0x00265d30                        _title_screen_bg_mio0SegmentRomEnd = (__romPos + SIZEOF (.title_screen_bg_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.title_screen_bg_mio0))
+                0x00264b10                        _title_screen_bg_mio0SegmentRomEnd = (__romPos + SIZEOF (.title_screen_bg_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.title_screen_bg_mio0))
                 0x04000000                        _gd_dynlistsSegmentStart = ADDR (.gd_dynlists)
-                0x00265d30                        _gd_dynlistsSegmentRomStart = __romPos
+                0x00264b10                        _gd_dynlistsSegmentRomStart = __romPos
 
-.gd_dynlists    0x04000000    0x32780 load address 0x00265d30
+.gd_dynlists    0x04000000    0x32780 load address 0x00264b10
  build/jp/libgoddard.a:dynlist_test_cube.o(.data)
  .data          0x04000000      0x650 build/jp/libgoddard.a(dynlist_test_cube.o)
                 0x04000000                dynlist_test_cube
@@ -8972,13 +8971,13 @@ Linker script and memory map
  build/jp/libgoddard.a:*.o(.data)
  build/jp/libgoddard.a:*.o(.rodata)
                 0x04032780                        _gd_dynlistsSegmentEnd = (ADDR (.gd_dynlists) + SIZEOF (.gd_dynlists))
-                0x002984b0                        _gd_dynlistsSegmentRomEnd = (__romPos + SIZEOF (.gd_dynlists))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.gd_dynlists))
-                0x002984b0                        gMainLevels = __romPos
+                0x00297290                        _gd_dynlistsSegmentRomEnd = (__romPos + SIZEOF (.gd_dynlists))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.gd_dynlists))
+                0x00297290                        gMainLevels = __romPos
                 0x14000000                        _menuSegmentStart = ADDR (.menu)
-                0x002984b0                        _menuSegmentRomStart = __romPos
+                0x00297290                        _menuSegmentRomStart = __romPos
 
-.menu           0x14000000      0x490 load address 0x002984b0
+.menu           0x14000000      0x490 load address 0x00297290
  build/jp/levels/menu/script.o(.data)
  .data          0x14000000      0x1d0 build/jp/levels/menu/script.o
                 0x14000000                level_main_menu_entry_1
@@ -8998,13 +8997,13 @@ Linker script and memory map
                 0x14000380                geo_menu_file_select_strings_and_menu_cursor
                 0x14000408                geo_menu_act_selector_strings
                 0x14000490                        _menuSegmentEnd = (ADDR (.menu) + SIZEOF (.menu))
-                0x00298940                        _menuSegmentRomEnd = (__romPos + SIZEOF (.menu))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.menu))
+                0x00297720                        _menuSegmentRomEnd = (__romPos + SIZEOF (.menu))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.menu))
                 0x07000000                        _menu_segment_7SegmentStart = ADDR (.menu_segment_7)
-                0x00298940                        _menu_segment_7SegmentRomStart = __romPos
+                0x00297720                        _menu_segment_7SegmentRomStart = __romPos
 
 .menu_segment_7
-                0x07000000     0x5b10 load address 0x00298940
+                0x07000000     0x5b10 load address 0x00297720
  build/jp/levels/menu/leveldata.mio0.o(.data)
  .data          0x07000000     0x5b01 build/jp/levels/menu/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_menu_leveldata_mio0_start
@@ -9012,12 +9011,12 @@ Linker script and memory map
                 0x07005b10                        . = ALIGN (0x10)
  *fill*         0x07005b01        0xf 
                 0x07005b10                        _menu_segment_7SegmentEnd = (ADDR (.menu_segment_7) + SIZEOF (.menu_segment_7))
-                0x0029e450                        _menu_segment_7SegmentRomEnd = (__romPos + SIZEOF (.menu_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.menu_segment_7))
+                0x0029d230                        _menu_segment_7SegmentRomEnd = (__romPos + SIZEOF (.menu_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.menu_segment_7))
                 0x15000000                        _scriptsSegmentStart = ADDR (.scripts)
-                0x0029e450                        _scriptsSegmentRomStart = __romPos
+                0x0029d230                        _scriptsSegmentRomStart = __romPos
 
-.scripts        0x15000000      0xa20 load address 0x0029e450
+.scripts        0x15000000      0xa20 load address 0x0029d230
  build/jp/levels/scripts.o(.data)
  .data          0x15000000      0xa20 build/jp/levels/scripts.o
                 0x15000000                level_main_scripts_entry
@@ -9040,13 +9039,13 @@ Linker script and memory map
                 0x150009c8                script_func_global_17
                 0x150009e4                script_func_global_18
                 0x15000a20                        _scriptsSegmentEnd = (ADDR (.scripts) + SIZEOF (.scripts))
-                0x0029ee70                        _scriptsSegmentRomEnd = (__romPos + SIZEOF (.scripts))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.scripts))
+                0x0029dc50                        _scriptsSegmentRomEnd = (__romPos + SIZEOF (.scripts))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.scripts))
                 0x0a000000                        _water_skybox_mio0SegmentStart = ADDR (.water_skybox_mio0)
-                0x0029ee70                        _water_skybox_mio0SegmentRomStart = __romPos
+                0x0029dc50                        _water_skybox_mio0SegmentRomStart = __romPos
 
 .water_skybox_mio0
-                0x0a000000     0xc860 load address 0x0029ee70
+                0x0a000000     0xc860 load address 0x0029dc50
  build/jp/bin/water_skybox.mio0.o(.data)
  .data          0x0a000000     0xc857 build/jp/bin/water_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_water_skybox_mio0_start
@@ -9054,13 +9053,13 @@ Linker script and memory map
                 0x0a00c860                        . = ALIGN (0x10)
  *fill*         0x0a00c857        0x9 
                 0x0a00c860                        _water_skybox_mio0SegmentEnd = (ADDR (.water_skybox_mio0) + SIZEOF (.water_skybox_mio0))
-                0x002ab6d0                        _water_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.water_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.water_skybox_mio0))
+                0x002aa4b0                        _water_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.water_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.water_skybox_mio0))
                 0x0a000000                        _ccm_skybox_mio0SegmentStart = ADDR (.ccm_skybox_mio0)
-                0x002ab6d0                        _ccm_skybox_mio0SegmentRomStart = __romPos
+                0x002aa4b0                        _ccm_skybox_mio0SegmentRomStart = __romPos
 
 .ccm_skybox_mio0
-                0x0a000000     0xe4c0 load address 0x002ab6d0
+                0x0a000000     0xe4c0 load address 0x002aa4b0
  build/jp/bin/ccm_skybox.mio0.o(.data)
  .data          0x0a000000     0xe4b4 build/jp/bin/ccm_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_ccm_skybox_mio0_start
@@ -9068,13 +9067,13 @@ Linker script and memory map
                 0x0a00e4c0                        . = ALIGN (0x10)
  *fill*         0x0a00e4b4        0xc 
                 0x0a00e4c0                        _ccm_skybox_mio0SegmentEnd = (ADDR (.ccm_skybox_mio0) + SIZEOF (.ccm_skybox_mio0))
-                0x002b9b90                        _ccm_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.ccm_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ccm_skybox_mio0))
+                0x002b8970                        _ccm_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.ccm_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ccm_skybox_mio0))
                 0x0a000000                        _clouds_skybox_mio0SegmentStart = ADDR (.clouds_skybox_mio0)
-                0x002b9b90                        _clouds_skybox_mio0SegmentRomStart = __romPos
+                0x002b8970                        _clouds_skybox_mio0SegmentRomStart = __romPos
 
 .clouds_skybox_mio0
-                0x0a000000     0x8c70 load address 0x002b9b90
+                0x0a000000     0x8c70 load address 0x002b8970
  build/jp/bin/clouds_skybox.mio0.o(.data)
  .data          0x0a000000     0x8c6f build/jp/bin/clouds_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_clouds_skybox_mio0_start
@@ -9082,26 +9081,26 @@ Linker script and memory map
                 0x0a008c70                        . = ALIGN (0x10)
  *fill*         0x0a008c6f        0x1 
                 0x0a008c70                        _clouds_skybox_mio0SegmentEnd = (ADDR (.clouds_skybox_mio0) + SIZEOF (.clouds_skybox_mio0))
-                0x002c2800                        _clouds_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.clouds_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.clouds_skybox_mio0))
+                0x002c15e0                        _clouds_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.clouds_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.clouds_skybox_mio0))
                 0x0a000000                        _bitfs_skybox_mio0SegmentStart = ADDR (.bitfs_skybox_mio0)
-                0x002c2800                        _bitfs_skybox_mio0SegmentRomStart = __romPos
+                0x002c15e0                        _bitfs_skybox_mio0SegmentRomStart = __romPos
 
 .bitfs_skybox_mio0
-                0x0a000000     0x64b0 load address 0x002c2800
+                0x0a000000     0x64b0 load address 0x002c15e0
  build/jp/bin/bitfs_skybox.mio0.o(.data)
  .data          0x0a000000     0x64b0 build/jp/bin/bitfs_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_bitfs_skybox_mio0_start
                 0x0a0064b0                _binary_build_jp_bin_bitfs_skybox_mio0_end
                 0x0a0064b0                        . = ALIGN (0x10)
                 0x0a0064b0                        _bitfs_skybox_mio0SegmentEnd = (ADDR (.bitfs_skybox_mio0) + SIZEOF (.bitfs_skybox_mio0))
-                0x002c8cb0                        _bitfs_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bitfs_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bitfs_skybox_mio0))
+                0x002c7a90                        _bitfs_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bitfs_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bitfs_skybox_mio0))
                 0x0a000000                        _wdw_skybox_mio0SegmentStart = ADDR (.wdw_skybox_mio0)
-                0x002c8cb0                        _wdw_skybox_mio0SegmentRomStart = __romPos
+                0x002c7a90                        _wdw_skybox_mio0SegmentRomStart = __romPos
 
 .wdw_skybox_mio0
-                0x0a000000    0x11390 load address 0x002c8cb0
+                0x0a000000    0x11390 load address 0x002c7a90
  build/jp/bin/wdw_skybox.mio0.o(.data)
  .data          0x0a000000    0x1138e build/jp/bin/wdw_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_wdw_skybox_mio0_start
@@ -9109,13 +9108,13 @@ Linker script and memory map
                 0x0a011390                        . = ALIGN (0x10)
  *fill*         0x0a01138e        0x2 
                 0x0a011390                        _wdw_skybox_mio0SegmentEnd = (ADDR (.wdw_skybox_mio0) + SIZEOF (.wdw_skybox_mio0))
-                0x002da040                        _wdw_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.wdw_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wdw_skybox_mio0))
+                0x002d8e20                        _wdw_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.wdw_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wdw_skybox_mio0))
                 0x0a000000                        _cloud_floor_skybox_mio0SegmentStart = ADDR (.cloud_floor_skybox_mio0)
-                0x002da040                        _cloud_floor_skybox_mio0SegmentRomStart = __romPos
+                0x002d8e20                        _cloud_floor_skybox_mio0SegmentRomStart = __romPos
 
 .cloud_floor_skybox_mio0
-                0x0a000000     0x9c60 load address 0x002da040
+                0x0a000000     0x9c60 load address 0x002d8e20
  build/jp/bin/cloud_floor_skybox.mio0.o(.data)
  .data          0x0a000000     0x9c51 build/jp/bin/cloud_floor_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_cloud_floor_skybox_mio0_start
@@ -9123,13 +9122,13 @@ Linker script and memory map
                 0x0a009c60                        . = ALIGN (0x10)
  *fill*         0x0a009c51        0xf 
                 0x0a009c60                        _cloud_floor_skybox_mio0SegmentEnd = (ADDR (.cloud_floor_skybox_mio0) + SIZEOF (.cloud_floor_skybox_mio0))
-                0x002e3ca0                        _cloud_floor_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.cloud_floor_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.cloud_floor_skybox_mio0))
+                0x002e2a80                        _cloud_floor_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.cloud_floor_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.cloud_floor_skybox_mio0))
                 0x0a000000                        _ssl_skybox_mio0SegmentStart = ADDR (.ssl_skybox_mio0)
-                0x002e3ca0                        _ssl_skybox_mio0SegmentRomStart = __romPos
+                0x002e2a80                        _ssl_skybox_mio0SegmentRomStart = __romPos
 
 .ssl_skybox_mio0
-                0x0a000000     0x9cd0 load address 0x002e3ca0
+                0x0a000000     0x9cd0 load address 0x002e2a80
  build/jp/bin/ssl_skybox.mio0.o(.data)
  .data          0x0a000000     0x9cc2 build/jp/bin/ssl_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_ssl_skybox_mio0_start
@@ -9137,13 +9136,13 @@ Linker script and memory map
                 0x0a009cd0                        . = ALIGN (0x10)
  *fill*         0x0a009cc2        0xe 
                 0x0a009cd0                        _ssl_skybox_mio0SegmentEnd = (ADDR (.ssl_skybox_mio0) + SIZEOF (.ssl_skybox_mio0))
-                0x002ed970                        _ssl_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.ssl_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ssl_skybox_mio0))
+                0x002ec750                        _ssl_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.ssl_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ssl_skybox_mio0))
                 0x0a000000                        _bbh_skybox_mio0SegmentStart = ADDR (.bbh_skybox_mio0)
-                0x002ed970                        _bbh_skybox_mio0SegmentRomStart = __romPos
+                0x002ec750                        _bbh_skybox_mio0SegmentRomStart = __romPos
 
 .bbh_skybox_mio0
-                0x0a000000     0x6b20 load address 0x002ed970
+                0x0a000000     0x6b20 load address 0x002ec750
  build/jp/bin/bbh_skybox.mio0.o(.data)
  .data          0x0a000000     0x6b1e build/jp/bin/bbh_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_bbh_skybox_mio0_start
@@ -9151,13 +9150,13 @@ Linker script and memory map
                 0x0a006b20                        . = ALIGN (0x10)
  *fill*         0x0a006b1e        0x2 
                 0x0a006b20                        _bbh_skybox_mio0SegmentEnd = (ADDR (.bbh_skybox_mio0) + SIZEOF (.bbh_skybox_mio0))
-                0x002f4490                        _bbh_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bbh_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bbh_skybox_mio0))
+                0x002f3270                        _bbh_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bbh_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bbh_skybox_mio0))
                 0x0a000000                        _bidw_skybox_mio0SegmentStart = ADDR (.bidw_skybox_mio0)
-                0x002f4490                        _bidw_skybox_mio0SegmentRomStart = __romPos
+                0x002f3270                        _bidw_skybox_mio0SegmentRomStart = __romPos
 
 .bidw_skybox_mio0
-                0x0a000000     0xb1f0 load address 0x002f4490
+                0x0a000000     0xb1f0 load address 0x002f3270
  build/jp/bin/bidw_skybox.mio0.o(.data)
  .data          0x0a000000     0xb1e6 build/jp/bin/bidw_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_bidw_skybox_mio0_start
@@ -9165,13 +9164,13 @@ Linker script and memory map
                 0x0a00b1f0                        . = ALIGN (0x10)
  *fill*         0x0a00b1e6        0xa 
                 0x0a00b1f0                        _bidw_skybox_mio0SegmentEnd = (ADDR (.bidw_skybox_mio0) + SIZEOF (.bidw_skybox_mio0))
-                0x002ff680                        _bidw_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bidw_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bidw_skybox_mio0))
+                0x002fe460                        _bidw_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bidw_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bidw_skybox_mio0))
                 0x0a000000                        _bits_skybox_mio0SegmentStart = ADDR (.bits_skybox_mio0)
-                0x002ff680                        _bits_skybox_mio0SegmentRomStart = __romPos
+                0x002fe460                        _bits_skybox_mio0SegmentRomStart = __romPos
 
 .bits_skybox_mio0
-                0x0a000000    0x11310 load address 0x002ff680
+                0x0a000000    0x11310 load address 0x002fe460
  build/jp/bin/bits_skybox.mio0.o(.data)
  .data          0x0a000000    0x1130b build/jp/bin/bits_skybox.mio0.o
                 0x0a000000                _binary_build_jp_bin_bits_skybox_mio0_start
@@ -9179,12 +9178,12 @@ Linker script and memory map
                 0x0a011310                        . = ALIGN (0x10)
  *fill*         0x0a01130b        0x5 
                 0x0a011310                        _bits_skybox_mio0SegmentEnd = (ADDR (.bits_skybox_mio0) + SIZEOF (.bits_skybox_mio0))
-                0x00310990                        _bits_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bits_skybox_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bits_skybox_mio0))
+                0x0030f770                        _bits_skybox_mio0SegmentRomEnd = (__romPos + SIZEOF (.bits_skybox_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bits_skybox_mio0))
                 0x09000000                        _fire_mio0SegmentStart = ADDR (.fire_mio0)
-                0x00310990                        _fire_mio0SegmentRomStart = __romPos
+                0x0030f770                        _fire_mio0SegmentRomStart = __romPos
 
-.fire_mio0      0x09000000     0x8c70 load address 0x00310990
+.fire_mio0      0x09000000     0x8c70 load address 0x0030f770
  build/jp/bin/fire.mio0.o(.data)
  .data          0x09000000     0x8c62 build/jp/bin/fire.mio0.o
                 0x09000000                _binary_build_jp_bin_fire_mio0_start
@@ -9192,12 +9191,12 @@ Linker script and memory map
                 0x09008c70                        . = ALIGN (0x10)
  *fill*         0x09008c62        0xe 
                 0x09008c70                        _fire_mio0SegmentEnd = (ADDR (.fire_mio0) + SIZEOF (.fire_mio0))
-                0x00319600                        _fire_mio0SegmentRomEnd = (__romPos + SIZEOF (.fire_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.fire_mio0))
+                0x003183e0                        _fire_mio0SegmentRomEnd = (__romPos + SIZEOF (.fire_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.fire_mio0))
                 0x09000000                        _spooky_mio0SegmentStart = ADDR (.spooky_mio0)
-                0x00319600                        _spooky_mio0SegmentRomStart = __romPos
+                0x003183e0                        _spooky_mio0SegmentRomStart = __romPos
 
-.spooky_mio0    0x09000000     0x6230 load address 0x00319600
+.spooky_mio0    0x09000000     0x6230 load address 0x003183e0
  build/jp/bin/spooky.mio0.o(.data)
  .data          0x09000000     0x622a build/jp/bin/spooky.mio0.o
                 0x09000000                _binary_build_jp_bin_spooky_mio0_start
@@ -9205,12 +9204,12 @@ Linker script and memory map
                 0x09006230                        . = ALIGN (0x10)
  *fill*         0x0900622a        0x6 
                 0x09006230                        _spooky_mio0SegmentEnd = (ADDR (.spooky_mio0) + SIZEOF (.spooky_mio0))
-                0x0031f830                        _spooky_mio0SegmentRomEnd = (__romPos + SIZEOF (.spooky_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.spooky_mio0))
+                0x0031e610                        _spooky_mio0SegmentRomEnd = (__romPos + SIZEOF (.spooky_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.spooky_mio0))
                 0x09000000                        _generic_mio0SegmentStart = ADDR (.generic_mio0)
-                0x0031f830                        _generic_mio0SegmentRomStart = __romPos
+                0x0031e610                        _generic_mio0SegmentRomStart = __romPos
 
-.generic_mio0   0x09000000     0x7ac0 load address 0x0031f830
+.generic_mio0   0x09000000     0x7ac0 load address 0x0031e610
  build/jp/bin/generic.mio0.o(.data)
  .data          0x09000000     0x7ab1 build/jp/bin/generic.mio0.o
                 0x09000000                _binary_build_jp_bin_generic_mio0_start
@@ -9218,12 +9217,12 @@ Linker script and memory map
                 0x09007ac0                        . = ALIGN (0x10)
  *fill*         0x09007ab1        0xf 
                 0x09007ac0                        _generic_mio0SegmentEnd = (ADDR (.generic_mio0) + SIZEOF (.generic_mio0))
-                0x003272f0                        _generic_mio0SegmentRomEnd = (__romPos + SIZEOF (.generic_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.generic_mio0))
+                0x003260d0                        _generic_mio0SegmentRomEnd = (__romPos + SIZEOF (.generic_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.generic_mio0))
                 0x09000000                        _water_mio0SegmentStart = ADDR (.water_mio0)
-                0x003272f0                        _water_mio0SegmentRomStart = __romPos
+                0x003260d0                        _water_mio0SegmentRomStart = __romPos
 
-.water_mio0     0x09000000     0x8be0 load address 0x003272f0
+.water_mio0     0x09000000     0x8be0 load address 0x003260d0
  build/jp/bin/water.mio0.o(.data)
  .data          0x09000000     0x8bd6 build/jp/bin/water.mio0.o
                 0x09000000                _binary_build_jp_bin_water_mio0_start
@@ -9231,12 +9230,12 @@ Linker script and memory map
                 0x09008be0                        . = ALIGN (0x10)
  *fill*         0x09008bd6        0xa 
                 0x09008be0                        _water_mio0SegmentEnd = (ADDR (.water_mio0) + SIZEOF (.water_mio0))
-                0x0032fed0                        _water_mio0SegmentRomEnd = (__romPos + SIZEOF (.water_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.water_mio0))
+                0x0032ecb0                        _water_mio0SegmentRomEnd = (__romPos + SIZEOF (.water_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.water_mio0))
                 0x09000000                        _sky_mio0SegmentStart = ADDR (.sky_mio0)
-                0x0032fed0                        _sky_mio0SegmentRomStart = __romPos
+                0x0032ecb0                        _sky_mio0SegmentRomStart = __romPos
 
-.sky_mio0       0x09000000     0x3a30 load address 0x0032fed0
+.sky_mio0       0x09000000     0x3a30 load address 0x0032ecb0
  build/jp/bin/sky.mio0.o(.data)
  .data          0x09000000     0x3a23 build/jp/bin/sky.mio0.o
                 0x09000000                _binary_build_jp_bin_sky_mio0_start
@@ -9244,12 +9243,12 @@ Linker script and memory map
                 0x09003a30                        . = ALIGN (0x10)
  *fill*         0x09003a23        0xd 
                 0x09003a30                        _sky_mio0SegmentEnd = (ADDR (.sky_mio0) + SIZEOF (.sky_mio0))
-                0x00333900                        _sky_mio0SegmentRomEnd = (__romPos + SIZEOF (.sky_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.sky_mio0))
+                0x003326e0                        _sky_mio0SegmentRomEnd = (__romPos + SIZEOF (.sky_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.sky_mio0))
                 0x09000000                        _snow_mio0SegmentStart = ADDR (.snow_mio0)
-                0x00333900                        _snow_mio0SegmentRomStart = __romPos
+                0x003326e0                        _snow_mio0SegmentRomStart = __romPos
 
-.snow_mio0      0x09000000     0x6910 load address 0x00333900
+.snow_mio0      0x09000000     0x6910 load address 0x003326e0
  build/jp/bin/snow.mio0.o(.data)
  .data          0x09000000     0x6908 build/jp/bin/snow.mio0.o
                 0x09000000                _binary_build_jp_bin_snow_mio0_start
@@ -9257,12 +9256,12 @@ Linker script and memory map
                 0x09006910                        . = ALIGN (0x10)
  *fill*         0x09006908        0x8 
                 0x09006910                        _snow_mio0SegmentEnd = (ADDR (.snow_mio0) + SIZEOF (.snow_mio0))
-                0x0033a210                        _snow_mio0SegmentRomEnd = (__romPos + SIZEOF (.snow_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.snow_mio0))
+                0x00338ff0                        _snow_mio0SegmentRomEnd = (__romPos + SIZEOF (.snow_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.snow_mio0))
                 0x09000000                        _cave_mio0SegmentStart = ADDR (.cave_mio0)
-                0x0033a210                        _cave_mio0SegmentRomStart = __romPos
+                0x00338ff0                        _cave_mio0SegmentRomStart = __romPos
 
-.cave_mio0      0x09000000     0x6d10 load address 0x0033a210
+.cave_mio0      0x09000000     0x6d10 load address 0x00338ff0
  build/jp/bin/cave.mio0.o(.data)
  .data          0x09000000     0x6d01 build/jp/bin/cave.mio0.o
                 0x09000000                _binary_build_jp_bin_cave_mio0_start
@@ -9270,12 +9269,12 @@ Linker script and memory map
                 0x09006d10                        . = ALIGN (0x10)
  *fill*         0x09006d01        0xf 
                 0x09006d10                        _cave_mio0SegmentEnd = (ADDR (.cave_mio0) + SIZEOF (.cave_mio0))
-                0x00340f20                        _cave_mio0SegmentRomEnd = (__romPos + SIZEOF (.cave_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.cave_mio0))
+                0x0033fd00                        _cave_mio0SegmentRomEnd = (__romPos + SIZEOF (.cave_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.cave_mio0))
                 0x09000000                        _machine_mio0SegmentStart = ADDR (.machine_mio0)
-                0x00340f20                        _machine_mio0SegmentRomStart = __romPos
+                0x0033fd00                        _machine_mio0SegmentRomStart = __romPos
 
-.machine_mio0   0x09000000     0x3200 load address 0x00340f20
+.machine_mio0   0x09000000     0x3200 load address 0x0033fd00
  build/jp/bin/machine.mio0.o(.data)
  .data          0x09000000     0x31f2 build/jp/bin/machine.mio0.o
                 0x09000000                _binary_build_jp_bin_machine_mio0_start
@@ -9283,12 +9282,12 @@ Linker script and memory map
                 0x09003200                        . = ALIGN (0x10)
  *fill*         0x090031f2        0xe 
                 0x09003200                        _machine_mio0SegmentEnd = (ADDR (.machine_mio0) + SIZEOF (.machine_mio0))
-                0x00344120                        _machine_mio0SegmentRomEnd = (__romPos + SIZEOF (.machine_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.machine_mio0))
+                0x00342f00                        _machine_mio0SegmentRomEnd = (__romPos + SIZEOF (.machine_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.machine_mio0))
                 0x09000000                        _mountain_mio0SegmentStart = ADDR (.mountain_mio0)
-                0x00344120                        _mountain_mio0SegmentRomStart = __romPos
+                0x00342f00                        _mountain_mio0SegmentRomStart = __romPos
 
-.mountain_mio0  0x09000000     0x59f0 load address 0x00344120
+.mountain_mio0  0x09000000     0x59f0 load address 0x00342f00
  build/jp/bin/mountain.mio0.o(.data)
  .data          0x09000000     0x59e5 build/jp/bin/mountain.mio0.o
                 0x09000000                _binary_build_jp_bin_mountain_mio0_start
@@ -9296,12 +9295,12 @@ Linker script and memory map
                 0x090059f0                        . = ALIGN (0x10)
  *fill*         0x090059e5        0xb 
                 0x090059f0                        _mountain_mio0SegmentEnd = (ADDR (.mountain_mio0) + SIZEOF (.mountain_mio0))
-                0x00349b10                        _mountain_mio0SegmentRomEnd = (__romPos + SIZEOF (.mountain_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.mountain_mio0))
+                0x003488f0                        _mountain_mio0SegmentRomEnd = (__romPos + SIZEOF (.mountain_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.mountain_mio0))
                 0x09000000                        _grass_mio0SegmentStart = ADDR (.grass_mio0)
-                0x00349b10                        _grass_mio0SegmentRomStart = __romPos
+                0x003488f0                        _grass_mio0SegmentRomStart = __romPos
 
-.grass_mio0     0x09000000     0x79c0 load address 0x00349b10
+.grass_mio0     0x09000000     0x79c0 load address 0x003488f0
  build/jp/bin/grass.mio0.o(.data)
  .data          0x09000000     0x79b9 build/jp/bin/grass.mio0.o
                 0x09000000                _binary_build_jp_bin_grass_mio0_start
@@ -9309,12 +9308,12 @@ Linker script and memory map
                 0x090079c0                        . = ALIGN (0x10)
  *fill*         0x090079b9        0x7 
                 0x090079c0                        _grass_mio0SegmentEnd = (ADDR (.grass_mio0) + SIZEOF (.grass_mio0))
-                0x003514d0                        _grass_mio0SegmentRomEnd = (__romPos + SIZEOF (.grass_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.grass_mio0))
+                0x003502b0                        _grass_mio0SegmentRomEnd = (__romPos + SIZEOF (.grass_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.grass_mio0))
                 0x09000000                        _outside_mio0SegmentStart = ADDR (.outside_mio0)
-                0x003514d0                        _outside_mio0SegmentRomStart = __romPos
+                0x003502b0                        _outside_mio0SegmentRomStart = __romPos
 
-.outside_mio0   0x09000000     0x6c70 load address 0x003514d0
+.outside_mio0   0x09000000     0x6c70 load address 0x003502b0
  build/jp/bin/outside.mio0.o(.data)
  .data          0x09000000     0x6c63 build/jp/bin/outside.mio0.o
                 0x09000000                _binary_build_jp_bin_outside_mio0_start
@@ -9322,12 +9321,12 @@ Linker script and memory map
                 0x09006c70                        . = ALIGN (0x10)
  *fill*         0x09006c63        0xd 
                 0x09006c70                        _outside_mio0SegmentEnd = (ADDR (.outside_mio0) + SIZEOF (.outside_mio0))
-                0x00358140                        _outside_mio0SegmentRomEnd = (__romPos + SIZEOF (.outside_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.outside_mio0))
+                0x00356f20                        _outside_mio0SegmentRomEnd = (__romPos + SIZEOF (.outside_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.outside_mio0))
                 0x09000000                        _inside_mio0SegmentStart = ADDR (.inside_mio0)
-                0x00358140                        _inside_mio0SegmentRomStart = __romPos
+                0x00356f20                        _inside_mio0SegmentRomStart = __romPos
 
-.inside_mio0    0x09000000     0x9bb0 load address 0x00358140
+.inside_mio0    0x09000000     0x9bb0 load address 0x00356f20
  build/jp/bin/inside.mio0.o(.data)
  .data          0x09000000     0x9bab build/jp/bin/inside.mio0.o
                 0x09000000                _binary_build_jp_bin_inside_mio0_start
@@ -9335,12 +9334,12 @@ Linker script and memory map
                 0x09009bb0                        . = ALIGN (0x10)
  *fill*         0x09009bab        0x5 
                 0x09009bb0                        _inside_mio0SegmentEnd = (ADDR (.inside_mio0) + SIZEOF (.inside_mio0))
-                0x00361cf0                        _inside_mio0SegmentRomEnd = (__romPos + SIZEOF (.inside_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.inside_mio0))
+                0x00360ad0                        _inside_mio0SegmentRomEnd = (__romPos + SIZEOF (.inside_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.inside_mio0))
                 0x0b000000                        _effect_mio0SegmentStart = ADDR (.effect_mio0)
-                0x00361cf0                        _effect_mio0SegmentRomStart = __romPos
+                0x00360ad0                        _effect_mio0SegmentRomStart = __romPos
 
-.effect_mio0    0x0b000000     0x2710 load address 0x00361cf0
+.effect_mio0    0x0b000000     0x2710 load address 0x00360ad0
  build/jp/bin/effect.mio0.o(.data)
  .data          0x0b000000     0x270a build/jp/bin/effect.mio0.o
                 0x0b000000                _binary_build_jp_bin_effect_mio0_start
@@ -9348,12 +9347,12 @@ Linker script and memory map
                 0x0b002710                        . = ALIGN (0x10)
  *fill*         0x0b00270a        0x6 
                 0x0b002710                        _effect_mio0SegmentEnd = (ADDR (.effect_mio0) + SIZEOF (.effect_mio0))
-                0x00364400                        _effect_mio0SegmentRomEnd = (__romPos + SIZEOF (.effect_mio0))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.effect_mio0))
+                0x003631e0                        _effect_mio0SegmentRomEnd = (__romPos + SIZEOF (.effect_mio0))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.effect_mio0))
                 0x07000000                        _bbh_segment_7SegmentStart = ADDR (.bbh_segment_7)
-                0x00364400                        _bbh_segment_7SegmentRomStart = __romPos
+                0x003631e0                        _bbh_segment_7SegmentRomStart = __romPos
 
-.bbh_segment_7  0x07000000    0x12e60 load address 0x00364400
+.bbh_segment_7  0x07000000    0x12e60 load address 0x003631e0
  build/jp/levels/bbh/leveldata.mio0.o(.data)
  .data          0x07000000    0x12e58 build/jp/levels/bbh/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bbh_leveldata_mio0_start
@@ -9361,12 +9360,12 @@ Linker script and memory map
                 0x07012e60                        . = ALIGN (0x10)
  *fill*         0x07012e58        0x8 
                 0x07012e60                        _bbh_segment_7SegmentEnd = (ADDR (.bbh_segment_7) + SIZEOF (.bbh_segment_7))
-                0x00377260                        _bbh_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bbh_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bbh_segment_7))
+                0x00376040                        _bbh_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bbh_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bbh_segment_7))
                 0x0e000000                        _bbhSegmentStart = ADDR (.bbh)
-                0x00377260                        _bbhSegmentRomStart = __romPos
+                0x00376040                        _bbhSegmentRomStart = __romPos
 
-.bbh            0x0e000000      0xea0 load address 0x00377260
+.bbh            0x0e000000      0xea0 load address 0x00376040
  build/jp/levels/bbh/script.o(.data)
  .data          0x0e000000      0x2c0 build/jp/levels/bbh/script.o
                 0x0e000000                level_bbh_entry
@@ -9416,12 +9415,12 @@ Linker script and memory map
                 0x0e000da8                bbh_area_1_geo
                 0x0e000e10                bbh_area_1
                 0x0e000ea0                        _bbhSegmentEnd = (ADDR (.bbh) + SIZEOF (.bbh))
-                0x00378100                        _bbhSegmentRomEnd = (__romPos + SIZEOF (.bbh))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bbh))
+                0x00376ee0                        _bbhSegmentRomEnd = (__romPos + SIZEOF (.bbh))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bbh))
                 0x07000000                        _wf_segment_7SegmentStart = ADDR (.wf_segment_7)
-                0x00378100                        _wf_segment_7SegmentRomStart = __romPos
+                0x00376ee0                        _wf_segment_7SegmentRomStart = __romPos
 
-.wf_segment_7   0x07000000    0x101a0 load address 0x00378100
+.wf_segment_7   0x07000000    0x101a0 load address 0x00376ee0
  build/jp/levels/wf/leveldata.mio0.o(.data)
  .data          0x07000000    0x1019c build/jp/levels/wf/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_wf_leveldata_mio0_start
@@ -9429,12 +9428,12 @@ Linker script and memory map
                 0x070101a0                        . = ALIGN (0x10)
  *fill*         0x0701019c        0x4 
                 0x070101a0                        _wf_segment_7SegmentEnd = (ADDR (.wf_segment_7) + SIZEOF (.wf_segment_7))
-                0x003882a0                        _wf_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wf_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wf_segment_7))
+                0x00387080                        _wf_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wf_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wf_segment_7))
                 0x0e000000                        _wfSegmentStart = ADDR (.wf)
-                0x003882a0                        _wfSegmentRomStart = __romPos
+                0x00387080                        _wfSegmentRomStart = __romPos
 
-.wf             0x0e000000      0x890 load address 0x003882a0
+.wf             0x0e000000      0x890 load address 0x00387080
  build/jp/levels/wf/script.o(.data)
  .data          0x0e000000      0x300 build/jp/levels/wf/script.o
                 0x0e000000                level_wf_entry
@@ -9474,24 +9473,24 @@ Linker script and memory map
                 0x0e0007dc                wf_area_1_geo
                 0x0e000804                wf_area_1
                 0x0e000890                        _wfSegmentEnd = (ADDR (.wf) + SIZEOF (.wf))
-                0x00388b30                        _wfSegmentRomEnd = (__romPos + SIZEOF (.wf))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wf))
+                0x00387910                        _wfSegmentRomEnd = (__romPos + SIZEOF (.wf))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wf))
                 0x07000000                        _ccm_segment_7SegmentStart = ADDR (.ccm_segment_7)
-                0x00388b30                        _ccm_segment_7SegmentRomStart = __romPos
+                0x00387910                        _ccm_segment_7SegmentRomStart = __romPos
 
-.ccm_segment_7  0x07000000    0x12340 load address 0x00388b30
+.ccm_segment_7  0x07000000    0x12340 load address 0x00387910
  build/jp/levels/ccm/leveldata.mio0.o(.data)
  .data          0x07000000    0x12340 build/jp/levels/ccm/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ccm_leveldata_mio0_start
                 0x07012340                _binary_build_jp_levels_ccm_leveldata_mio0_end
                 0x07012340                        . = ALIGN (0x10)
                 0x07012340                        _ccm_segment_7SegmentEnd = (ADDR (.ccm_segment_7) + SIZEOF (.ccm_segment_7))
-                0x0039ae70                        _ccm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ccm_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ccm_segment_7))
+                0x00399c50                        _ccm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ccm_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ccm_segment_7))
                 0x0e000000                        _ccmSegmentStart = ADDR (.ccm)
-                0x0039ae70                        _ccmSegmentRomStart = __romPos
+                0x00399c50                        _ccmSegmentRomStart = __romPos
 
-.ccm            0x0e000000      0x6a0 load address 0x0039ae70
+.ccm            0x0e000000      0x6a0 load address 0x00399c50
  build/jp/levels/ccm/script.o(.data)
  .data          0x0e000000      0x3d0 build/jp/levels/ccm/script.o
                 0x0e000160                level_ccm_entry
@@ -9508,13 +9507,13 @@ Linker script and memory map
                 0x0e00051c                ccm_geo_00051C
                 0x0e0005e8                ccm_geo_0005E8
                 0x0e0006a0                        _ccmSegmentEnd = (ADDR (.ccm) + SIZEOF (.ccm))
-                0x0039b510                        _ccmSegmentRomEnd = (__romPos + SIZEOF (.ccm))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ccm))
+                0x0039a2f0                        _ccmSegmentRomEnd = (__romPos + SIZEOF (.ccm))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ccm))
                 0x07000000                        _castle_inside_segment_7SegmentStart = ADDR (.castle_inside_segment_7)
-                0x0039b510                        _castle_inside_segment_7SegmentRomStart = __romPos
+                0x0039a2f0                        _castle_inside_segment_7SegmentRomStart = __romPos
 
 .castle_inside_segment_7
-                0x07000000    0x3e430 load address 0x0039b510
+                0x07000000    0x3e430 load address 0x0039a2f0
  build/jp/levels/castle_inside/leveldata.mio0.o(.data)
  .data          0x07000000    0x3e425 build/jp/levels/castle_inside/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_castle_inside_leveldata_mio0_start
@@ -9522,12 +9521,12 @@ Linker script and memory map
                 0x0703e430                        . = ALIGN (0x10)
  *fill*         0x0703e425        0xb 
                 0x0703e430                        _castle_inside_segment_7SegmentEnd = (ADDR (.castle_inside_segment_7) + SIZEOF (.castle_inside_segment_7))
-                0x003d9940                        _castle_inside_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_inside_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_inside_segment_7))
+                0x003d8720                        _castle_inside_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_inside_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_inside_segment_7))
                 0x0e000000                        _castle_insideSegmentStart = ADDR (.castle_inside)
-                0x003d9940                        _castle_insideSegmentRomStart = __romPos
+                0x003d8720                        _castle_insideSegmentRomStart = __romPos
 
-.castle_inside  0x0e000000     0x10a0 load address 0x003d9940
+.castle_inside  0x0e000000     0x10a0 load address 0x003d8720
  build/jp/levels/castle_inside/script.o(.data)
  .data          0x0e000000      0x1d0 build/jp/levels/castle_inside/script.o
                 0x0e000000                level_castle_inside_entry
@@ -9583,12 +9582,12 @@ Linker script and memory map
                 0x0e000fc0                castle_inside_area_1_geo
                 0x0e001018                castle_inside_area_1
                 0x0e0010a0                        _castle_insideSegmentEnd = (ADDR (.castle_inside) + SIZEOF (.castle_inside))
-                0x003da9e0                        _castle_insideSegmentRomEnd = (__romPos + SIZEOF (.castle_inside))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_inside))
+                0x003d97c0                        _castle_insideSegmentRomEnd = (__romPos + SIZEOF (.castle_inside))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_inside))
                 0x07000000                        _hmc_segment_7SegmentStart = ADDR (.hmc_segment_7)
-                0x003da9e0                        _hmc_segment_7SegmentRomStart = __romPos
+                0x003d97c0                        _hmc_segment_7SegmentRomStart = __romPos
 
-.hmc_segment_7  0x07000000    0x15c30 load address 0x003da9e0
+.hmc_segment_7  0x07000000    0x15c30 load address 0x003d97c0
  build/jp/levels/hmc/leveldata.mio0.o(.data)
  .data          0x07000000    0x15c2f build/jp/levels/hmc/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_hmc_leveldata_mio0_start
@@ -9596,12 +9595,12 @@ Linker script and memory map
                 0x07015c30                        . = ALIGN (0x10)
  *fill*         0x07015c2f        0x1 
                 0x07015c30                        _hmc_segment_7SegmentEnd = (ADDR (.hmc_segment_7) + SIZEOF (.hmc_segment_7))
-                0x003f0610                        _hmc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.hmc_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.hmc_segment_7))
+                0x003ef3f0                        _hmc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.hmc_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.hmc_segment_7))
                 0x0e000000                        _hmcSegmentStart = ADDR (.hmc)
-                0x003f0610                        _hmcSegmentRomStart = __romPos
+                0x003ef3f0                        _hmcSegmentRomStart = __romPos
 
-.hmc            0x0e000000      0xcb0 load address 0x003f0610
+.hmc            0x0e000000      0xcb0 load address 0x003ef3f0
  build/jp/levels/hmc/script.o(.data)
  .data          0x0e000000      0x530 build/jp/levels/hmc/script.o
                 0x0e000388                level_hmc_entry
@@ -9634,12 +9633,12 @@ Linker script and memory map
                 0x0e000b48                hmc_geo_000B48
                 0x0e000b90                hmc_geo_000B90
                 0x0e000cb0                        _hmcSegmentEnd = (ADDR (.hmc) + SIZEOF (.hmc))
-                0x003f12c0                        _hmcSegmentRomEnd = (__romPos + SIZEOF (.hmc))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.hmc))
+                0x003f00a0                        _hmcSegmentRomEnd = (__romPos + SIZEOF (.hmc))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.hmc))
                 0x07000000                        _ssl_segment_7SegmentStart = ADDR (.ssl_segment_7)
-                0x003f12c0                        _ssl_segment_7SegmentRomStart = __romPos
+                0x003f00a0                        _ssl_segment_7SegmentRomStart = __romPos
 
-.ssl_segment_7  0x07000000    0x142e0 load address 0x003f12c0
+.ssl_segment_7  0x07000000    0x142e0 load address 0x003f00a0
  build/jp/levels/ssl/leveldata.mio0.o(.data)
  .data          0x07000000    0x142d1 build/jp/levels/ssl/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ssl_leveldata_mio0_start
@@ -9647,12 +9646,12 @@ Linker script and memory map
                 0x070142e0                        . = ALIGN (0x10)
  *fill*         0x070142d1        0xf 
                 0x070142e0                        _ssl_segment_7SegmentEnd = (ADDR (.ssl_segment_7) + SIZEOF (.ssl_segment_7))
-                0x004055a0                        _ssl_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ssl_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ssl_segment_7))
+                0x00404380                        _ssl_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ssl_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ssl_segment_7))
                 0x0e000000                        _sslSegmentStart = ADDR (.ssl)
-                0x004055a0                        _sslSegmentRomStart = __romPos
+                0x00404380                        _sslSegmentRomStart = __romPos
 
-.ssl            0x0e000000      0x920 load address 0x004055a0
+.ssl            0x0e000000      0x920 load address 0x00404380
  build/jp/levels/ssl/script.o(.data)
  .data          0x0e000000      0x5c0 build/jp/levels/ssl/script.o
                 0x0e0002b8                level_ssl_entry
@@ -9670,12 +9669,12 @@ Linker script and memory map
                 0x0e0007cc                ssl_geo_0007CC
                 0x0e00088c                ssl_geo_00088C
                 0x0e000920                        _sslSegmentEnd = (ADDR (.ssl) + SIZEOF (.ssl))
-                0x00405ec0                        _sslSegmentRomEnd = (__romPos + SIZEOF (.ssl))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ssl))
+                0x00404ca0                        _sslSegmentRomEnd = (__romPos + SIZEOF (.ssl))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ssl))
                 0x07000000                        _bob_segment_7SegmentStart = ADDR (.bob_segment_7)
-                0x00405ec0                        _bob_segment_7SegmentRomStart = __romPos
+                0x00404ca0                        _bob_segment_7SegmentRomStart = __romPos
 
-.bob_segment_7  0x07000000     0x97b0 load address 0x00405ec0
+.bob_segment_7  0x07000000     0x97b0 load address 0x00404ca0
  build/jp/levels/bob/leveldata.mio0.o(.data)
  .data          0x07000000     0x97ae build/jp/levels/bob/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bob_leveldata_mio0_start
@@ -9683,12 +9682,12 @@ Linker script and memory map
                 0x070097b0                        . = ALIGN (0x10)
  *fill*         0x070097ae        0x2 
                 0x070097b0                        _bob_segment_7SegmentEnd = (ADDR (.bob_segment_7) + SIZEOF (.bob_segment_7))
-                0x0040f670                        _bob_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bob_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bob_segment_7))
+                0x0040e450                        _bob_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bob_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bob_segment_7))
                 0x0e000000                        _bobSegmentStart = ADDR (.bob)
-                0x0040f670                        _bobSegmentRomStart = __romPos
+                0x0040e450                        _bobSegmentRomStart = __romPos
 
-.bob            0x0e000000      0x550 load address 0x0040f670
+.bob            0x0e000000      0x550 load address 0x0040e450
  build/jp/levels/bob/script.o(.data)
  .data          0x0e000000      0x440 build/jp/levels/bob/script.o
                 0x0e000264                level_bob_entry
@@ -9699,12 +9698,12 @@ Linker script and memory map
                 0x0e000470                bob_geo_000470
                 0x0e000488                bob_geo_000488
                 0x0e000550                        _bobSegmentEnd = (ADDR (.bob) + SIZEOF (.bob))
-                0x0040fbc0                        _bobSegmentRomEnd = (__romPos + SIZEOF (.bob))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bob))
+                0x0040e9a0                        _bobSegmentRomEnd = (__romPos + SIZEOF (.bob))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bob))
                 0x07000000                        _sl_segment_7SegmentStart = ADDR (.sl_segment_7)
-                0x0040fbc0                        _sl_segment_7SegmentRomStart = __romPos
+                0x0040e9a0                        _sl_segment_7SegmentRomStart = __romPos
 
-.sl_segment_7   0x07000000     0x8890 load address 0x0040fbc0
+.sl_segment_7   0x07000000     0x8890 load address 0x0040e9a0
  build/jp/levels/sl/leveldata.mio0.o(.data)
  .data          0x07000000     0x8888 build/jp/levels/sl/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_sl_leveldata_mio0_start
@@ -9712,12 +9711,12 @@ Linker script and memory map
                 0x07008890                        . = ALIGN (0x10)
  *fill*         0x07008888        0x8 
                 0x07008890                        _sl_segment_7SegmentEnd = (ADDR (.sl_segment_7) + SIZEOF (.sl_segment_7))
-                0x00418450                        _sl_segment_7SegmentRomEnd = (__romPos + SIZEOF (.sl_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.sl_segment_7))
+                0x00417230                        _sl_segment_7SegmentRomEnd = (__romPos + SIZEOF (.sl_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.sl_segment_7))
                 0x0e000000                        _slSegmentStart = ADDR (.sl)
-                0x00418450                        _slSegmentRomStart = __romPos
+                0x00417230                        _slSegmentRomStart = __romPos
 
-.sl             0x0e000000      0x530 load address 0x00418450
+.sl             0x0e000000      0x530 load address 0x00417230
  build/jp/levels/sl/script.o(.data)
  .data          0x0e000000      0x360 build/jp/levels/sl/script.o
                 0x0e000100                level_sl_entry
@@ -9729,12 +9728,12 @@ Linker script and memory map
                 0x0e0003a8                sl_geo_0003A8
                 0x0e000484                sl_geo_000484
                 0x0e000530                        _slSegmentEnd = (ADDR (.sl) + SIZEOF (.sl))
-                0x00418980                        _slSegmentRomEnd = (__romPos + SIZEOF (.sl))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.sl))
+                0x00417760                        _slSegmentRomEnd = (__romPos + SIZEOF (.sl))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.sl))
                 0x07000000                        _wdw_segment_7SegmentStart = ADDR (.wdw_segment_7)
-                0x00418980                        _wdw_segment_7SegmentRomStart = __romPos
+                0x00417760                        _wdw_segment_7SegmentRomStart = __romPos
 
-.wdw_segment_7  0x07000000     0xb220 load address 0x00418980
+.wdw_segment_7  0x07000000     0xb220 load address 0x00417760
  build/jp/levels/wdw/leveldata.mio0.o(.data)
  .data          0x07000000     0xb216 build/jp/levels/wdw/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_wdw_leveldata_mio0_start
@@ -9742,12 +9741,12 @@ Linker script and memory map
                 0x0700b220                        . = ALIGN (0x10)
  *fill*         0x0700b216        0xa 
                 0x0700b220                        _wdw_segment_7SegmentEnd = (ADDR (.wdw_segment_7) + SIZEOF (.wdw_segment_7))
-                0x00423ba0                        _wdw_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wdw_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wdw_segment_7))
+                0x00422980                        _wdw_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wdw_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wdw_segment_7))
                 0x0e000000                        _wdwSegmentStart = ADDR (.wdw)
-                0x00423ba0                        _wdwSegmentRomStart = __romPos
+                0x00422980                        _wdwSegmentRomStart = __romPos
 
-.wdw            0x0e000000      0x7d0 load address 0x00423ba0
+.wdw            0x0e000000      0x7d0 load address 0x00422980
  build/jp/levels/wdw/script.o(.data)
  .data          0x0e000000      0x580 build/jp/levels/wdw/script.o
                 0x0e000370                level_wdw_entry
@@ -9763,12 +9762,12 @@ Linker script and memory map
                 0x0e000658                wdw_geo_000658
                 0x0e000724                wdw_geo_000724
                 0x0e0007d0                        _wdwSegmentEnd = (ADDR (.wdw) + SIZEOF (.wdw))
-                0x00424370                        _wdwSegmentRomEnd = (__romPos + SIZEOF (.wdw))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wdw))
+                0x00423150                        _wdwSegmentRomEnd = (__romPos + SIZEOF (.wdw))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wdw))
                 0x07000000                        _jrb_segment_7SegmentStart = ADDR (.jrb_segment_7)
-                0x00424370                        _jrb_segment_7SegmentRomStart = __romPos
+                0x00423150                        _jrb_segment_7SegmentRomStart = __romPos
 
-.jrb_segment_7  0x07000000     0x93c0 load address 0x00424370
+.jrb_segment_7  0x07000000     0x93c0 load address 0x00423150
  build/jp/levels/jrb/leveldata.mio0.o(.data)
  .data          0x07000000     0x93b9 build/jp/levels/jrb/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_jrb_leveldata_mio0_start
@@ -9776,12 +9775,12 @@ Linker script and memory map
                 0x070093c0                        . = ALIGN (0x10)
  *fill*         0x070093b9        0x7 
                 0x070093c0                        _jrb_segment_7SegmentEnd = (ADDR (.jrb_segment_7) + SIZEOF (.jrb_segment_7))
-                0x0042d730                        _jrb_segment_7SegmentRomEnd = (__romPos + SIZEOF (.jrb_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.jrb_segment_7))
+                0x0042c510                        _jrb_segment_7SegmentRomEnd = (__romPos + SIZEOF (.jrb_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.jrb_segment_7))
                 0x0e000000                        _jrbSegmentStart = ADDR (.jrb)
-                0x0042d730                        _jrbSegmentRomStart = __romPos
+                0x0042c510                        _jrbSegmentRomStart = __romPos
 
-.jrb            0x0e000000      0xbb0 load address 0x0042d730
+.jrb            0x0e000000      0xbb0 load address 0x0042c510
  build/jp/levels/jrb/script.o(.data)
  .data          0x0e000000      0x900 build/jp/levels/jrb/script.o
                 0x0e0006ec                level_jrb_entry
@@ -9801,12 +9800,12 @@ Linker script and memory map
                 0x0e000a18                jrb_geo_000A18
                 0x0e000afc                jrb_geo_000AFC
                 0x0e000bb0                        _jrbSegmentEnd = (ADDR (.jrb) + SIZEOF (.jrb))
-                0x0042e2e0                        _jrbSegmentRomEnd = (__romPos + SIZEOF (.jrb))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.jrb))
+                0x0042d0c0                        _jrbSegmentRomEnd = (__romPos + SIZEOF (.jrb))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.jrb))
                 0x07000000                        _thi_segment_7SegmentStart = ADDR (.thi_segment_7)
-                0x0042e2e0                        _thi_segment_7SegmentRomStart = __romPos
+                0x0042d0c0                        _thi_segment_7SegmentRomStart = __romPos
 
-.thi_segment_7  0x07000000     0x8010 load address 0x0042e2e0
+.thi_segment_7  0x07000000     0x8010 load address 0x0042d0c0
  build/jp/levels/thi/leveldata.mio0.o(.data)
  .data          0x07000000     0x800c build/jp/levels/thi/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_thi_leveldata_mio0_start
@@ -9814,12 +9813,12 @@ Linker script and memory map
                 0x07008010                        . = ALIGN (0x10)
  *fill*         0x0700800c        0x4 
                 0x07008010                        _thi_segment_7SegmentEnd = (ADDR (.thi_segment_7) + SIZEOF (.thi_segment_7))
-                0x004362f0                        _thi_segment_7SegmentRomEnd = (__romPos + SIZEOF (.thi_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.thi_segment_7))
+                0x004350d0                        _thi_segment_7SegmentRomEnd = (__romPos + SIZEOF (.thi_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.thi_segment_7))
                 0x0e000000                        _thiSegmentStart = ADDR (.thi)
-                0x004362f0                        _thiSegmentRomStart = __romPos
+                0x004350d0                        _thiSegmentRomStart = __romPos
 
-.thi            0x0e000000      0x840 load address 0x004362f0
+.thi            0x0e000000      0x840 load address 0x004350d0
  build/jp/levels/thi/script.o(.data)
  .data          0x0e000000      0x5b0 build/jp/levels/thi/script.o
                 0x0e000290                level_thi_entry
@@ -9832,12 +9831,12 @@ Linker script and memory map
                 0x0e0006d4                thi_geo_0006D4
                 0x0e00079c                thi_geo_00079C
                 0x0e000840                        _thiSegmentEnd = (ADDR (.thi) + SIZEOF (.thi))
-                0x00436b30                        _thiSegmentRomEnd = (__romPos + SIZEOF (.thi))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.thi))
+                0x00435910                        _thiSegmentRomEnd = (__romPos + SIZEOF (.thi))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.thi))
                 0x07000000                        _ttc_segment_7SegmentStart = ADDR (.ttc_segment_7)
-                0x00436b30                        _ttc_segment_7SegmentRomStart = __romPos
+                0x00435910                        _ttc_segment_7SegmentRomStart = __romPos
 
-.ttc_segment_7  0x07000000     0xa4e0 load address 0x00436b30
+.ttc_segment_7  0x07000000     0xa4e0 load address 0x00435910
  build/jp/levels/ttc/leveldata.mio0.o(.data)
  .data          0x07000000     0xa4d7 build/jp/levels/ttc/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ttc_leveldata_mio0_start
@@ -9845,12 +9844,12 @@ Linker script and memory map
                 0x0700a4e0                        . = ALIGN (0x10)
  *fill*         0x0700a4d7        0x9 
                 0x0700a4e0                        _ttc_segment_7SegmentEnd = (ADDR (.ttc_segment_7) + SIZEOF (.ttc_segment_7))
-                0x00441010                        _ttc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ttc_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ttc_segment_7))
+                0x0043fdf0                        _ttc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ttc_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ttc_segment_7))
                 0x0e000000                        _ttcSegmentStart = ADDR (.ttc)
-                0x00441010                        _ttcSegmentRomStart = __romPos
+                0x0043fdf0                        _ttcSegmentRomStart = __romPos
 
-.ttc            0x0e000000      0x470 load address 0x00441010
+.ttc            0x0e000000      0x470 load address 0x0043fdf0
  build/jp/levels/ttc/script.o(.data)
  .data          0x0e000000      0x240 build/jp/levels/ttc/script.o
                 0x0e0000c8                level_ttc_entry
@@ -9873,12 +9872,12 @@ Linker script and memory map
                 0x0e0003a0                ttc_geo_0003A0
                 0x0e0003b8                ttc_geo_0003B8
                 0x0e000470                        _ttcSegmentEnd = (ADDR (.ttc) + SIZEOF (.ttc))
-                0x00441480                        _ttcSegmentRomEnd = (__romPos + SIZEOF (.ttc))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ttc))
+                0x00440260                        _ttcSegmentRomEnd = (__romPos + SIZEOF (.ttc))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ttc))
                 0x07000000                        _rr_segment_7SegmentStart = ADDR (.rr_segment_7)
-                0x00441480                        _rr_segment_7SegmentRomStart = __romPos
+                0x00440260                        _rr_segment_7SegmentRomStart = __romPos
 
-.rr_segment_7   0x07000000    0x12930 load address 0x00441480
+.rr_segment_7   0x07000000    0x12930 load address 0x00440260
  build/jp/levels/rr/leveldata.mio0.o(.data)
  .data          0x07000000    0x12927 build/jp/levels/rr/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_rr_leveldata_mio0_start
@@ -9886,12 +9885,12 @@ Linker script and memory map
                 0x07012930                        . = ALIGN (0x10)
  *fill*         0x07012927        0x9 
                 0x07012930                        _rr_segment_7SegmentEnd = (ADDR (.rr_segment_7) + SIZEOF (.rr_segment_7))
-                0x00453db0                        _rr_segment_7SegmentRomEnd = (__romPos + SIZEOF (.rr_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.rr_segment_7))
+                0x00452b90                        _rr_segment_7SegmentRomEnd = (__romPos + SIZEOF (.rr_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.rr_segment_7))
                 0x0e000000                        _rrSegmentStart = ADDR (.rr)
-                0x00453db0                        _rrSegmentRomStart = __romPos
+                0x00452b90                        _rrSegmentRomStart = __romPos
 
-.rr             0x0e000000      0xa80 load address 0x00453db0
+.rr             0x0e000000      0xa80 load address 0x00452b90
  build/jp/levels/rr/script.o(.data)
  .data          0x0e000000      0x660 build/jp/levels/rr/script.o
                 0x0e0003e4                level_rr_entry
@@ -9935,13 +9934,13 @@ Linker script and memory map
                 0x0e0009b8                rr_geo_0009B8
                 0x0e0009d0                rr_geo_0009D0
                 0x0e000a80                        _rrSegmentEnd = (ADDR (.rr) + SIZEOF (.rr))
-                0x00454830                        _rrSegmentRomEnd = (__romPos + SIZEOF (.rr))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.rr))
+                0x00453610                        _rrSegmentRomEnd = (__romPos + SIZEOF (.rr))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.rr))
                 0x07000000                        _castle_grounds_segment_7SegmentStart = ADDR (.castle_grounds_segment_7)
-                0x00454830                        _castle_grounds_segment_7SegmentRomStart = __romPos
+                0x00453610                        _castle_grounds_segment_7SegmentRomStart = __romPos
 
 .castle_grounds_segment_7
-                0x07000000     0x9e50 load address 0x00454830
+                0x07000000     0x9e50 load address 0x00453610
  build/jp/levels/castle_grounds/leveldata.mio0.o(.data)
  .data          0x07000000     0x9e44 build/jp/levels/castle_grounds/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_castle_grounds_leveldata_mio0_start
@@ -9949,13 +9948,13 @@ Linker script and memory map
                 0x07009e50                        . = ALIGN (0x10)
  *fill*         0x07009e44        0xc 
                 0x07009e50                        _castle_grounds_segment_7SegmentEnd = (ADDR (.castle_grounds_segment_7) + SIZEOF (.castle_grounds_segment_7))
-                0x0045e680                        _castle_grounds_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_grounds_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_grounds_segment_7))
+                0x0045d460                        _castle_grounds_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_grounds_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_grounds_segment_7))
                 0x0e000000                        _castle_groundsSegmentStart = ADDR (.castle_grounds)
-                0x0045e680                        _castle_groundsSegmentRomStart = __romPos
+                0x0045d460                        _castle_groundsSegmentRomStart = __romPos
 
 .castle_grounds
-                0x0e000000      0x830 load address 0x0045e680
+                0x0e000000      0x830 load address 0x0045d460
  build/jp/levels/castle_grounds/script.o(.data)
  .data          0x0e000000      0x660 build/jp/levels/castle_grounds/script.o
                 0x0e000508                level_castle_grounds_entry
@@ -9967,13 +9966,13 @@ Linker script and memory map
                 0x0e000724                castle_grounds_geo_000724
                 0x0e00073c                castle_grounds_geo_00073C
                 0x0e000830                        _castle_groundsSegmentEnd = (ADDR (.castle_grounds) + SIZEOF (.castle_grounds))
-                0x0045eeb0                        _castle_groundsSegmentRomEnd = (__romPos + SIZEOF (.castle_grounds))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_grounds))
+                0x0045dc90                        _castle_groundsSegmentRomEnd = (__romPos + SIZEOF (.castle_grounds))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_grounds))
                 0x07000000                        _bitdw_segment_7SegmentStart = ADDR (.bitdw_segment_7)
-                0x0045eeb0                        _bitdw_segment_7SegmentRomStart = __romPos
+                0x0045dc90                        _bitdw_segment_7SegmentRomStart = __romPos
 
 .bitdw_segment_7
-                0x07000000     0x7160 load address 0x0045eeb0
+                0x07000000     0x7160 load address 0x0045dc90
  build/jp/levels/bitdw/leveldata.mio0.o(.data)
  .data          0x07000000     0x715d build/jp/levels/bitdw/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bitdw_leveldata_mio0_start
@@ -9981,12 +9980,12 @@ Linker script and memory map
                 0x07007160                        . = ALIGN (0x10)
  *fill*         0x0700715d        0x3 
                 0x07007160                        _bitdw_segment_7SegmentEnd = (ADDR (.bitdw_segment_7) + SIZEOF (.bitdw_segment_7))
-                0x00466010                        _bitdw_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bitdw_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bitdw_segment_7))
+                0x00464df0                        _bitdw_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bitdw_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bitdw_segment_7))
                 0x0e000000                        _bitdwSegmentStart = ADDR (.bitdw)
-                0x00466010                        _bitdwSegmentRomStart = __romPos
+                0x00464df0                        _bitdwSegmentRomStart = __romPos
 
-.bitdw          0x0e000000      0x6a0 load address 0x00466010
+.bitdw          0x0e000000      0x6a0 load address 0x00464df0
  build/jp/levels/bitdw/script.o(.data)
  .data          0x0e000000      0x3c0 build/jp/levels/bitdw/script.o
                 0x0e000174                level_bitdw_entry
@@ -10019,13 +10018,13 @@ Linker script and memory map
                 0x0e000600                geo_bitdw_000600
                 0x0e000618                geo_bitdw_000618
                 0x0e0006a0                        _bitdwSegmentEnd = (ADDR (.bitdw) + SIZEOF (.bitdw))
-                0x004666b0                        _bitdwSegmentRomEnd = (__romPos + SIZEOF (.bitdw))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bitdw))
+                0x00465490                        _bitdwSegmentRomEnd = (__romPos + SIZEOF (.bitdw))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bitdw))
                 0x07000000                        _vcutm_segment_7SegmentStart = ADDR (.vcutm_segment_7)
-                0x004666b0                        _vcutm_segment_7SegmentRomStart = __romPos
+                0x00465490                        _vcutm_segment_7SegmentRomStart = __romPos
 
 .vcutm_segment_7
-                0x07000000     0x4c20 load address 0x004666b0
+                0x07000000     0x4c20 load address 0x00465490
  build/jp/levels/vcutm/leveldata.mio0.o(.data)
  .data          0x07000000     0x4c13 build/jp/levels/vcutm/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_vcutm_leveldata_mio0_start
@@ -10033,12 +10032,12 @@ Linker script and memory map
                 0x07004c20                        . = ALIGN (0x10)
  *fill*         0x07004c13        0xd 
                 0x07004c20                        _vcutm_segment_7SegmentEnd = (ADDR (.vcutm_segment_7) + SIZEOF (.vcutm_segment_7))
-                0x0046b2d0                        _vcutm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.vcutm_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.vcutm_segment_7))
+                0x0046a0b0                        _vcutm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.vcutm_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.vcutm_segment_7))
                 0x0e000000                        _vcutmSegmentStart = ADDR (.vcutm)
-                0x0046b2d0                        _vcutmSegmentRomStart = __romPos
+                0x0046a0b0                        _vcutmSegmentRomStart = __romPos
 
-.vcutm          0x0e000000      0x2b0 load address 0x0046b2d0
+.vcutm          0x0e000000      0x2b0 load address 0x0046a0b0
  build/jp/levels/vcutm/script.o(.data)
  .data          0x0e000000      0x1f0 build/jp/levels/vcutm/script.o
                 0x0e0000cc                level_vcutm_entry
@@ -10047,13 +10046,13 @@ Linker script and memory map
                 0x0e0001f0                vcutm_geo_0001F0
                 0x0e000208                vcutm_geo_000208
                 0x0e0002b0                        _vcutmSegmentEnd = (ADDR (.vcutm) + SIZEOF (.vcutm))
-                0x0046b580                        _vcutmSegmentRomEnd = (__romPos + SIZEOF (.vcutm))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.vcutm))
+                0x0046a360                        _vcutmSegmentRomEnd = (__romPos + SIZEOF (.vcutm))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.vcutm))
                 0x07000000                        _bitfs_segment_7SegmentStart = ADDR (.bitfs_segment_7)
-                0x0046b580                        _bitfs_segment_7SegmentRomStart = __romPos
+                0x0046a360                        _bitfs_segment_7SegmentRomStart = __romPos
 
 .bitfs_segment_7
-                0x07000000     0x9370 load address 0x0046b580
+                0x07000000     0x9370 load address 0x0046a360
  build/jp/levels/bitfs/leveldata.mio0.o(.data)
  .data          0x07000000     0x936e build/jp/levels/bitfs/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bitfs_leveldata_mio0_start
@@ -10061,12 +10060,12 @@ Linker script and memory map
                 0x07009370                        . = ALIGN (0x10)
  *fill*         0x0700936e        0x2 
                 0x07009370                        _bitfs_segment_7SegmentEnd = (ADDR (.bitfs_segment_7) + SIZEOF (.bitfs_segment_7))
-                0x004748f0                        _bitfs_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bitfs_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bitfs_segment_7))
+                0x004736d0                        _bitfs_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bitfs_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bitfs_segment_7))
                 0x0e000000                        _bitfsSegmentStart = ADDR (.bitfs)
-                0x004748f0                        _bitfsSegmentRomStart = __romPos
+                0x004736d0                        _bitfsSegmentRomStart = __romPos
 
-.bitfs          0x0e000000      0x850 load address 0x004748f0
+.bitfs          0x0e000000      0x850 load address 0x004736d0
  build/jp/levels/bitfs/script.o(.data)
  .data          0x0e000000      0x4b0 build/jp/levels/bitfs/script.o
                 0x0e000234                level_bitfs_entry
@@ -10105,12 +10104,12 @@ Linker script and memory map
                 0x0e000788                bitfs_geo_000788
                 0x0e0007a0                bitfs_geo_0007A0
                 0x0e000850                        _bitfsSegmentEnd = (ADDR (.bitfs) + SIZEOF (.bitfs))
-                0x00475140                        _bitfsSegmentRomEnd = (__romPos + SIZEOF (.bitfs))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bitfs))
+                0x00473f20                        _bitfsSegmentRomEnd = (__romPos + SIZEOF (.bitfs))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bitfs))
                 0x07000000                        _sa_segment_7SegmentStart = ADDR (.sa_segment_7)
-                0x00475140                        _sa_segment_7SegmentRomStart = __romPos
+                0x00473f20                        _sa_segment_7SegmentRomStart = __romPos
 
-.sa_segment_7   0x07000000     0x1110 load address 0x00475140
+.sa_segment_7   0x07000000     0x1110 load address 0x00473f20
  build/jp/levels/sa/leveldata.mio0.o(.data)
  .data          0x07000000     0x110c build/jp/levels/sa/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_sa_leveldata_mio0_start
@@ -10118,12 +10117,12 @@ Linker script and memory map
                 0x07001110                        . = ALIGN (0x10)
  *fill*         0x0700110c        0x4 
                 0x07001110                        _sa_segment_7SegmentEnd = (ADDR (.sa_segment_7) + SIZEOF (.sa_segment_7))
-                0x00476250                        _sa_segment_7SegmentRomEnd = (__romPos + SIZEOF (.sa_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.sa_segment_7))
+                0x00475030                        _sa_segment_7SegmentRomEnd = (__romPos + SIZEOF (.sa_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.sa_segment_7))
                 0x0e000000                        _saSegmentStart = ADDR (.sa)
-                0x00476250                        _saSegmentRomStart = __romPos
+                0x00475030                        _saSegmentRomStart = __romPos
 
-.sa             0x0e000000      0x200 load address 0x00476250
+.sa             0x0e000000      0x200 load address 0x00475030
  build/jp/levels/sa/script.o(.data)
  .data          0x0e000000      0x170 build/jp/levels/sa/script.o
                 0x0e000050                level_sa_entry
@@ -10131,13 +10130,13 @@ Linker script and memory map
  .data          0x0e000170       0x90 build/jp/levels/sa/geo.o
                 0x0e000170                sa_geo_000170
                 0x0e000200                        _saSegmentEnd = (ADDR (.sa) + SIZEOF (.sa))
-                0x00476450                        _saSegmentRomEnd = (__romPos + SIZEOF (.sa))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.sa))
+                0x00475230                        _saSegmentRomEnd = (__romPos + SIZEOF (.sa))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.sa))
                 0x07000000                        _bits_segment_7SegmentStart = ADDR (.bits_segment_7)
-                0x00476450                        _bits_segment_7SegmentRomStart = __romPos
+                0x00475230                        _bits_segment_7SegmentRomStart = __romPos
 
 .bits_segment_7
-                0x07000000     0xb940 load address 0x00476450
+                0x07000000     0xb940 load address 0x00475230
  build/jp/levels/bits/leveldata.mio0.o(.data)
  .data          0x07000000     0xb93d build/jp/levels/bits/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bits_leveldata_mio0_start
@@ -10145,12 +10144,12 @@ Linker script and memory map
                 0x0700b940                        . = ALIGN (0x10)
  *fill*         0x0700b93d        0x3 
                 0x0700b940                        _bits_segment_7SegmentEnd = (ADDR (.bits_segment_7) + SIZEOF (.bits_segment_7))
-                0x00481d90                        _bits_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bits_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bits_segment_7))
+                0x00480b70                        _bits_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bits_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bits_segment_7))
                 0x0e000000                        _bitsSegmentStart = ADDR (.bits)
-                0x00481d90                        _bitsSegmentRomStart = __romPos
+                0x00480b70                        _bitsSegmentRomStart = __romPos
 
-.bits           0x0e000000      0x7a0 load address 0x00481d90
+.bits           0x0e000000      0x7a0 load address 0x00480b70
  build/jp/levels/bits/script.o(.data)
  .data          0x0e000000      0x430 build/jp/levels/bits/script.o
                 0x0e0001e8                level_bits_entry
@@ -10189,12 +10188,12 @@ Linker script and memory map
                 0x0e000700                bits_geo_000700
                 0x0e000718                bits_geo_000718
                 0x0e0007a0                        _bitsSegmentEnd = (ADDR (.bits) + SIZEOF (.bits))
-                0x00482530                        _bitsSegmentRomEnd = (__romPos + SIZEOF (.bits))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bits))
+                0x00481310                        _bitsSegmentRomEnd = (__romPos + SIZEOF (.bits))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bits))
                 0x07000000                        _lll_segment_7SegmentStart = ADDR (.lll_segment_7)
-                0x00482530                        _lll_segment_7SegmentRomStart = __romPos
+                0x00481310                        _lll_segment_7SegmentRomStart = __romPos
 
-.lll_segment_7  0x07000000    0x14590 load address 0x00482530
+.lll_segment_7  0x07000000    0x14590 load address 0x00481310
  build/jp/levels/lll/leveldata.mio0.o(.data)
  .data          0x07000000    0x14587 build/jp/levels/lll/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_lll_leveldata_mio0_start
@@ -10202,12 +10201,12 @@ Linker script and memory map
                 0x07014590                        . = ALIGN (0x10)
  *fill*         0x07014587        0x9 
                 0x07014590                        _lll_segment_7SegmentEnd = (ADDR (.lll_segment_7) + SIZEOF (.lll_segment_7))
-                0x00496ac0                        _lll_segment_7SegmentRomEnd = (__romPos + SIZEOF (.lll_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.lll_segment_7))
+                0x004958a0                        _lll_segment_7SegmentRomEnd = (__romPos + SIZEOF (.lll_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.lll_segment_7))
                 0x0e000000                        _lllSegmentStart = ADDR (.lll)
-                0x00496ac0                        _lllSegmentRomStart = __romPos
+                0x004958a0                        _lllSegmentRomStart = __romPos
 
-.lll            0x0e000000      0xf80 load address 0x00496ac0
+.lll            0x0e000000      0xf80 load address 0x004958a0
  build/jp/levels/lll/script.o(.data)
  .data          0x0e000000      0x9e0 build/jp/levels/lll/script.o
                 0x0e00067c                level_lll_entry
@@ -10256,12 +10255,12 @@ Linker script and memory map
                 0x0e000ea8                lll_geo_000EA8
                 0x0e000ec0                lll_geo_000EC0
                 0x0e000f80                        _lllSegmentEnd = (ADDR (.lll) + SIZEOF (.lll))
-                0x00497a40                        _lllSegmentRomEnd = (__romPos + SIZEOF (.lll))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.lll))
+                0x00496820                        _lllSegmentRomEnd = (__romPos + SIZEOF (.lll))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.lll))
                 0x07000000                        _ddd_segment_7SegmentStart = ADDR (.ddd_segment_7)
-                0x00497a40                        _ddd_segment_7SegmentRomStart = __romPos
+                0x00496820                        _ddd_segment_7SegmentRomStart = __romPos
 
-.ddd_segment_7  0x07000000     0x8130 load address 0x00497a40
+.ddd_segment_7  0x07000000     0x8130 load address 0x00496820
  build/jp/levels/ddd/leveldata.mio0.o(.data)
  .data          0x07000000     0x8127 build/jp/levels/ddd/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ddd_leveldata_mio0_start
@@ -10269,12 +10268,12 @@ Linker script and memory map
                 0x07008130                        . = ALIGN (0x10)
  *fill*         0x07008127        0x9 
                 0x07008130                        _ddd_segment_7SegmentEnd = (ADDR (.ddd_segment_7) + SIZEOF (.ddd_segment_7))
-                0x0049fb70                        _ddd_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ddd_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ddd_segment_7))
+                0x0049e950                        _ddd_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ddd_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ddd_segment_7))
                 0x0e000000                        _dddSegmentStart = ADDR (.ddd)
-                0x0049fb70                        _dddSegmentRomStart = __romPos
+                0x0049e950                        _dddSegmentRomStart = __romPos
 
-.ddd            0x0e000000      0x630 load address 0x0049fb70
+.ddd            0x0e000000      0x630 load address 0x0049e950
  build/jp/levels/ddd/script.o(.data)
  .data          0x0e000000      0x450 build/jp/levels/ddd/script.o
                 0x0e00026c                level_ddd_entry
@@ -10286,25 +10285,25 @@ Linker script and memory map
                 0x0e0004c0                ddd_geo_0004C0
                 0x0e000570                ddd_geo_000570
                 0x0e000630                        _dddSegmentEnd = (ADDR (.ddd) + SIZEOF (.ddd))
-                0x004a01a0                        _dddSegmentRomEnd = (__romPos + SIZEOF (.ddd))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ddd))
+                0x0049ef80                        _dddSegmentRomEnd = (__romPos + SIZEOF (.ddd))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ddd))
                 0x07000000                        _ending_segment_7SegmentStart = ADDR (.ending_segment_7)
-                0x004a01a0                        _ending_segment_7SegmentRomStart = __romPos
+                0x0049ef80                        _ending_segment_7SegmentRomStart = __romPos
 
 .ending_segment_7
-                0x07000000     0xdda0 load address 0x004a01a0
+                0x07000000     0xdda0 load address 0x0049ef80
  build/jp/levels/ending/leveldata.mio0.o(.data)
  .data          0x07000000     0xdda0 build/jp/levels/ending/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ending_leveldata_mio0_start
                 0x0700dda0                _binary_build_jp_levels_ending_leveldata_mio0_end
                 0x0700dda0                        . = ALIGN (0x10)
                 0x0700dda0                        _ending_segment_7SegmentEnd = (ADDR (.ending_segment_7) + SIZEOF (.ending_segment_7))
-                0x004adf40                        _ending_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ending_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ending_segment_7))
+                0x004acd20                        _ending_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ending_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ending_segment_7))
                 0x0e000000                        _endingSegmentStart = ADDR (.ending)
-                0x004adf40                        _endingSegmentRomStart = __romPos
+                0x004acd20                        _endingSegmentRomStart = __romPos
 
-.ending         0x0e000000       0xc0 load address 0x004adf40
+.ending         0x0e000000       0xc0 load address 0x004acd20
  build/jp/levels/ending/script.o(.data)
  .data          0x0e000000       0x50 build/jp/levels/ending/script.o
                 0x0e000000                level_ending_entry
@@ -10312,13 +10311,13 @@ Linker script and memory map
  .data          0x0e000050       0x70 build/jp/levels/ending/geo.o
                 0x0e000050                ending_geo_000050
                 0x0e0000c0                        _endingSegmentEnd = (ADDR (.ending) + SIZEOF (.ending))
-                0x004ae000                        _endingSegmentRomEnd = (__romPos + SIZEOF (.ending))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ending))
+                0x004acde0                        _endingSegmentRomEnd = (__romPos + SIZEOF (.ending))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ending))
                 0x07000000                        _castle_courtyard_segment_7SegmentStart = ADDR (.castle_courtyard_segment_7)
-                0x004ae000                        _castle_courtyard_segment_7SegmentRomStart = __romPos
+                0x004acde0                        _castle_courtyard_segment_7SegmentRomStart = __romPos
 
 .castle_courtyard_segment_7
-                0x07000000     0x3100 load address 0x004ae000
+                0x07000000     0x3100 load address 0x004acde0
  build/jp/levels/castle_courtyard/leveldata.mio0.o(.data)
  .data          0x07000000     0x30f9 build/jp/levels/castle_courtyard/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_castle_courtyard_leveldata_mio0_start
@@ -10326,13 +10325,13 @@ Linker script and memory map
                 0x07003100                        . = ALIGN (0x10)
  *fill*         0x070030f9        0x7 
                 0x07003100                        _castle_courtyard_segment_7SegmentEnd = (ADDR (.castle_courtyard_segment_7) + SIZEOF (.castle_courtyard_segment_7))
-                0x004b1100                        _castle_courtyard_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_courtyard_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_courtyard_segment_7))
+                0x004afee0                        _castle_courtyard_segment_7SegmentRomEnd = (__romPos + SIZEOF (.castle_courtyard_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_courtyard_segment_7))
                 0x0e000000                        _castle_courtyardSegmentStart = ADDR (.castle_courtyard)
-                0x004b1100                        _castle_courtyardSegmentRomStart = __romPos
+                0x004afee0                        _castle_courtyardSegmentRomStart = __romPos
 
 .castle_courtyard
-                0x0e000000      0x2c0 load address 0x004b1100
+                0x0e000000      0x2c0 load address 0x004afee0
  build/jp/levels/castle_courtyard/script.o(.data)
  .data          0x0e000000      0x200 build/jp/levels/castle_courtyard/script.o
                 0x0e000098                level_castle_courtyard_entry
@@ -10341,12 +10340,12 @@ Linker script and memory map
                 0x0e000200                castle_courtyard_geo_000200
                 0x0e000218                castle_courtyard_geo_000218
                 0x0e0002c0                        _castle_courtyardSegmentEnd = (ADDR (.castle_courtyard) + SIZEOF (.castle_courtyard))
-                0x004b13c0                        _castle_courtyardSegmentRomEnd = (__romPos + SIZEOF (.castle_courtyard))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.castle_courtyard))
+                0x004b01a0                        _castle_courtyardSegmentRomEnd = (__romPos + SIZEOF (.castle_courtyard))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.castle_courtyard))
                 0x07000000                        _pss_segment_7SegmentStart = ADDR (.pss_segment_7)
-                0x004b13c0                        _pss_segment_7SegmentRomStart = __romPos
+                0x004b01a0                        _pss_segment_7SegmentRomStart = __romPos
 
-.pss_segment_7  0x07000000     0x85e0 load address 0x004b13c0
+.pss_segment_7  0x07000000     0x85e0 load address 0x004b01a0
  build/jp/levels/pss/leveldata.mio0.o(.data)
  .data          0x07000000     0x85d6 build/jp/levels/pss/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_pss_leveldata_mio0_start
@@ -10354,12 +10353,12 @@ Linker script and memory map
                 0x070085e0                        . = ALIGN (0x10)
  *fill*         0x070085d6        0xa 
                 0x070085e0                        _pss_segment_7SegmentEnd = (ADDR (.pss_segment_7) + SIZEOF (.pss_segment_7))
-                0x004b99a0                        _pss_segment_7SegmentRomEnd = (__romPos + SIZEOF (.pss_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.pss_segment_7))
+                0x004b8780                        _pss_segment_7SegmentRomEnd = (__romPos + SIZEOF (.pss_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.pss_segment_7))
                 0x0e000000                        _pssSegmentStart = ADDR (.pss)
-                0x004b99a0                        _pssSegmentRomStart = __romPos
+                0x004b8780                        _pssSegmentRomStart = __romPos
 
-.pss            0x0e000000      0x1c0 load address 0x004b99a0
+.pss            0x0e000000      0x1c0 load address 0x004b8780
  build/jp/levels/pss/script.o(.data)
  .data          0x0e000000      0x100 build/jp/levels/pss/script.o
                 0x0e000000                level_pss_entry
@@ -10367,13 +10366,13 @@ Linker script and memory map
  .data          0x0e000100       0xc0 build/jp/levels/pss/geo.o
                 0x0e000100                pss_geo_000100
                 0x0e0001c0                        _pssSegmentEnd = (ADDR (.pss) + SIZEOF (.pss))
-                0x004b9b60                        _pssSegmentRomEnd = (__romPos + SIZEOF (.pss))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.pss))
+                0x004b8940                        _pssSegmentRomEnd = (__romPos + SIZEOF (.pss))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.pss))
                 0x07000000                        _cotmc_segment_7SegmentStart = ADDR (.cotmc_segment_7)
-                0x004b9b60                        _cotmc_segment_7SegmentRomStart = __romPos
+                0x004b8940                        _cotmc_segment_7SegmentRomStart = __romPos
 
 .cotmc_segment_7
-                0x07000000     0x6910 load address 0x004b9b60
+                0x07000000     0x6910 load address 0x004b8940
  build/jp/levels/cotmc/leveldata.mio0.o(.data)
  .data          0x07000000     0x6906 build/jp/levels/cotmc/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_cotmc_leveldata_mio0_start
@@ -10381,12 +10380,12 @@ Linker script and memory map
                 0x07006910                        . = ALIGN (0x10)
  *fill*         0x07006906        0xa 
                 0x07006910                        _cotmc_segment_7SegmentEnd = (ADDR (.cotmc_segment_7) + SIZEOF (.cotmc_segment_7))
-                0x004c0470                        _cotmc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.cotmc_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.cotmc_segment_7))
+                0x004bf250                        _cotmc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.cotmc_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.cotmc_segment_7))
                 0x0e000000                        _cotmcSegmentStart = ADDR (.cotmc)
-                0x004c0470                        _cotmcSegmentRomStart = __romPos
+                0x004bf250                        _cotmcSegmentRomStart = __romPos
 
-.cotmc          0x0e000000      0x250 load address 0x004c0470
+.cotmc          0x0e000000      0x250 load address 0x004bf250
  build/jp/levels/cotmc/script.o(.data)
  .data          0x0e000000      0x1a0 build/jp/levels/cotmc/script.o
                 0x0e000068                level_cotmc_entry
@@ -10394,13 +10393,13 @@ Linker script and memory map
  .data          0x0e0001a0       0xb0 build/jp/levels/cotmc/geo.o
                 0x0e0001a0                cotmc_geo_0001A0
                 0x0e000250                        _cotmcSegmentEnd = (ADDR (.cotmc) + SIZEOF (.cotmc))
-                0x004c06c0                        _cotmcSegmentRomEnd = (__romPos + SIZEOF (.cotmc))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.cotmc))
+                0x004bf4a0                        _cotmcSegmentRomEnd = (__romPos + SIZEOF (.cotmc))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.cotmc))
                 0x07000000                        _totwc_segment_7SegmentStart = ADDR (.totwc_segment_7)
-                0x004c06c0                        _totwc_segment_7SegmentRomStart = __romPos
+                0x004bf4a0                        _totwc_segment_7SegmentRomStart = __romPos
 
 .totwc_segment_7
-                0x07000000     0x3ad0 load address 0x004c06c0
+                0x07000000     0x3ad0 load address 0x004bf4a0
  build/jp/levels/totwc/leveldata.mio0.o(.data)
  .data          0x07000000     0x3acb build/jp/levels/totwc/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_totwc_leveldata_mio0_start
@@ -10408,12 +10407,12 @@ Linker script and memory map
                 0x07003ad0                        . = ALIGN (0x10)
  *fill*         0x07003acb        0x5 
                 0x07003ad0                        _totwc_segment_7SegmentEnd = (ADDR (.totwc_segment_7) + SIZEOF (.totwc_segment_7))
-                0x004c4190                        _totwc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.totwc_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.totwc_segment_7))
+                0x004c2f70                        _totwc_segment_7SegmentRomEnd = (__romPos + SIZEOF (.totwc_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.totwc_segment_7))
                 0x0e000000                        _totwcSegmentStart = ADDR (.totwc)
-                0x004c4190                        _totwcSegmentRomStart = __romPos
+                0x004c2f70                        _totwcSegmentRomStart = __romPos
 
-.totwc          0x0e000000      0x220 load address 0x004c4190
+.totwc          0x0e000000      0x220 load address 0x004c2f70
  build/jp/levels/totwc/script.o(.data)
  .data          0x0e000000      0x160 build/jp/levels/totwc/script.o
                 0x0e000038                level_totwc_entry
@@ -10422,13 +10421,13 @@ Linker script and memory map
                 0x0e000160                totwc_geo_000160
                 0x0e000188                totwc_geo_000188
                 0x0e000220                        _totwcSegmentEnd = (ADDR (.totwc) + SIZEOF (.totwc))
-                0x004c43b0                        _totwcSegmentRomEnd = (__romPos + SIZEOF (.totwc))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.totwc))
+                0x004c3190                        _totwcSegmentRomEnd = (__romPos + SIZEOF (.totwc))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.totwc))
                 0x07000000                        _bowser_1_segment_7SegmentStart = ADDR (.bowser_1_segment_7)
-                0x004c43b0                        _bowser_1_segment_7SegmentRomStart = __romPos
+                0x004c3190                        _bowser_1_segment_7SegmentRomStart = __romPos
 
 .bowser_1_segment_7
-                0x07000000     0x18a0 load address 0x004c43b0
+                0x07000000     0x18a0 load address 0x004c3190
  build/jp/levels/bowser_1/leveldata.mio0.o(.data)
  .data          0x07000000     0x1894 build/jp/levels/bowser_1/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bowser_1_leveldata_mio0_start
@@ -10436,12 +10435,12 @@ Linker script and memory map
                 0x070018a0                        . = ALIGN (0x10)
  *fill*         0x07001894        0xc 
                 0x070018a0                        _bowser_1_segment_7SegmentEnd = (ADDR (.bowser_1_segment_7) + SIZEOF (.bowser_1_segment_7))
-                0x004c5c50                        _bowser_1_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_1_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_1_segment_7))
+                0x004c4a30                        _bowser_1_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_1_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_1_segment_7))
                 0x0e000000                        _bowser_1SegmentStart = ADDR (.bowser_1)
-                0x004c5c50                        _bowser_1SegmentRomStart = __romPos
+                0x004c4a30                        _bowser_1SegmentRomStart = __romPos
 
-.bowser_1       0x0e000000      0x160 load address 0x004c5c50
+.bowser_1       0x0e000000      0x160 load address 0x004c4a30
  build/jp/levels/bowser_1/script.o(.data)
  .data          0x0e000000       0xd0 build/jp/levels/bowser_1/script.o
                 0x0e000000                level_bowser_1_entry
@@ -10449,13 +10448,13 @@ Linker script and memory map
  .data          0x0e0000d0       0x90 build/jp/levels/bowser_1/geo.o
                 0x0e0000d0                bowser_1_geo_0000D0
                 0x0e000160                        _bowser_1SegmentEnd = (ADDR (.bowser_1) + SIZEOF (.bowser_1))
-                0x004c5db0                        _bowser_1SegmentRomEnd = (__romPos + SIZEOF (.bowser_1))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_1))
+                0x004c4b90                        _bowser_1SegmentRomEnd = (__romPos + SIZEOF (.bowser_1))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_1))
                 0x07000000                        _wmotr_segment_7SegmentStart = ADDR (.wmotr_segment_7)
-                0x004c5db0                        _wmotr_segment_7SegmentRomStart = __romPos
+                0x004c4b90                        _wmotr_segment_7SegmentRomStart = __romPos
 
 .wmotr_segment_7
-                0x07000000     0x9610 load address 0x004c5db0
+                0x07000000     0x9610 load address 0x004c4b90
  build/jp/levels/wmotr/leveldata.mio0.o(.data)
  .data          0x07000000     0x9605 build/jp/levels/wmotr/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_wmotr_leveldata_mio0_start
@@ -10463,12 +10462,12 @@ Linker script and memory map
                 0x07009610                        . = ALIGN (0x10)
  *fill*         0x07009605        0xb 
                 0x07009610                        _wmotr_segment_7SegmentEnd = (ADDR (.wmotr_segment_7) + SIZEOF (.wmotr_segment_7))
-                0x004cf3c0                        _wmotr_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wmotr_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wmotr_segment_7))
+                0x004ce1a0                        _wmotr_segment_7SegmentRomEnd = (__romPos + SIZEOF (.wmotr_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wmotr_segment_7))
                 0x0e000000                        _wmotrSegmentStart = ADDR (.wmotr)
-                0x004cf3c0                        _wmotrSegmentRomStart = __romPos
+                0x004ce1a0                        _wmotrSegmentRomStart = __romPos
 
-.wmotr          0x0e000000      0x2a0 load address 0x004cf3c0
+.wmotr          0x0e000000      0x2a0 load address 0x004ce1a0
  build/jp/levels/wmotr/script.o(.data)
  .data          0x0e000000      0x1f0 build/jp/levels/wmotr/script.o
                 0x0e0000b0                level_wmotr_entry
@@ -10476,13 +10475,13 @@ Linker script and memory map
  .data          0x0e0001f0       0xb0 build/jp/levels/wmotr/geo.o
                 0x0e0001f0                wmotr_geo_0001F0
                 0x0e0002a0                        _wmotrSegmentEnd = (ADDR (.wmotr) + SIZEOF (.wmotr))
-                0x004cf660                        _wmotrSegmentRomEnd = (__romPos + SIZEOF (.wmotr))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.wmotr))
+                0x004ce440                        _wmotrSegmentRomEnd = (__romPos + SIZEOF (.wmotr))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.wmotr))
                 0x07000000                        _bowser_2_segment_7SegmentStart = ADDR (.bowser_2_segment_7)
-                0x004cf660                        _bowser_2_segment_7SegmentRomStart = __romPos
+                0x004ce440                        _bowser_2_segment_7SegmentRomStart = __romPos
 
 .bowser_2_segment_7
-                0x07000000      0xe20 load address 0x004cf660
+                0x07000000      0xe20 load address 0x004ce440
  build/jp/levels/bowser_2/leveldata.mio0.o(.data)
  .data          0x07000000      0xe1b build/jp/levels/bowser_2/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bowser_2_leveldata_mio0_start
@@ -10490,12 +10489,12 @@ Linker script and memory map
                 0x07000e20                        . = ALIGN (0x10)
  *fill*         0x07000e1b        0x5 
                 0x07000e20                        _bowser_2_segment_7SegmentEnd = (ADDR (.bowser_2_segment_7) + SIZEOF (.bowser_2_segment_7))
-                0x004d0480                        _bowser_2_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_2_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_2_segment_7))
+                0x004cf260                        _bowser_2_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_2_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_2_segment_7))
                 0x0e000000                        _bowser_2SegmentStart = ADDR (.bowser_2)
-                0x004d0480                        _bowser_2SegmentRomStart = __romPos
+                0x004cf260                        _bowser_2SegmentRomStart = __romPos
 
-.bowser_2       0x0e000000      0x210 load address 0x004d0480
+.bowser_2       0x0e000000      0x210 load address 0x004cf260
  build/jp/levels/bowser_2/script.o(.data)
  .data          0x0e000000      0x170 build/jp/levels/bowser_2/script.o
                 0x0e00007c                level_bowser_2_entry
@@ -10504,13 +10503,13 @@ Linker script and memory map
                 0x0e000170                bowser_2_geo_000170
                 0x0e000188                bowser_2_geo_000188
                 0x0e000210                        _bowser_2SegmentEnd = (ADDR (.bowser_2) + SIZEOF (.bowser_2))
-                0x004d0690                        _bowser_2SegmentRomEnd = (__romPos + SIZEOF (.bowser_2))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_2))
+                0x004cf470                        _bowser_2SegmentRomEnd = (__romPos + SIZEOF (.bowser_2))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_2))
                 0x07000000                        _bowser_3_segment_7SegmentStart = ADDR (.bowser_3_segment_7)
-                0x004d0690                        _bowser_3_segment_7SegmentRomStart = __romPos
+                0x004cf470                        _bowser_3_segment_7SegmentRomStart = __romPos
 
 .bowser_3_segment_7
-                0x07000000     0x28f0 load address 0x004d0690
+                0x07000000     0x28f0 load address 0x004cf470
  build/jp/levels/bowser_3/leveldata.mio0.o(.data)
  .data          0x07000000     0x28ec build/jp/levels/bowser_3/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_bowser_3_leveldata_mio0_start
@@ -10518,12 +10517,12 @@ Linker script and memory map
                 0x070028f0                        . = ALIGN (0x10)
  *fill*         0x070028ec        0x4 
                 0x070028f0                        _bowser_3_segment_7SegmentEnd = (ADDR (.bowser_3_segment_7) + SIZEOF (.bowser_3_segment_7))
-                0x004d2f80                        _bowser_3_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_3_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_3_segment_7))
+                0x004d1d60                        _bowser_3_segment_7SegmentRomEnd = (__romPos + SIZEOF (.bowser_3_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_3_segment_7))
                 0x0e000000                        _bowser_3SegmentStart = ADDR (.bowser_3)
-                0x004d2f80                        _bowser_3SegmentRomStart = __romPos
+                0x004d1d60                        _bowser_3SegmentRomStart = __romPos
 
-.bowser_3       0x0e000000      0x420 load address 0x004d2f80
+.bowser_3       0x0e000000      0x420 load address 0x004d1d60
  build/jp/levels/bowser_3/script.o(.data)
  .data          0x0e000000      0x290 build/jp/levels/bowser_3/script.o
                 0x0e00016c                level_bowser_3_entry
@@ -10542,12 +10541,12 @@ Linker script and memory map
                 0x0e000380                bowser_3_geo_000380
                 0x0e000398                bowser_3_geo_000398
                 0x0e000420                        _bowser_3SegmentEnd = (ADDR (.bowser_3) + SIZEOF (.bowser_3))
-                0x004d33a0                        _bowser_3SegmentRomEnd = (__romPos + SIZEOF (.bowser_3))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.bowser_3))
+                0x004d2180                        _bowser_3SegmentRomEnd = (__romPos + SIZEOF (.bowser_3))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.bowser_3))
                 0x07000000                        _ttm_segment_7SegmentStart = ADDR (.ttm_segment_7)
-                0x004d33a0                        _ttm_segment_7SegmentRomStart = __romPos
+                0x004d2180                        _ttm_segment_7SegmentRomStart = __romPos
 
-.ttm_segment_7  0x07000000    0x198e0 load address 0x004d33a0
+.ttm_segment_7  0x07000000    0x198e0 load address 0x004d2180
  build/jp/levels/ttm/leveldata.mio0.o(.data)
  .data          0x07000000    0x198d6 build/jp/levels/ttm/leveldata.mio0.o
                 0x07000000                _binary_build_jp_levels_ttm_leveldata_mio0_start
@@ -10555,12 +10554,12 @@ Linker script and memory map
                 0x070198e0                        . = ALIGN (0x10)
  *fill*         0x070198d6        0xa 
                 0x070198e0                        _ttm_segment_7SegmentEnd = (ADDR (.ttm_segment_7) + SIZEOF (.ttm_segment_7))
-                0x004ecc80                        _ttm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ttm_segment_7))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ttm_segment_7))
+                0x004eba60                        _ttm_segment_7SegmentRomEnd = (__romPos + SIZEOF (.ttm_segment_7))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ttm_segment_7))
                 0x0e000000                        _ttmSegmentStart = ADDR (.ttm)
-                0x004ecc80                        _ttmSegmentRomStart = __romPos
+                0x004eba60                        _ttmSegmentRomStart = __romPos
 
-.ttm            0x0e000000      0xe10 load address 0x004ecc80
+.ttm            0x0e000000      0xe10 load address 0x004eba60
  build/jp/levels/ttm/script.o(.data)
  .data          0x0e000000      0x710 build/jp/levels/ttm/script.o
                 0x0e000394                level_ttm_entry
@@ -10597,28 +10596,28 @@ Linker script and memory map
                 0x0e000dbc                ttm_geo_000DBC
                 0x0e000df4                ttm_geo_000DF4
                 0x0e000e10                        _ttmSegmentEnd = (ADDR (.ttm) + SIZEOF (.ttm))
-                0x004eda90                        _ttmSegmentRomEnd = (__romPos + SIZEOF (.ttm))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.ttm))
-                0x004eda90                        _assetsSegmentStart = ADDR (.assets)
-                0x004eda90                        _assetsSegmentRomStart = __romPos
+                0x004ec870                        _ttmSegmentRomEnd = (__romPos + SIZEOF (.ttm))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.ttm))
+                0x004ec870                        _assetsSegmentStart = ADDR (.assets)
+                0x004ec870                        _assetsSegmentRomStart = __romPos
 
-.assets         0x004eda90   0x3abdb0
+.assets         0x004ec870   0x3abdb0
  build/jp/assets/mario_anim_data.o(.data)
- .data          0x004eda90    0x8da60 build/jp/assets/mario_anim_data.o
-                0x004eda90                gMarioAnims
+ .data          0x004ec870    0x8da60 build/jp/assets/mario_anim_data.o
+                0x004ec870                gMarioAnims
  build/jp/assets/mario_anim_data.o(.rodata)
  build/jp/assets/demo_data.o(.data)
- .data          0x0057b4f0     0x1580 build/jp/assets/demo_data.o
-                0x0057b4f0                gDemoInputs
+ .data          0x0057a2d0     0x1580 build/jp/assets/demo_data.o
+                0x0057a2d0                gDemoInputs
  build/jp/sound/sound_data.o(.data)
- .data          0x0057ca70   0x31cdd0 build/jp/sound/sound_data.o
-                0x0057ca70                gSoundDataADSR
-                0x00592570                gSoundDataRaw
-                0x00890870                gMusicData
-                0x008997b0                gBankSetsData
-                0x00899840                        _assetsSegmentEnd = (ADDR (.assets) + SIZEOF (.assets))
-                0x00899840                        _assetsSegmentRomEnd = (__romPos + SIZEOF (.assets))
-                0x00899840                        __romPos = (__romPos + SIZEOF (.assets))
+ .data          0x0057b850   0x31cdd0 build/jp/sound/sound_data.o
+                0x0057b850                gSoundDataADSR
+                0x00591350                gSoundDataRaw
+                0x0088f650                gMusicData
+                0x00898590                gBankSetsData
+                0x00898620                        _assetsSegmentEnd = (ADDR (.assets) + SIZEOF (.assets))
+                0x00898620                        _assetsSegmentRomEnd = (__romPos + SIZEOF (.assets))
+                0x00898620                        __romPos = (__romPos + SIZEOF (.assets))
 
 /DISCARD/
  *(*)
